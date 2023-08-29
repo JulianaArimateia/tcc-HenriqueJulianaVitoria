@@ -1,0 +1,113 @@
+.formularios {
+    /* organizações */
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin: auto;
+
+    /* aparências */
+    background-color: white;
+    border-radius: 20px;
+    box-shadow: 0 0px 16px 3px var(--color-main);
+
+    /* dimensões */
+    width: 60%;
+    height: 70vh;
+}
+
+.form__dados {
+    /* organizações */
+    display: grid;
+    grid-template-columns: 1fr;
+    justify-content: flex-start;
+    margin: auto;
+
+    /* aparências */
+
+    /* dimensões */
+    width: 50%;
+}
+
+.form__dados {
+    /* organizações */
+    display: grid;
+    grid-template-columns: 1fr;
+    justify-content: flex-start;
+    margin: auto;
+
+    /* aparências */
+
+    /* dimensões */
+    width: 50%;
+}
+
+.label__dados {
+    /* organizações */
+    margin: auto;
+    margin-top: 1.2rem;
+
+    /* aparências */
+    font-size: 1.1rem;
+
+    /* dimensões */
+    width: 60%;
+}
+
+.input__dados {
+    /* organizações */
+    margin: auto;
+    margin-top: .3rem;
+    padding-left: 1rem;
+
+    /* aparências */
+    border: 2px solid var(--color-main);
+    border-radius: 100rem;
+
+    /* dimensões */
+    width: 65%;
+    height: 2rem;
+}
+
+.btn__dados {
+    /* organizações */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: auto;
+    margin-top: 1.5rem;
+
+    /* aparências */
+    border: none;
+    border-radius: 100rem;
+    border: 2px solid var(--color-main);
+    background-color: var(--color-main);
+    color: #f1f1f1;
+    font-weight: bolder;
+    font-size: 1.2rem;
+    transition: .3s all;
+
+    /* dimensões */
+    width: 65%;
+    height: 2rem;
+}
+
+.btn__dados:hover {
+    /* organizações */
+
+    /* aparências */
+    background-color: white;
+    color: var(--color-main);
+
+    /* dimensões */
+}
+
+.input__dados:focus {
+    outline: none !important;
+    border: 2px solid var(--color-main);
+}
+
+/* organizações */
+
+/* aparências */
+
+/* dimensões */

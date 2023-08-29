@@ -1,0 +1,97 @@
+.prato__dia {
+    /* organização */
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin-top: 6vh;
+
+    /* aparência */
+
+    /* dimensões */
+
+}
+
+.card__prato {
+    /* organização */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: .2rem;
+
+    /* aparências */
+    border-radius: 8px;
+    box-shadow: 0 3px 8px 1px lightgray;
+    transition: .2s all;
+
+    /* dimensões */
+    width: 35%;
+    height: 25vh;
+}
+
+.prato__img {
+    /* organização */
+
+    /* aparência */
+
+    /* dimensões */
+    width: 40%;
+}
+
+.conteudo__prato {
+    /* organização */
+    display: grid;
+    grid-template-columns: 1fr;
+    justify-content: center;
+
+    /* aparência */
+
+    /* dimensões */
+    width: 60%;
+}
+
+.titulo__prato {
+    /* organização */
+    text-align: center;
+
+    /* aparência */
+    color: var(--color-six);
+    font-weight: bold;
+    font-size: 1.7rem;
+
+    /* dimensões */
+}
+
+.texto__prato {
+    /* organização */
+
+    /* aparência */
+    color: grey;
+    /* dimensões */
+}
+
+.btn__prato {
+    /* organização */
+    margin: auto;
+
+    /* aparência */
+    background-color: white;
+    border: none;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px 1px var(--color-main);
+    color: var(--color-main);
+    font-weight: bolder;
+    font-size: 1.2rem;
+    transition: .2s all;
+
+    /* dimensões */
+    height: 2rem;
+    width: 70%;
+}
+
+.btn__prato:hover {
+    /* organização */
+
+    /* aparência */
+    box-shadow: 0 2px 3px 1px var(--color-main);
+    /* dimensões */
+}

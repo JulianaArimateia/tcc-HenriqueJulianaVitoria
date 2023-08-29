@@ -1,0 +1,54 @@
+.corpo {
+    /* organizações */
+    padding-left: 15%;
+
+    /* aparências */
+    background-color: var(--color-three);
+
+    /* dimensões */
+    width: 100%;
+    height: 100vh;
+}
+
+.nav__admin {
+    /* organizações */
+    position: fixed;
+    z-index: 10;
+
+    /* aparências */
+    background-color: var(--color-main);
+
+    /* dimensões */
+    width: 15%;
+    height: 100vh;
+}
+
+.titulo__nav {
+    /* organizações */
+    margin-top: 8vh;
+    text-align: center;
+
+    /* aparências */
+    font-size: 3rem;
+    color: #f1f1f1;
+
+    /* dimensões */
+}
+
+.subtitulo__nav {
+    /* organizações */
+    margin-top: 1vh;
+    text-align: center;
+
+    /* aparências */
+    font-size: 1.2rem;
+    color: #f1f1f1;
+
+    /* dimensões */
+}
+
+/* organizações */
+
+/* aparências */
+
+/* dimensões */

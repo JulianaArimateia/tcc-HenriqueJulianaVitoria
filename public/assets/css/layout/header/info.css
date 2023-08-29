@@ -1,0 +1,133 @@
+.info__header {
+    /* organizações */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    /* aparências */
+
+    /* dimensões */
+    height: 7vh;
+}
+
+.logo__header {
+    /* organizações */
+    display: flex;
+    align-items: center;
+    margin-left: 2%;
+    padding-left: 8vh;
+
+    /* aparências */
+    background: url(../../../img/layout/logo.png) no-repeat left / cover;
+    color: var(--color-main);
+    font-size: 1.2rem;
+    text-decoration: none;
+
+    /* dimensões */
+    width: 8vh;
+    height: 7.9vh;
+}
+
+.funcoes__header {
+    /* organizações */
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin-right: 2%;
+
+    /* aparências */
+
+    /* dimensões */
+    width: 220px;
+}
+
+.funcao__item {
+    /* organizações */
+    margin: auto;
+
+    /* aparências */
+    border: none;
+    background: none;
+
+    /* dimensões */
+    width: 4vh;
+    height: 4vh;
+}
+
+.btn__favoritos {
+    background: url(../../../img/layout/favoritos__icon.png) no-repeat center/ cover;
+}
+
+.btn__carrinho {
+    background: url(../../../img/layout/carrinho__icon.png) no-repeat center/ cover;
+    margin-right: 2rem;
+}
+
+.btn__login {
+    /* organizações */
+
+    /* aparências */
+    border-radius: 5px;
+    box-shadow: 0 3px 6px 1px var(--color-main);
+    padding: .3rem 1rem;
+    color: var(--color-main);
+    text-decoration: none;
+    transition: .2s all;
+
+    /* dimensões */
+}
+
+.btn__login:hover {
+    /* organizações */
+
+    /* aparências */
+    box-shadow: 0 2px 3px var(--color-main);
+
+    /* dimensões */
+}
+
+.nav__header {
+    /* organizações */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    /* aparências */
+    background-color: var(--color-main);
+
+    /* dimensões */
+}
+
+.item__nav {
+    /* organizações */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 1rem;
+
+    /* aparências */
+    background-color: var(--color-main);
+    color: white;
+    text-decoration: none;
+    transition: .1s all;
+
+    /* dimensões */
+    height: 6vh;
+}
+
+.item__nav:hover {
+    /* organizações */
+
+    /* aparências */
+    background-color: white;
+    border: 1px solid var(--color-main);
+    color: var(--color-main);
+
+    /* dimensões */
+}
+
+/* organizações */
+
+/* aparências */
+
+/* dimensões */

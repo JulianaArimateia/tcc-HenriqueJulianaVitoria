@@ -1,0 +1,14 @@
+.filtro__lista {
+    /* organizações */
+    margin-top: 5vh;
+    padding-left: 1rem;
+
+    /* aparências */
+    border: none;
+    background-color: var(--color-four);
+    border-radius: 8px;
+
+    /* dimensões */
+    width: 40%;
+    height: 2.5rem;
+}

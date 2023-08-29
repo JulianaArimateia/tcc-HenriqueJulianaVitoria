@@ -1,0 +1,43 @@
+.logout {
+    /* organizações */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: fixed;
+    left: 10;
+    bottom: 0%;
+
+    /* aparências */
+    background-color: var(--color-two);
+
+    /* dimensões */
+    width: 15%;
+    height: 5vh;
+}
+
+.mensagem {
+    /* organizações */
+    display: flex;
+    align-items: center;
+    padding-left: .3rem;
+    margin: 0;
+
+    /* aparências */
+    color: white;
+    font-size: 1.3rem;
+
+    /* dimensões */
+    height: 5vh;
+}
+
+.btn__logout {
+    /* organizações */
+    padding: 0 .3rem;
+
+    /* aparências */
+    color: white;
+    font-size: 1.3rem;
+    text-decoration: none;
+
+    /* dimensões */
+}

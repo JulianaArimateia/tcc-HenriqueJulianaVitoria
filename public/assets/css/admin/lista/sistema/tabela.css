@@ -1,0 +1,79 @@
+.tabela {
+    /* organizações */
+    margin-top: 3vh;
+
+    /* aparências */
+    background-color: none;
+
+    /* dimensões */
+    width: 100%;
+}
+
+.header__tabela {
+    /* organizações */
+
+    /* aparências */
+    background-color: var(--color-four);
+    color: var(--color-five);
+    text-align: center;
+    border-radius: 8px;
+
+    /* dimensões */
+    height: 2.5rem;
+}
+
+.corpo__tabela {
+    /* organizações */
+    margin-top: 5vh;
+
+    /* aparências */
+
+    /* dimensões */
+    width: 100%;
+}
+
+.linha__tabela {
+    /* organizações */
+
+    /* aparências */
+    background-color: white;
+    border-top: .7rem solid var(--color-three);
+    border-bottom: .7rem solid var(--color-three);
+
+    /* dimensões */
+    height: 4rem;
+}
+
+.item__tabela {
+    /* organizações */
+    text-align: center;
+
+    /* aparências */
+
+    /* dimensões */
+}
+
+.btn__excluir {
+    /* organizações */
+
+    /* aparências */
+    color: black;
+
+    /* dimensões */
+}
+
+.item__status {
+    /* organizações */
+
+    /* aparências */
+    color: lightgreen;
+    font-weight: bold;
+
+    /* dimensões */
+}
+
+/* organizações */
+
+/* aparências */
+
+/* dimensões */

@@ -1,0 +1,43 @@
+<head>
+    <link rel="stylesheet" href="assets/css/login/style.css">
+</head>
+
+
+<section class="formularios">
+    <form class="form__dados" action="/salvar_usuario">
+        <label for="nome" class="label__dados">Digite seu nome:</label>
+        <input type="text" name="nome" class="input__dados" id="">
+        <label for="email" class="label__dados">Digite seu email:</label>
+        <input type="email" name="email" class="input__dados" id="">
+        <label for="senha" class="label__dados">Digite sua senha:</label>
+        <input type="password" name="senha" class="input__dados" id="">
+        <label for="confirmar__senha" class="label__dados">Digite novamente sua senha:</label>
+        <input type="password" name="confirmar__senha" class="input__dados" id="">
+        <button type="submit" class="btn__dados">Cadastrar</button>
+        <button id="alternar__2" class="btn__alternar">Já tem conta? clique aqui</button>
+    </form>
+
+    <form class="form__dados" action="/autenticar">
+        <label for="email" class="label__dados">Digite seu email:</label>
+        <input type="email" name="email" class="input__dados" id="">
+        <label for="senha" class="label__dados">Digite sua senha:</label>
+        <input type="password" name="senha" class="input__dados" id="">
+        <button type="submit" class="btn__dados">Login</button>
+        <button id="alternar__1" class="btn__alternar">Não tem conta? clique aqui</button>
+    </form>
+</section>
+
+<div class="detalhe" id="detalhe">
+    <h1 class="titulo__detalhe">Cantina Senai</h1>
+    <p class="texto__detalhe">
+        O nosso sistema oferece inumeras vantagens
+        Lorem ipsum dolor, sit amet consectetur
+        adipisicing elit. Ad quaerat, id ducimus,
+        a reiciendis obcaecati aliquam qui, odit
+        inventore adipisci magnam ipsum? Qui odio
+        adipisci ipsam rem esse sunt laborum!
+    </p>
+    <a href="/" class="btn__voltar">Voltar</a>
+</div>
+
+<script src="assets/js/login/detalhe.js"></script>
