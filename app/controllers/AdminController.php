@@ -13,24 +13,15 @@ class AdminController extends Action
 {
     public function lista()
     {
-        // AuthController::validaAutenticacao();        
-
+        AuthController::validaAutenticacao();
         // $usuario = Container::getModel('Usuario');
-        
         // $this->view->qtdeUsuarios = $usuario->getTotalUsuarios();
-        
-
         $this->render("lista", "templateAdmin");
     }
 
     public function adicionar()
     {
         AuthController::validaAutenticacao();
-
         $this->render("adicionar", "templateAdmin");
     }
-
-    
-
-    
 }

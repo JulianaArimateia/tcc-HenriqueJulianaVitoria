@@ -71,7 +71,7 @@ class UsuarioModel extends Model
 
 	public function autenticar()
 	{
-		$query = "select id, nome, nivel, email, ativo, from usuarios where email 
+		$query = "select id, nome, nivel, email, ativo from usuarios where email 
 		= :email and senha = :senha";
 
 		$stmt = $this->db->prepare($query);
@@ -131,7 +131,7 @@ class UsuarioModel extends Model
 	//salvar
 	public function salvar()
 	{
-		$query = "insert into usuarios(nome, email, senha, nivel,) values (:nome, :email, :senha, :nivel,)";
+		$query = "insert into usuarios(nome, email, senha, nivel) values (:nome, :email, :senha, :nivel)";
 		$stmt = $this->db->prepare($query);
 		$stmt->bindValue(':nome', $this->__get('nome'));
 		$stmt->bindValue(':email', $this->__get('email'));
@@ -159,8 +159,6 @@ class UsuarioModel extends Model
 		$stmt->bindValue(':email', $this->__get('email'));
 		$stmt->bindValue(':senha', $this->__get('senha')); //md5() -> hash 32 caracteres
 		$stmt->bindValue(':nivel', $this->__get('nivel'));
-
-		
 
 		$stmt->bindValue(':updated_at', $this->__get('updated_at'));
 		$stmt->bindValue(':id', $this->__get('id'));

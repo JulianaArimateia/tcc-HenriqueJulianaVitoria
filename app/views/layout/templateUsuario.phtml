@@ -17,7 +17,20 @@
             <div class="funcoes__header">
                 <a href="/favoritos" class="funcao__item btn__favoritos"></a>
                 <a href="/carrinho" class="funcao__item btn__carrinho"></a>
-                <a href="/login" class="btn__login">Login</a>
+                <?php
+
+                use App\controllers\AuthController;
+
+                if (AuthController::esta_logado()) {
+                ?>
+                    <a href="/sair" class="btn__login">Sair</a>
+                <?php
+                } else {
+                ?>
+                    <a href="/login" class="btn__login">Login</a>
+                <?php
+                }
+                ?>
             </div>
         </div>
         <nav class="nav__header">
@@ -28,7 +41,7 @@
     </header>
 
     <main class="corpo">
-         <?= $this->content(); ?>
+        <?= $this->content(); ?>
     </main>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>

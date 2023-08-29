@@ -8,7 +8,8 @@ use App\controllers\AuthController;
 
 class UsuarioController extends Action
 {
-    public function carrinho()
+
+public function carrinho()
     {
         AuthController::validaAutenticacao();
         $this->render("carrinho", "templateUsuario");
@@ -22,7 +23,7 @@ class UsuarioController extends Action
     {
         AuthController::validaAutenticacao();
         $this->render("pagamento", "templateUsuario");
-    }
+}
     public function index()
     {
         AuthController::validaAutenticacao();
@@ -35,10 +36,21 @@ class UsuarioController extends Action
     }
 
 
-    //salvar
-    public function salvar_usuario()
+//cadastrar
+    public function cadastrar()
     {
         AuthController::validaAutenticacao();
+
+        $this->render("cadastrar", "template_admin");
+    }
+
+
+
+
+//salvar
+    public function salvar_usuario()
+    {
+        // AuthController::validaAutenticacao();
         //receber dados do formulario via post 
         //faz a instancia de produto com a conexão com banco de dados
         $usuario = Container::getModel('Usuario');
@@ -47,7 +59,16 @@ class UsuarioController extends Action
         $usuario->__set('nome', isset($_POST['nome']) ? $_POST['nome'] : "");
         $usuario->__set('email', isset($_POST['email']) ? $_POST['email'] : "");
         $usuario->__set('senha', isset($_POST['senha']) ? md5($_POST['senha']) : "");
-        $usuario->__set('nivel', isset($_POST['nivel']) ? $_POST['nivel'] : "");
+        // $usuario->__set('nivel', isset($_POST['nivel']) ? $_POST['nivel'] : "");
+        $usuario->__set('nivel', 0);
+
+        // if ($_SESSION['nivel'] == '1') {
+        //     $this->render("lista","template_admin");
+        // }else{
+        //     $_SESSION['nivel'] == '0';
+        //     $this->render("index", "templateUsuario");
+        // }
+        // dd('salvar_usuario');
 
         if ($usuario->validarCadastro()) {
             //SUCCESS ao validar cadastro
@@ -60,7 +81,7 @@ class UsuarioController extends Action
                     "msg"    => "Cadastro realizado com sucesso"
                 );
 
-                $this->render("index", "templateUsuario");
+                header('Location: /login?cad=1');
             } else {
                 //caso retornar 1 linha na query - indica que ja esta cadastrado no banco de dados
                 $this->view->status = array(
@@ -75,7 +96,7 @@ class UsuarioController extends Action
                     "nivel"     => isset($_POST['nivel']) ? $_POST['nivel'] : "",
                 );
 
-                $this->render("login");
+                header('Location: /login?cad=0');
             }
         } else {
             //erro na digitação < que 3 caracteres
@@ -207,10 +228,10 @@ class UsuarioController extends Action
 
 
 
-    // excluir usuario
+   // excluir usuario
     public function excluir()
     {
-        AuthController::validaAutenticacao();
+        AuthController::validaAutenticacao();       
 
         $id_usuario = isset($_GET['id']) ? $_GET['id'] : '';
 

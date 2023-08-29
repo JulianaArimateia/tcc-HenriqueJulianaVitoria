@@ -22,10 +22,19 @@ class AuthController extends Action
 			$_SESSION['nivel'] = $usuario->__get('nivel');
 			$_SESSION['email'] = $usuario->__get('email');
 
-			header('Location: /admin');
+			header('Location: /');
 		} else {
 			header('Location: /login?error=401');
 		}
+		if ($_SESSION['nivel'] == '1') {
+			header('Location: /admin/lista');
+			$this->render("lista", "templateAdmin");
+		} else {
+			$_SESSION['nivel'] == '0';
+			header('Location: /');
+			$this->render("index", "templateUsuario");
+		}
+		dd($_POST);
 	}
 
 	public static function validaAutenticacao()

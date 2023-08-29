@@ -2,9 +2,24 @@
     <link rel="stylesheet" href="assets/css/login/style.css">
 </head>
 
+<?php
+    if(isset($_GET['cad']) && $_GET['cad'] == 1){
+        ?>
+        CADASTROU NO BANCO
+
+        <?php
+    } else {
+        ?>
+        CADASTROU NO BANCO
+
+        <?php
+
+    }
+?>
+
 
 <section class="formularios">
-    <form class="form__dados" action="/salvar_usuario">
+    <form method="POST" class="form__dados" action="/salvar_usuario">
         <label for="nome" class="label__dados">Digite seu nome:</label>
         <input type="text" name="nome" class="input__dados" id="">
         <label for="email" class="label__dados">Digite seu email:</label>
@@ -17,7 +32,7 @@
         <button id="alternar__2" class="btn__alternar">Já tem conta? clique aqui</button>
     </form>
 
-    <form class="form__dados" action="/autenticar">
+    <form method="POST" class="form__dados" action="/autenticar">
         <label for="email" class="label__dados">Digite seu email:</label>
         <input type="email" name="email" class="input__dados" id="">
         <label for="senha" class="label__dados">Digite sua senha:</label>
@@ -39,5 +54,4 @@
     </p>
     <a href="/" class="btn__voltar">Voltar</a>
 </div>
-
 <script src="assets/js/login/detalhe.js"></script>
