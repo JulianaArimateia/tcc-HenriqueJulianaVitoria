@@ -28,7 +28,7 @@
 
     /* dimensões */
     width: 260px;
-    height: 42vh;
+    height: 360px;
 }
 
 .favoritar {
@@ -129,6 +129,22 @@
     background-color: var(--color-main);
 
     /* dimensões */
+}
+
+.selecionado{
+        /* organizações */
+        margin: auto;
+
+        /* aparência */
+        border-radius: 8px;
+        border: 1px solid var(--color-main);
+        background: url(../../../img/cardapio/carrinho.png) no-repeat center;
+        background-color: var(--color-main);
+        transition: .2s all;
+    
+        /* dimensões */
+        width: 30%;
+        height: 2rem;
 }
 
 .favoritado {

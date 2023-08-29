@@ -24,8 +24,8 @@
     transition: .2s all;
 
     /* dimensões */
-    width: 35%;
-    height: 25vh;
+    width: 510px;
+    height: 200px;
 }
 
 .prato__img {
@@ -34,7 +34,7 @@
     /* aparência */
 
     /* dimensões */
-    width: 40%;
+    width: 38%;
 }
 
 .conteudo__prato {
@@ -46,7 +46,7 @@
     /* aparência */
 
     /* dimensões */
-    width: 60%;
+    width: 58%;
 }
 
 .titulo__prato {
@@ -74,6 +74,8 @@
     margin: auto;
 
     /* aparência */
+    text-align: center;
+    text-decoration: none;
     background-color: white;
     border: none;
     border-radius: 10px;

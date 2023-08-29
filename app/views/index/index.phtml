@@ -4,22 +4,34 @@
 
 
 <section class="prato__dia">
-    <div class="card__prato">
-        <img src="assets/img/cardapio/prato.jpeg" alt="prato de comida" class="prato__img">
-        <div class="conteudo__prato">
-            <h2 class="titulo__prato">Prato do dia</h2>
-            <p class="texto__prato">Arroz, strogonoff de frango, batata palha e tomate</p>
-            <button class="btn__prato">Adicionar</button>
+
+    <?php
+    $produtos = $this->view->dados;
+
+    foreach ($produtos as $produto) {
+
+        if ($produto['id_categoria'] == 7) {
+            if ($produto['nivel'] == 0) {
+                $metodo = '/adicionarCarrinho';
+                $conteudo = 'Adicionar';
+            } else {
+                $metodo = '/removeCarrinho';
+                $conteudo = 'Remover';
+            }
+
+            echo "
+            <div class='card__prato'>
+            <img src='" . $produto['nome_produto'] . "' alt='prato de comida' class='prato__img'>
+            <div class='conteudo__prato'>
+                <h2 class='titulo__prato'>" . $produto['nome_produto'] . "</h2>
+                <p class='texto__prato'>" . $produto['descricao'] . "</p>
+                <a href='" . $metodo . "?id=" . $produto['id'] . "' class='btn__prato'>" . $conteudo . "</a>
+            </div>
         </div>
-    </div>
-    <div class="card__prato">
-        <img src="assets/img/cardapio/prato.jpeg" alt="prato de comida" class="prato__img">
-        <div class="conteudo__prato">
-            <h2 class="titulo__prato">Prato do dia</h2>
-            <p class="texto__prato">Arroz, feijão, bife acebolado e pure de batata</p>
-            <button class="btn__prato">Adicionar</button>
-        </div>
-    </div>
+                    ";
+        }
+    }
+    ?>
 </section>
 
 <!-- Filtro de classes(Salgados, doces e bebidas) -->
@@ -34,34 +46,41 @@
 
 <!-- Cardapio(Sessão) -->
 <section class="cardapio" id="cardapio">
-    <div class="card__cardapio" id="card">
-        <button class="favoritar" id="favoritar"></button>
-        <img src="assets/img/cardapio/hamburguer.png" alt="produto" class="img__card">
-        <h3 class="nome__card">Hamburguer</h3>
-        <p class="desc__card">
-            Salgado de hamburguer(bovino), presunto e catupiry.
-        </p>
-        <div class="acoes__card">
-            <h2 class="preco__card">
-                R$7,00
-            </h2>
-            <button class="add__carrinho"></button>
-        </div>
-    </div>
-    <div class="card__cardapio" id="card">
-        <button class="favoritar" id="favoritar"></button>
-        <img src="assets/img/cardapio/hamburguer.png" alt="produto" class="img__card">
-        <h3 class="nome__card">Hamburguer</h3>
-        <p class="desc__card">
-            Salgado de hamburguer(bovino), presunto e catupiry.
-        </p>
-        <div class="acoes__card">
-            <h2 class="preco__card">
-                R$7,00
-            </h2>
-            <button class="add__carrinho"></button>
-        </div>
-    </div>
+    <?php
+
+    $produtos = $this->view->dados;
+
+    foreach ($produtos as $produto) {
+
+        if ($produto['nivel'] == 0) {
+            $metodo = '/adicionarCarrinho';
+            $selecionado = 'add__carrinho';
+        } else {
+            $metodo = '/removeCarrinho';
+            $selecionado = 'selecionado';
+        }
+
+        echo "
+            <div class='card__cardapio' id='card'>
+                <button type='submit' class='favoritar' action='/favoritar' id='favoritar'></button>
+                <img src='" . $produto['imagem'] . "' alt='" . $produto['nome_produto'] . "' class='img__card'>
+                <h3 class='nome__card'>" . $produto['nome_produto'] . "</h3>
+                <p class='desc__card'>
+                    " . $produto['descricao'] . "
+                </p>
+                <div class='acoes__card'>
+                    <h2 class='preco__card'>
+                        " . $produto['valor'] . "
+                    </h2>
+                    <a href='" . $metodo . "?id=" . $produto['id'] . "' type='submit' href='' class='" . $selecionado . "' id='add__carrinho'></a>
+                </div>
+            </div>
+            ";
+    }
+    ?>
+
+
+
 </section>
 
 

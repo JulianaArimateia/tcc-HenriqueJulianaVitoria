@@ -4,6 +4,7 @@
     justify-content: space-around;
     align-items: center;
     margin: auto;
+    margin-top: 16vh;
 
     /* aparências */
     background-color: white;
@@ -95,6 +96,7 @@
     /* organizações */
 
     /* aparências */
+    cursor: pointer;
     background-color: white;
     color: var(--color-main);
 

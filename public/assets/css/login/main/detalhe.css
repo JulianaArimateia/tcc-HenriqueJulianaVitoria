@@ -85,6 +85,7 @@
 .btn__alternar {
     /* organizações */
     margin: auto;
+    margin-top: .6rem;
 
     /* aparências */
     background: none;
@@ -92,6 +93,10 @@
     color: var(--color-main);
 
     /* dimensões */
+}
+
+.btn__alternar:hover{
+    cursor: pointer;
 }
 
 /* organizações */

@@ -14,8 +14,6 @@ class AdminController extends Action
     public function lista()
     {
         AuthController::validaAutenticacao();
-        // $usuario = Container::getModel('Usuario');
-        // $this->view->qtdeUsuarios = $usuario->getTotalUsuarios();
         $this->render("lista", "templateAdmin");
     }
 

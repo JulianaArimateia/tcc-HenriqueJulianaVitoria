@@ -10,4 +10,26 @@
         <td>Preço</td>
         <td>Qtd</td>
     </thead>
+    <tbody>
+        <?php
+
+        $produtos = $this->view->dados;
+
+        foreach ($produtos as $produto) {
+            if ($produto['nivel'] == 1) {
+                echo "    
+                <tr class='produto__carrinho'>
+                    <td><img src='" . $produto['nome_produto'] . "'></td>
+                    <td>" . $produto['nome_produto'] . "</td>
+                    <td>" . $produto['valor'] . "</td>
+                    <td id='qtd__produto'><button id='menos'>-</button> 1 <button id='mais'>+</button> </td>
+                </tr>
+            ";
+            }
+        }
+
+        ?>
+    </tbody>
 </table>
+
+<script src="assets/js/carrinho/qtdProdutos.js"></script>

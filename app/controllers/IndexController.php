@@ -16,15 +16,9 @@ class IndexController extends Action
 
     public function index()
     {
-        // AuthController::validaAutenticacao();
-
-        //faz a instancia de produto com a conexão com banco de dados
-        // $emprego = Container::getModel('Emprego');
-
-        // $empregos = $emprego->getAllEmpregos();
-        // $this->view->dados = [];
-        // $this->view->title = "Home";
-
+        $produto = Container::getModel('Produtos');
+        $produtos = $produto->mostrarProdutos();
+        $this->view->dados = $produtos;
 
         $this->render("index", "templateUsuario");
     }
@@ -37,6 +31,5 @@ class IndexController extends Action
             $this->view->login = isset($_GET['login']) ? $_GET['login'] : '';
             $this->render("login");
         }
-    
     }
 }

@@ -15,6 +15,8 @@ class Route extends Bootstrap
 
         //UsuarioController
         $routes['carrinho'] = array('route' => '/carrinho', 'controller' => 'usuarioController', 'action' => 'carrinho');
+        $routes['adicionar_carrinho'] = array('route' => '/adicionarCarrinho', 'controller' => 'usuarioController', 'action' => 'adicionarCarrinho');
+        $routes['remover_carrinho'] = array('route' => '/removeCarrinho', 'controller' => 'usuarioController', 'action' => 'removerCarrinho');
         $routes['favoritos'] = array('route' => '/favoritos', 'controller' => 'usuarioController', 'action' => 'favoritos');
         $routes['pagamento'] = array('route' => '/pagamento', 'controller' => 'usuarioController', 'action' => 'pagamento');
 
@@ -32,7 +34,7 @@ class Route extends Bootstrap
 
         //AuthController
         $routes['sair'] = array('route' => '/sair', 'controller' => 'AuthController', 'action' => 'sair');
-         $routes['autenticar'] = array('route' => '/autenticar', 'controller' => 'AuthController', 'action' => 'autenticar');
+        $routes['autenticar'] = array('route' => '/autenticar', 'controller' => 'AuthController', 'action' => 'autenticar');
 
         // //CategoriaController
         // $routes['categoria'] = array('route' => '/categoria', 'controller' => 'categoriaController', 'action' => 'index');

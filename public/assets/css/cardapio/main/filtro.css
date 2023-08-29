@@ -52,8 +52,8 @@
     border-radius: 10px;
 
     /* dimensões */
-    height: 12vh;
-    width: 12vh;
+    height: 50px;
+    width: 50px;
 }
 
 .filtro__btn:focus {
