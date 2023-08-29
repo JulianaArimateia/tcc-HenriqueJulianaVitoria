@@ -1,0 +1,31 @@
+.itens__nav {
+    /* organizações */
+    display: grid;
+    grid-template-columns: 1fr 80%;
+    margin-top: 5vh;
+
+    /* aparências */
+    background-color: var(--color-two);
+
+    /* dimensões */
+    height: 12vh;
+}
+
+.item__nav {
+    /* organizações */
+    display: flex;
+    align-items: center;
+    padding-left: .4rem;
+
+    /* aparências */
+    color: white;
+    text-decoration: none;
+    background: none;
+
+    /* dimensões */
+    height: 6vh;
+}
+
+.icons {
+    margin: auto;
+}

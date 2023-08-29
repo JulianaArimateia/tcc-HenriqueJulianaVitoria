@@ -1,0 +1,19 @@
+.cabecalho {
+        /* organizações */
+        position: fixed;
+        z-index: 10;
+
+        /* aparências */
+        box-shadow: 0 1px 12px 0 var(--color-main);
+        background-color: white;
+
+        /* dimensões */
+        width: 100%;
+        height: 8vh;
+}
+
+/* organizações */
+
+/* aparências */
+
+/* dimensões */

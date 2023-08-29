@@ -1,0 +1,153 @@
+.cardapio {
+    /* organizações */
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    justify-content: center;
+    align-items: center;
+    padding: 8vh 0;
+    margin: auto;
+
+    /* aparências */
+
+    /* dimensões */
+    width: 90%;
+    height: auto;
+}
+
+.card__cardapio {
+    /* organizações */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: auto;
+    padding: .5rem;
+
+    /* aparência */
+    border-radius: 8px;
+    box-shadow: 0 3px 8px 1px lightgray;
+
+    /* dimensões */
+    width: 260px;
+    height: 42vh;
+}
+
+.favoritar {
+    /* organizações */
+    position: relative;
+    top: 4%;
+    left: 40%;
+
+    /* aparência */
+    border: none;
+    background: url(../../../img/cardapio/favoritos__icon.png) no-repeat center / cover;
+
+    /* dimensões */
+    height: 30px;
+    width: 30px;
+}
+
+.img__card {
+    /* organizações */
+    margin: auto;
+
+    /* aparência */
+
+    /* dimensões */
+    width: 50%;
+}
+
+.nome__card {
+    /* organizações */
+
+    /* aparência */
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 1.3rem;
+    font-weight: bold;
+
+    /* dimensões */
+}
+
+.desc__card {
+    /* organizações */
+    margin: auto;
+    padding-bottom: 1rem;
+
+    /* aparência */
+    font-size: 1rem;
+    font-family: Arial, Helvetica, sans-serif;
+    opacity: .8;
+    border-bottom: 2px solid var(--color-main);
+
+    /* dimensões */
+    width: 90%;
+}
+
+.acoes__card {
+    /* organizações */
+    display: flex;
+    align-items: space-between;
+    margin: auto;
+    margin-top: 1rem;
+
+    /* aparência */
+
+    /* dimensões */
+    width: 80%;
+}
+
+.preco__card {
+    /* organizações */
+    margin: auto;
+
+    /* aparência */
+    font-size: 1.5rem;
+
+    /* dimensões */
+    width: 45%;
+}
+
+.add__carrinho {
+    /* organizações */
+    margin: auto;
+
+    /* aparência */
+    border-radius: 8px;
+    border: 1px solid var(--color-main);
+    background: url(../../../img/cardapio/carrinho.png) no-repeat center;
+    background-color: white;
+    transition: .2s all;
+
+    /* dimensões */
+    width: 30%;
+    height: 2rem;
+}
+
+.add__carrinho:hover {
+    /* organizações */
+
+    /* aparência */
+    background-color: var(--color-main);
+
+    /* dimensões */
+}
+
+.favoritado {
+    /* organizações */
+    position: relative;
+    top: 4%;
+    left: 40%;
+
+    /* aparência */
+    border: none;
+    background: url(../../../img/cardapio/favoritado.png) no-repeat center / cover;
+
+    /* dimensões */
+    height: 30px;
+    width: 30px;
+}
+
+/* organizações */
+
+/* aparência */
+
+/* dimensões */

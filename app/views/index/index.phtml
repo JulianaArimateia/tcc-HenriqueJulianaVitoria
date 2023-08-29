@@ -1,0 +1,68 @@
+<head>
+    <link rel="stylesheet" href="assets/css/cardapio/style.css">
+</head>
+
+
+<section class="prato__dia">
+    <div class="card__prato">
+        <img src="assets/img/cardapio/prato.jpeg" alt="prato de comida" class="prato__img">
+        <div class="conteudo__prato">
+            <h2 class="titulo__prato">Prato do dia</h2>
+            <p class="texto__prato">Arroz, strogonoff de frango, batata palha e tomate</p>
+            <button class="btn__prato">Adicionar</button>
+        </div>
+    </div>
+    <div class="card__prato">
+        <img src="assets/img/cardapio/prato.jpeg" alt="prato de comida" class="prato__img">
+        <div class="conteudo__prato">
+            <h2 class="titulo__prato">Prato do dia</h2>
+            <p class="texto__prato">Arroz, feijão, bife acebolado e pure de batata</p>
+            <button class="btn__prato">Adicionar</button>
+        </div>
+    </div>
+</section>
+
+<!-- Filtro de classes(Salgados, doces e bebidas) -->
+<section class="filtros">
+    <input type="text" class="filtro__input" placeholder="Buscar produto">
+    <div class="filtro__classe">
+        <button class="filtro__btn filtro__salgado"></button>
+        <button class="filtro__btn filtro__bebida"></button>
+        <button class="filtro__btn filtro__doce"></button>
+    </div>
+</section>
+
+<!-- Cardapio(Sessão) -->
+<section class="cardapio" id="cardapio">
+    <div class="card__cardapio" id="card">
+        <button class="favoritar" id="favoritar"></button>
+        <img src="assets/img/cardapio/hamburguer.png" alt="produto" class="img__card">
+        <h3 class="nome__card">Hamburguer</h3>
+        <p class="desc__card">
+            Salgado de hamburguer(bovino), presunto e catupiry.
+        </p>
+        <div class="acoes__card">
+            <h2 class="preco__card">
+                R$7,00
+            </h2>
+            <button class="add__carrinho"></button>
+        </div>
+    </div>
+    <div class="card__cardapio" id="card">
+        <button class="favoritar" id="favoritar"></button>
+        <img src="assets/img/cardapio/hamburguer.png" alt="produto" class="img__card">
+        <h3 class="nome__card">Hamburguer</h3>
+        <p class="desc__card">
+            Salgado de hamburguer(bovino), presunto e catupiry.
+        </p>
+        <div class="acoes__card">
+            <h2 class="preco__card">
+                R$7,00
+            </h2>
+            <button class="add__carrinho"></button>
+        </div>
+    </div>
+</section>
+
+
+<script src="assets/js/cardapio/favorito.js"></script>

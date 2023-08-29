@@ -1,0 +1,101 @@
+.detalhe {
+    /* organizações */
+    display: grid;
+    grid-template-columns: 1fr;
+    justify-content: center;
+    position: fixed;
+    top: 12vh;
+    left: 23%;
+
+    /* aparências */
+    background-color: var(--color-main);
+    border-radius: 5px;
+    padding: 1rem;
+    transition: 1s all;
+
+    /* dimensões */
+    width: 27%;
+    height: 74vh;
+}
+
+.alternar {
+    /* organizações */
+    left: 50%;
+
+    /* aparências */
+
+    /* dimensões */
+}
+
+.titulo__detalhe {
+    /* organizações */
+    margin: auto;
+
+    /* aparências */
+    text-align: center;
+    color: white;
+
+    /* dimensões */
+}
+
+.texto__detalhe {
+    /* organizações */
+    margin-top: 4rem;
+
+    /* aparências */
+    text-align: justify;
+    font-size: 1.2rem;
+    color: white;
+
+    /* dimensões */
+    width: 100%;
+}
+
+.btn__voltar {
+    /* organizações */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: auto;
+
+    /* aparências */
+    border-radius: 100rem;
+    border: 1px solid white;
+    text-decoration: none;
+    text-align: center;
+    padding: .2rem 1rem;
+    color: white;
+    transition: .2s all;
+
+    /* dimensões */
+    width: 30%;
+    height: 2rem;
+}
+
+.btn__voltar:hover {
+    /* organizações */
+
+    /* aparências */
+    background-color: white;
+    color: var(--color-main);
+
+    /* dimensões */
+}
+
+.btn__alternar {
+    /* organizações */
+    margin: auto;
+
+    /* aparências */
+    background: none;
+    border: none;
+    color: var(--color-main);
+
+    /* dimensões */
+}
+
+/* organizações */
+
+/* aparências */
+
+/* dimensões */
