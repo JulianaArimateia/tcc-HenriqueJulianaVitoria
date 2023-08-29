@@ -84,7 +84,7 @@ class UsuarioModel extends Model
 		if ($usuario['id'] != '' && $usuario['nome'] != '') {
 			$this->__set('id', $usuario['id']);
 			$this->__set('nome', $usuario['nome']);
-			$this->__set('tipo', $usuario['nivel']);
+			$this->__set('nivel', $usuario['nivel']);
 			$this->__set('email', $usuario['email']);
 			$this->__set('ativo', $usuario['ativo']);
 		}

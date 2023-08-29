@@ -29,19 +29,19 @@
             <h2>Página não encontrada</h2>
             <p>A página que você está procurando pode ter sido removida, teve seu nome alterado ou está temporariamente indisponível.</p>
 
-            <?php
+             <?php
 
-            use App\Controllers\AuthController;
+            // use App\Controllers\AuthController;
 
-            if (AuthController::esta_logado()) {
+            // if (AuthController::esta_logado()) {
             ?>
-                <a href="/admin">voltar ao site</a>
+                <!-- <a href="/admin/">voltar ao site</a> -->
             <?php
-            } else {
+            // } else {
             ?>
                 <a href="/">voltar ao site</a>
             <?php
-            }
+            // }
             ?>
 
         </div>

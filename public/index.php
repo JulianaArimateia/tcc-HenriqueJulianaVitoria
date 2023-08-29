@@ -2,9 +2,9 @@
 
 require_once(dirname(__DIR__, 1) . '/vendor/autoload.php');
 
-$whoops = new \Whoops\Run;
-$whoops->pushHandler(new \Whoops\Handler\PrettyPageHandler);
-$whoops->register();
+// $whoops = new \Whoops\Run;
+// $whoops->pushHandler(new \Whoops\Handler\PrettyPageHandler);
+// $whoops->register();
 
 #opcao 01
 
