@@ -13,6 +13,7 @@ $route = new Route();
 
 
 #opcao 02
+//teste
 // $route = new \App\Route();
 // echo "isso está funcionando perfeitamente";
 // echo '<hr>';
