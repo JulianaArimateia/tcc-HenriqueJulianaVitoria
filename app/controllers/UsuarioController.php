@@ -18,18 +18,22 @@ class UsuarioController extends Action
         $this->render("carrinho", "templateUsuario");
     }
 
+    // ADICIONA AO CARRINHO
     public function adicionarCarrinho()
     {
         AuthController::validaAutenticacao();
-        $produto = Container::getModel('Produtos');
-        $produto->addCarrinho($_GET['id']);
+        $carrinho = Container::getModel('carrinho');
+        $carrinho->addCarrinho($_GET['id'], $_SESSION['id']);
         header('Location: /');
     }
+
+
+
     public function removerCarrinho()
     {
         AuthController::validaAutenticacao();
-        $produto = Container::getModel('Produtos');
-        $produto->removeCarrinho($_GET['id']);
+        $produto = Container::getModel('carrinho');
+        $produto->removeCarrinho($_GET['id'], $_SESSION['id']);
         header('Location: /');
     }
 
