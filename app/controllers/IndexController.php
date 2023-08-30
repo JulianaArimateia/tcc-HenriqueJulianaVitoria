@@ -39,7 +39,7 @@ class IndexController extends Action
     public function login()
     {
         if (AuthController::esta_logado()) {
-            header('Location: /admin');
+            header('Location: /adminLista');
         } else {
             $this->view->login = isset($_GET['login']) ? $_GET['login'] : '';
             $this->render("login");

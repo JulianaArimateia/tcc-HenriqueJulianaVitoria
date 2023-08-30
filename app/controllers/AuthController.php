@@ -23,7 +23,7 @@ class AuthController extends Action
         $_SESSION['email'] = $usuario->__get('email');
 
 		if ($_SESSION['nivel'] == 1) {
-			header('Location: /admin/lista');
+			header('Location: /adminLista');
 		} else {
 			header('Location: /');
 		}		

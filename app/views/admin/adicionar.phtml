@@ -7,36 +7,47 @@
     <h1 class="titulo__sistema">
         Adicionar produtos
     </h1>
-    <form class="form__add">
+    <form class="form__add" action="/salvarProduto" method="POST">
         <div class="campo__input">
-            <label for="categoria" class="label__input">Digite a categoria do produto:</label>
-            <select name="categoria" class="input__form">
+            <label for="imagem" class="label__input">Coloque a imagem do produto:</label>
+            <input type="file" name="imagem" class="input__form">
+        </div>
+
+        <div class="campo__input">
+            <label for="id_categoria" class="label__input">Digite a categoria do produto:</label>
+            <select name="id_categoria" class="input__form">
                 <option value="" disabled selected></option>
-                <option value="salgado">Salgado</option>
-                <option value="bebida">Bebida</option>
-                <option value="sobremesa">Sobremesa</option>
+                <option value="1">Salgado</option>
+                <option value="2">Bebida</option>
+                <option value="3">Sobremesa</option>
             </select>
         </div>
+
         <div class="campo__input">
             <label for="nome" class="label__input">Digite o nome do produto:</label>
-            <input type="text" name="nome" class="input__form">
+            <input type="text" name="nome_produto" class="input__form">
         </div>
+
         <div class="campo__input">
             <label for="nome" class="label__input">Digite a descrição do produto:</label>
-            <textarea type="text" name="nome" class="input__form"></textarea>
+            <textarea type="text" name="descricao" class="input__form"></textarea>
         </div>
+
         <div class="campo__input">
             <label for="custo" class="label__input">Digite o custo do produto:</label>
             <input type="number" name="custo" class="input__form">
         </div>
+
         <div class="campo__input">
             <label for="valor" class="label__input">Digite o valor do produto:</label>
             <input type="number" name="valor" class="input__form">
         </div>
+
         <div class="campo__input">
-            <label for="qtd" class="label__input">Digite a quantidade do produto:</label>
-            <input type="number" name="qtd" class="input__form">
+            <label for="quantidade_produto" class="label__input">Digite a quantidade do produto:</label>
+            <input type="number" name="quantidade_produto" class="input__form">
         </div>
+
         <div></div>
         <button type="submit" class="btn__add">Adicionar Produto</button>
     </form>

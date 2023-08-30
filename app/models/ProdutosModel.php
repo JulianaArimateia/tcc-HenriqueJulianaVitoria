@@ -45,9 +45,9 @@ class ProdutosModel extends Model
     //recuperar um Produtos por nome
     public function getProdutosPorNome()
     {
-        $query = "select id, nome, ativo from produtos where nome = :nome";
+        $query = "select id, nome_produto from produtos where nome_produto = :nome_produto";
         $stmt = $this->db->prepare($query);
-        $stmt->bindValue(':nome', $this->__get('nome'));
+        $stmt->bindValue(':nome_produto', $this->__get('nome_produto'));
         $stmt->execute();
 
         return $stmt->fetchAll(\PDO::FETCH_ASSOC);
@@ -64,17 +64,18 @@ class ProdutosModel extends Model
         return $stmt->fetchAll(\PDO::FETCH_ASSOC);
     }
 
-    //-----------------------------------------------------//
-    //perguntar pro fabio
-    //---------------------------------------------//
 
-    // public function getProdutos()
-    // {
-    // 	$sql = "select c.id, c.nome, c.id_usuario, c.ativo, c.created_at, u.nome as nome_usuario, u.sobrenome as sobrenome_usuario from produtos as c inner join 
-    // 		usuarios as u on u.id = c.id_usuario"  . " and c.ativo = 1";
+    public function getProdutos()
+    {
+        $sql = "select p.id, p.nome_produto, p.id_categoria,
+         p.quantidade_produto, p.custo, p.valor, p.descricao,
+         p.created_at, p.updated_at, p.deleted_at 
+		 p.nivel, p.imagem, 
+		 c.nome as categoria from produtos as p inner join 
+			categorias as c on p.id_categoria = c.id";
 
-    // 	return $this->db->query($sql)->fetchAll();
-    // }
+        return $this->db->query($sql)->fetchAll();
+    }
 
     public function getTotalProdutos()
     {
@@ -100,11 +101,19 @@ class ProdutosModel extends Model
     public function salvar()
     {
 
-        $query = "insert into produtos (nome) values (:nome)";
+        $query = "insert into produtos(nome_produto, id_categoria, quantidade_produto, custo, valor, descricao, imagem, nivel ) values (:nome_produto, :id_categoria, :quantidade_produto, :custo, :valor, :descricao, :imagem, :nivel )";
         $stmt = $this->db->prepare($query);
-        $stmt->bindValue(':nome', $this->__get('nome'));
-        // $stmt->bindValue(':id_usuario', $this->__get('id_usuario'));
+        $stmt->bindValue(':nome_produto', $this->__get('nome_produto'));
+        $stmt->bindValue(':id_categoria', $this->__get('id_categoria'));
+        $stmt->bindValue(':quantidade_produto', $this->__get('quantidade_produto'));
+        $stmt->bindValue(':custo', $this->__get('custo'));
+        $stmt->bindValue(':valor', $this->__get('valor'));
+        $stmt->bindValue(':descricao', $this->__get('descricao'));
+        $stmt->bindValue(':imagem', $this->__get('imagem'));
+        $stmt->bindValue(':nivel', 0);
         $stmt->execute();
+
+        $this->__set('id', $this->db->lastInsertId());
 
         return $this;
     }
@@ -125,12 +134,12 @@ class ProdutosModel extends Model
 
         return $this;
     }
-    public function getProdutos()
-    {
-        $query = "select * from produtos";
-        $stmt = $this->db->prepare($query);
-        $stmt->execute();
+    // public function getProdutos()
+    // {
+    //     $query = "select * from produtos";
+    //     $stmt = $this->db->prepare($query);
+    //     $stmt->execute();
 
-        return $stmt->fetchAll(\PDO::FETCH_ASSOC);
-    }
+    //     return $stmt->fetchAll(\PDO::FETCH_ASSOC);
+    // }
 }
