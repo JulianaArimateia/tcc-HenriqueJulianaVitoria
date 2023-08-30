@@ -7,6 +7,7 @@
     <thead>
         <td></td>
         <td>Nome do produto</td>
+        <td>Descrição</td>
         <td>Preço</td>
         <td>Qtd</td>
     </thead>
@@ -14,22 +15,27 @@
         <?php
 
         $produtos = $this->view->produtos;
+        $carrinho = $this->view->carrinho;
 
         foreach ($produtos as $produto) {
-            if ($produto['nivel'] == 1) {
-                echo "    
-                <tr class='produto__carrinho'>
-                    <td><img src='" . $produto['nome_produto'] . "'></td>
-                    <td>" . $produto['nome_produto'] . "</td>
-                    <td>" . $produto['valor'] . "</td>
-                    <td id='qtd__produto'><button id='menos'>-</button> 1 <button id='mais'>+</button> </td>
-                </tr>
-            ";
+            foreach ($carrinho as $item) {
+
+                if ($produto['id'] != $item['id_produtos']) {
+                } else {
+                    echo "
+                        <tr class='produto__carrinho'>
+                        <td>".$produto['imagem']."</td>
+                        <td>".$produto['nome_produto']."</td>
+                        <td>".$produto['descricao']."</td>
+                        <td>".$produto['valor']."</td>
+                        <td>".$item['quantidade']."</td>
+                        </tr>
+                        ";
+                }
             }
         }
+
 
         ?>
     </tbody>
 </table>
-
-<script src="assets/js/carrinho/qtdProdutos.js"></script>

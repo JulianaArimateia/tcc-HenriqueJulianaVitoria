@@ -16,13 +16,22 @@ class IndexController extends Action
 
     public function index()
     {
+
         $produto = Container::getModel('Produtos');
         $produtos = $produto->getProdutos();
         $this->view->produtos = $produtos;
 
         $carrinho = Container::getModel('carrinho');
-        $carrinho = $carrinho->getCarrinho();
+
+        if(AuthController::esta_logado()){
+            $carrinho = $carrinho->getCarrinhoPorID();
+        } else {
+            $carrinho = $carrinho->getCarrinho();
+        }
+        
         $this->view->carrinho = $carrinho;
+
+
 
         $this->render("index", "templateUsuario");
     }

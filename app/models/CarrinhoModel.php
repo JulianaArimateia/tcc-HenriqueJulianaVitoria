@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Core\Model\Model;
+use App\controllers\AuthController;
 
 class CarrinhoModel extends Model
 {
@@ -55,6 +56,20 @@ class CarrinhoModel extends Model
     {
         $query = "select * from carrinho";
         $stmt = $this->db->prepare($query);
+        $stmt->execute();
+
+        return $stmt->fetchAll(\PDO::FETCH_ASSOC);
+    }
+
+    public function getCarrinhoPorID()
+    {
+
+        AuthController::esta_logado();
+
+        $query = "select * from carrinho where id_usuarios = :id_usuarios";
+        $stmt = $this->db->prepare($query);
+
+        $stmt->bindValue(':id_usuarios', $_SESSION['id']);
         $stmt->execute();
 
         return $stmt->fetchAll(\PDO::FETCH_ASSOC);
