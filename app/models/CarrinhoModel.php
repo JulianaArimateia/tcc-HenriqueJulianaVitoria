@@ -25,12 +25,12 @@ class CarrinhoModel extends Model
     public function addCarrinho($id, $user)
     {
         $query = "
-        insert into carrinho (id_usuarios, id_produto, date_cadastro) values (:id_usuarios, :id_produto, NOW())
+        insert into carrinho (id_usuarios, id_produtos, date_cadastro) values (:id_usuarios, :id_produtos, NOW())
         ";
 
         $stmt = $this->db->prepare($query);
 
-        $stmt->bindValue(':id_produto', $id);
+        $stmt->bindValue(':id_produtos', $id);
         $stmt->bindValue(':id_usuarios', $user);
         $stmt->execute();
 
