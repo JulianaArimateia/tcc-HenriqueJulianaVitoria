@@ -137,29 +137,4 @@ class ProdutosModel extends Model
 
         return $stmt->fetchAll(\PDO::FETCH_ASSOC);
     }
-    public function addCarrinho($id)
-    {
-        $query = "update produtos set nivel = 1, updated_at = NOW() where id=:id";
-
-        $stmt = $this->db->prepare($query);
-
-        $stmt->bindValue(':id', $id);
-
-        $stmt->execute();
-
-        return $this;
-    }
-
-    public function removeCarrinho($id)
-    {
-        $query = "update produtos set nivel = 0, updated_at = NOW() where id=:id";
-
-        $stmt = $this->db->prepare($query);
-
-        $stmt->bindValue(':id', $id);
-
-        $stmt->execute();
-
-        return $this;
-    }
 }

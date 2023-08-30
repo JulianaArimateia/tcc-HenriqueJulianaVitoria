@@ -131,12 +131,13 @@ class UsuarioModel extends Model
 	//salvar
 	public function salvar()
 	{
-		$query = "insert into usuarios(nome, email, senha, nivel) values (:nome, :email, :senha, :nivel)";
+		$query = "insert into usuarios(nome, email, senha, nivel, ativo) values (:nome, :email, :senha, :nivel, :ativo)";
 		$stmt = $this->db->prepare($query);
 		$stmt->bindValue(':nome', $this->__get('nome'));
 		$stmt->bindValue(':email', $this->__get('email'));
-		$stmt->bindValue(':senha', $this->__get('senha')); //md5() -> hash 32 caracteres
+		$stmt->bindValue(':senha', $this->__get('senha'));
 		$stmt->bindValue(':nivel', $this->__get('nivel'));
+		$stmt->bindValue(':ativo', 0);
 		$stmt->execute();
 
 		return $this;

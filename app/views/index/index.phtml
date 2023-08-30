@@ -52,17 +52,9 @@
 
     foreach ($produtos as $produto) {
 
-        if ($produto['nivel'] == 0) {
-            $metodo = '/adicionarCarrinho';
-            $selecionado = 'add__carrinho';
-        } else {
-            $metodo = '/removeCarrinho';
-            $selecionado = 'selecionado';
-        }
 
         echo "
             <div class='card__cardapio' id='card'>
-                <button type='submit' class='favoritar' action='/favoritar' id='favoritar'></button>
                 <img src='" . $produto['imagem'] . "' alt='" . $produto['nome_produto'] . "' class='img__card'>
                 <h3 class='nome__card'>" . $produto['nome_produto'] . "</h3>
                 <p class='desc__card'>
@@ -72,7 +64,7 @@
                     <h2 class='preco__card'>
                         " . $produto['valor'] . "
                     </h2>
-                    <a href='" . $metodo . "?id=" . $produto['id'] . "' type='submit' href='' class='" . $selecionado . "' id='add__carrinho'></a>
+                    <a href='/adicionarCarrinho?id=" . $produto['id'] . "' type='submit' href='' class='add__carrinho' id='add__carrinho'></a>
                 </div>
             </div>
             ";
@@ -82,6 +74,3 @@
 
 
 </section>
-
-
-<script src="assets/js/cardapio/favorito.js"></script>
