@@ -9,8 +9,8 @@ class CategoriaModel extends Model
 
 	private $id;
 	private $nome;
-	
-	
+
+
 
 	public function __get($atributo)
 	{
@@ -57,12 +57,20 @@ class CategoriaModel extends Model
 	}
 
 	// public function getCategorias()
-	// {
-	// 	$sql = "select c.id, c.nome, c.id_usuario, c.ativo, c.created_at, u.nome as nome_usuario, u.sobrenome as sobrenome_usuario from categorias as c inner join 
-	// 		usuarios as u on u.id = c.id_usuario"  . " and c.ativo = 1";
+	//  {
+	// 	$sql = "select c.id, c.nome, u.nome as nome_usuario, u.sobrenome as sobrenome_usuario from categorias as c inner join 
+	//  		usuarios as u on u.id = c.id_usuario"  . " and c.ativo = 1";
 
 	// 	return $this->db->query($sql)->fetchAll();
-	// }
+	//  }
+	public function getCategorias()
+	{
+		$query = "select * from categoria";
+		$stmt = $this->db->prepare($query);
+		$stmt->execute();
+
+		return $stmt->fetchAll(\PDO::FETCH_ASSOC);
+	}
 
 	public function getTotalCategorias()
 	{
@@ -85,7 +93,7 @@ class CategoriaModel extends Model
 	//salvar
 	public function salvar()
 	{
-		
+
 		$query = "insert into categorias (nome) values (:nome)";
 		$stmt = $this->db->prepare($query);
 		$stmt->bindValue(':nome', $this->__get('nome'));
@@ -104,7 +112,7 @@ class CategoriaModel extends Model
 		$stmt = $this->db->prepare($query);
 
 		$stmt->bindValue(':nome', $this->__get('nome'));
-		
+
 		$stmt->bindValue(':id', $this->__get('id'));
 
 		$stmt->execute();
