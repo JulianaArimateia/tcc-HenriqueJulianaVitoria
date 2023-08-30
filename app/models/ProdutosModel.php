@@ -125,7 +125,7 @@ class ProdutosModel extends Model
 
         return $this;
     }
-    public function mostrarProdutos()
+    public function getProdutos()
     {
         $query = "select * from produtos";
         $stmt = $this->db->prepare($query);

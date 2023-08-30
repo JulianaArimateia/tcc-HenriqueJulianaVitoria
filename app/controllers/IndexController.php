@@ -17,8 +17,12 @@ class IndexController extends Action
     public function index()
     {
         $produto = Container::getModel('Produtos');
-        $produtos = $produto->mostrarProdutos();
-        $this->view->dados = $produtos;
+        $produtos = $produto->getProdutos();
+        $this->view->produtos = $produtos;
+
+        $carrinho = Container::getModel('carrinho');
+        $carrinho = $carrinho->getCarrinho();
+        $this->view->carrinho = $carrinho;
 
         $this->render("index", "templateUsuario");
     }
