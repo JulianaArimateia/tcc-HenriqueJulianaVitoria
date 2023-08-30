@@ -39,15 +39,24 @@ class CarrinhoModel extends Model
 
     public function removeCarrinho($id, $user)
     {
-        $query = "delete from carrinho where id_produto = :id and id_usuarios = :id_usuarios";
+        $query = "delete from carrinho where id_produtos = :id_produtos and id_usuarios = :id_usuarios;";
 
         $stmt = $this->db->prepare($query);
 
-        $stmt->bindValue(':id_produto', $id);
+        $stmt->bindValue(':id_produtos', $id);
         $stmt->bindValue(':id_usuarios', $user);
 
         $stmt->execute();
 
         return $this;
+    }
+
+    public function getCarrinho()
+    {
+        $query = "select * from carrinho";
+        $stmt = $this->db->prepare($query);
+        $stmt->execute();
+
+        return $stmt->fetchAll(\PDO::FETCH_ASSOC);
     }
 }
