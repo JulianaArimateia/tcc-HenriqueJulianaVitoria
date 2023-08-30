@@ -11,21 +11,20 @@
 
 <body>
 
-    <header class="cabecalho">
-        <div class="info__header">
-            <a href="#" class="logo__header"> Cantina Senai</a>
-            <div class="funcoes__header">
-                <a href="/favoritos" class="funcao__item btn__favoritos"></a>
-                <a href="/carrinho" class="funcao__item btn__carrinho"></a>                
-                <a href="/login" class="btn__login">Login</a>
-            </div>
+    <nav class="nav__admin">
+        <h1 class="titulo__nav">Cantina</h1>
+        <h2 class="subtitulo__nav">SISTEMA DE GERENCIAMENTO</h2>
+        <div class="itens__nav">
+            <img class="icons" src="admin/assets/img/tabela.png" width="65%">
+            <a href="/admin/lista" class="item__nav">Tabela produtos</a>
+            <img class="icons" src="admin/assets/img/add.png" width="70%">
+            <a href="/admin/adicionar" class="item__nav">Adicionar produtos</a>
         </div>
-        <nav class="nav__header">
-            <a href="/" class="item__nav">Cardápio</a>
-            <a href="/ouvidoria" class="item__nav">Ouvidoria</a>
-            <a href="/sobre" class="item__nav">Sobre</a>
-        </nav>
-    </header>
+        <div class="logout">
+            <h2 class="mensagem">Oi, Lúcia</h2>
+            <a href="/" class="btn__logout">Sair</a>
+        </div>
+    </nav>
 
     <main class="corpo">
         <?= $this->content(); ?>

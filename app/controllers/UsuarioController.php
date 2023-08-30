@@ -44,20 +44,6 @@ class UsuarioController extends Action
         $this->render("pagamento", "templateUsuario");
     }
 
-    // public function index()
-    // {
-    //     AuthController::validaAutenticacao();
-
-    //     $usuario = Container::getModel("Usuario");
-    //     $usuarios = $usuario->getUsuarios();
-    //     $this->view->dados = $usuarios;
-
-    //     $this->render("index", "template_admin");
-    // }
-    // 
-    // 
-    // 
-    // 
         //salvar
         public function salvar_usuario()
         {

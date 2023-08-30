@@ -7,7 +7,12 @@
     <h1 class="titulo__sistema">
         Adicionar produtos
     </h1>
-    <form class="form__add">
+    <form class="form__add" action="/salvarProduto" method="$_POST">
+        <div class="campo__input">
+            <label for="imagem" class="label__input">Coloque a imagem do produto:</label>
+            <input type="file" name="imagem" class="input__form">
+        </div>
+
         <div class="campo__input">
             <label for="categoria" class="label__input">Digite a categoria do produto:</label>
             <select name="categoria" class="input__form">
@@ -17,26 +22,32 @@
                 <option value="sobremesa">Sobremesa</option>
             </select>
         </div>
+
         <div class="campo__input">
             <label for="nome" class="label__input">Digite o nome do produto:</label>
-            <input type="text" name="nome" class="input__form">
+            <input type="text" name="nome_produto" class="input__form">
         </div>
+
         <div class="campo__input">
             <label for="nome" class="label__input">Digite a descrição do produto:</label>
             <textarea type="text" name="nome" class="input__form"></textarea>
         </div>
+
         <div class="campo__input">
             <label for="custo" class="label__input">Digite o custo do produto:</label>
             <input type="number" name="custo" class="input__form">
         </div>
+
         <div class="campo__input">
             <label for="valor" class="label__input">Digite o valor do produto:</label>
             <input type="number" name="valor" class="input__form">
         </div>
+
         <div class="campo__input">
             <label for="qtd" class="label__input">Digite a quantidade do produto:</label>
             <input type="number" name="qtd" class="input__form">
         </div>
+
         <div></div>
         <button type="submit" class="btn__add">Adicionar Produto</button>
     </form>

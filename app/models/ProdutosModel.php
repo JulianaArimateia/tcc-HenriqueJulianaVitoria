@@ -95,15 +95,19 @@ class ProdutosModel extends Model
 
         return true;
     }
-
     //salvar
     public function salvar()
     {
 
-        $query = "insert into produtos (nome) values (:nome)";
+        $query = "insert into produtos(nome_produto, id_categoria, quantidade_produto, custo, valor, descricao, imagem ) values (:nome_produto, :id_categoria, :quantidade_produto, :custo, :valor, :descricao, :imagem )";
         $stmt = $this->db->prepare($query);
-        $stmt->bindValue(':nome', $this->__get('nome'));
-        // $stmt->bindValue(':id_usuario', $this->__get('id_usuario'));
+        $stmt->bindValue(':nome_produto', $this->__get('nome_produto'));
+        $stmt->bindValue(':id_categoria', $this->__get('id_categoria'));
+        $stmt->bindValue(':quantidade_produto', $this->__get('quantidade_produto'));
+        $stmt->bindValue(':custo', $this->__get('custo'));
+        $stmt->bindValue(':valor', $this->__get('valor'));
+        $stmt->bindValue(':descricao', $this->__get('descricao'));
+        $stmt->bindValue(':imagem', $this->__get('imagem'));
         $stmt->execute();
 
         return $this;
