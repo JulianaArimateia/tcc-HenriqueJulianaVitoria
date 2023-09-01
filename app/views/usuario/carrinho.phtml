@@ -42,29 +42,29 @@
         ?>
     </tbody>
 
-    <div class="total__pagar">
-        <h1>Total:</h1>
-        <h2>
-            <?php
-            $valores = [];
-            $total = 0;
+</table>
 
-            foreach ($produtos as $produto) {
-                foreach ($carrinho as $item) {
-                    if ($produto['id'] == $item['id_produtos'] && $_SESSION['id'] == $item['id_usuarios']) {
-                        $subtotal = floatval($produto['valor']) * intval($item['quantidade']);
-                        $valores[] = $subtotal;
-                    }
+<div class="total__pagar">
+    <h1>Total:</h1>
+    <h2>
+        <?php
+        $valores = [];
+        $total = 0;
+
+        foreach ($produtos as $produto) {
+            foreach ($carrinho as $item) {
+                if ($produto['id'] == $item['id_produtos'] && $_SESSION['id'] == $item['id_usuarios']) {
+                    $subtotal = floatval($produto['valor']) * intval($item['quantidade']);
+                    $valores[] = $subtotal;
                 }
             }
+        }
 
-            $total = number_format(array_sum($valores), 2);
-            echo $total;
-            ?>
+        $total = number_format(array_sum($valores), 2);
+        echo $total;
+        ?>
 
 
-        </h2>
-        <a href="/pagamento">Reservar</a>
-    </div>
-
-</table>
+    </h2>
+    <a href="/pagamento">Reservar</a>
+</div>
