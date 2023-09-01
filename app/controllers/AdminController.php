@@ -23,6 +23,11 @@ class AdminController extends Action
         $this->render("adicionar", "templateAdmin");
     }
 
+    public function reservas()
+    {
+        AuthController::validaAutenticacao();
+        $this->render("reservas", "templateAdmin");
+    }
 
     public function salvarProduto()
     {
@@ -45,6 +50,7 @@ class AdminController extends Action
             //SUCCESS ao validar cadastro
             $produto->salvar();
         }
+        
         $this->render("adicionar", "templateAdmin");
     }
     public function editarProduto()
