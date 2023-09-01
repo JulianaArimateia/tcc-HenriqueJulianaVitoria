@@ -6,6 +6,7 @@
 <section class="prato__dia">
 
     <?php
+
     use App\controllers\AuthController;
 
     $produtos = $this->view->produtos;
@@ -53,7 +54,7 @@
 
 <!---------------------------------- Cardapio(Sessão) ---------------------------------->
 <section class="cardapio" id="cardapio">
-    
+
     <?php
     if (AuthController::esta_logado()) {
         foreach ($produtos as $produto) {
@@ -66,7 +67,7 @@
                 }
             }
             echo "
-        <div class='card__cardapio' id='card'>
+         <div class='card__cardapio' id='card'>
             <img src='" . $produto['imagem'] . "' alt='" . $produto['nome_produto'] . "' class='img__card'>
             <h3 class='nome__card'>" . $produto['nome_produto'] . "</h3>
             <p class='desc__card'>

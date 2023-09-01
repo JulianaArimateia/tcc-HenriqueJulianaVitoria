@@ -50,7 +50,7 @@ class UsuarioController extends Action
     public function pagamento()
     {
         AuthController::validaAutenticacao();
-        $this->render("pagamento", "templateUsuario");
+        $this->render("pagamento");
     }
 
    

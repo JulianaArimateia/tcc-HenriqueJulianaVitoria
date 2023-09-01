@@ -44,12 +44,17 @@ class AdminController extends Action
         if ($produto->validarCadastro()) {
             //SUCCESS ao validar cadastro
             $produto->salvar();
-            dd($produto);
-
-            // if (count($produto->getProdutosPorNome()) == 0) {
-            //     $produto->salvar();
-            // }
         }
+        $this->render("adicionar", "templateAdmin");
+    }
+    public function editarProduto()
+    {
+        AuthController::validaAutenticacao();
+        $this->render("adicionar", "templateAdmin");
+    }
+    public function excluirProduto()
+    {
+        AuthController::validaAutenticacao();
         $this->render("adicionar", "templateAdmin");
     }
 }

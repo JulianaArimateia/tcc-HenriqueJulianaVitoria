@@ -24,6 +24,8 @@ class Route extends Bootstrap
         $routes['lista'] =  array('route' => '/adminLista', 'controller' => 'adminController', 'action' => 'lista');
         $routes['adicionar'] = array('route' => '/adminAdicionar', 'controller' => 'adminController', 'action' => 'adicionar');
         $routes['salvaProtudo'] = array('route' => '/salvarProduto', 'controller' => 'adminController', 'action' => 'salvarProduto');
+        $routes['editarProtudo'] = array('route' => '/editarProduto', 'controller' => 'adminController', 'action' => 'editarProduto');
+        $routes['excluirProtudo'] = array('route' => '/excluirProduto', 'controller' => 'adminController', 'action' => 'excluirProduto');
 
         // //UsuarioController
         $routes['usuario'] = array('route' => '/usuario', 'controller' => 'usuarioController', 'action' => 'index');
