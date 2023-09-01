@@ -105,9 +105,9 @@ class UsuarioModel extends Model
 
 	public function getUsuarios()
 	{
-		$sql = "select id, nome, email, nivel, ativo, created_at from usuarios where id != " . $_SESSION['id'] . " and ativo = 1";
+		$query = "select * from usuarios";
 
-		return $this->db->query($sql)->fetchAll();
+		return $this->db->query($query)->fetchAll();
 	}
 
 	public function getTotalUsuarios()

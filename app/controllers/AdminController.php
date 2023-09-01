@@ -14,6 +14,11 @@ class AdminController extends Action
     public function lista()
     {
         AuthController::validaAutenticacao();
+
+        $produtos = Container::getModel('Produtos');
+        $produtos = $produtos->getProdutos();
+        $this->view->produtos = $produtos;
+
         $this->render("lista", "templateAdmin");
     }
 
@@ -26,6 +31,11 @@ class AdminController extends Action
     public function reservas()
     {
         AuthController::validaAutenticacao();
+
+        $reservas = Container::getModel('Reservas');
+        $reservas = $reservas->getReservas();
+        $this->view->reservas = $reservas;
+
         $this->render("reservas", "templateAdmin");
     }
 
@@ -50,7 +60,7 @@ class AdminController extends Action
             //SUCCESS ao validar cadastro
             $produto->salvar();
         }
-        
+
         $this->render("adicionar", "templateAdmin");
     }
     public function editarProduto()

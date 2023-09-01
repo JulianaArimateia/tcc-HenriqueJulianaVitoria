@@ -2,14 +2,11 @@
 
 .img__fundo{
     background:url('../../../img/login/fundo.png') no-repeat center / cover;
-    /* margin-top: -14vh;  */
-    position: fixed;
-    width: 100%;
     height: 100vh;
-    z-index: -10;
+    width: 100%;
+    position: fixed;
     /* outras propriedades de estilo, como tamanho, posição, repetição, etc. */
 }
-
 
 .detalhe {
     /* organizações */
@@ -50,8 +47,6 @@
     font-size: 1.8em;
     font-family: 'Pacifico', cursive;
     /* dimensões */
-    
-   
 }
 
 .texto__detalhe {

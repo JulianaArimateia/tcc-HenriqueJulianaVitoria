@@ -10,7 +10,7 @@ class ReservasModel extends Model
     private $id;
     private $id_usuarios;
     private $valor_produto;
-   
+
 
     public function __get($atributo)
     {
@@ -33,7 +33,6 @@ class ReservasModel extends Model
 
     //     return $valido;
     // }
-
     //recuperar um reservas por nome
     // public function getReservasPorNome()
     // {
@@ -41,7 +40,6 @@ class ReservasModel extends Model
     //     $stmt = $this->db->prepare($query);
     //     $stmt->bindValue(':nome', $this->__get('nome'));
     //     $stmt->execute();
-
     //     return $stmt->fetchAll(\PDO::FETCH_ASSOC);
     // }
 
@@ -59,21 +57,19 @@ class ReservasModel extends Model
     //-----------------------------------------------------//
     //perguntar pro fabio
     //---------------------------------------------//
-
     // public function getReservas()
     // {
     // 	$sql = "select c.id, c.nome, c.id_usuario, c.ativo, c.created_at, u.nome as nome_usuario, u.sobrenome as sobrenome_usuario from produtos as c inner join 
     // 		usuarios as u on u.id = c.id_usuario"  . " and c.ativo = 1";
-
     // 	return $this->db->query($sql)->fetchAll();
     // }
 
-    public function getTotalReservas()
+    public function getReservas()
     {
-        $query = "select count(id) as qtdeReservas from reservas";
+        $query = "select * from reserva";
 
-        return $this->db->query($query)->fetchObject()->qtdeUsuarios;
-    }//perguntar sobre a quantidade essa quantidade de usuarios e pq precisa disso
+        return $this->db->query($query)->fetchAll();
+    } //perguntar sobre a quantidade essa quantidade de usuarios e pq precisa disso
 
 
 
