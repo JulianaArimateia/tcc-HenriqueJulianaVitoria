@@ -32,14 +32,26 @@ class UsuarioController extends Action
         header('Location: /');
     }
 
-
-
     public function removerCarrinho()
     {
         AuthController::validaAutenticacao();
         $carrinho = Container::getModel('carrinho');
         $carrinho->removeCarrinho($_GET['id'], $_SESSION['id']);
         header('Location: /');
+    }
+
+    public function maisQtdCarrinho()
+    {
+        $carrinho = Container::getModel('carrinho');
+        $carrinho->maisQtd($_GET['id']);
+        header('Location: /carrinho');
+    }
+
+    public function menosQtdCarrinho()
+    {
+        $carrinho = Container::getModel('carrinho');
+        $carrinho->menosQtd($_GET['id']);
+        header('Location: /carrinho');
     }
 
     public function favoritos()
@@ -53,7 +65,7 @@ class UsuarioController extends Action
         $this->render("pagamento", "templateUsuario");
     }
 
-   
+
     //salvar
     public function salvar_usuario()
     {
@@ -239,4 +251,4 @@ class UsuarioController extends Action
     //         // $this->index();
     //         header("Location: /usuario");
     //  }
-    }
+}
