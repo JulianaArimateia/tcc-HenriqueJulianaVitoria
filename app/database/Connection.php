@@ -16,12 +16,20 @@ class Connection
     {
         # Informações sobre o banco de dados:
         $host         =   "localhost";
-        $db_name      =   "tcc_1";
+        $db_name      =   "tcc";
         $user         =   "root";
-        $pass         =   "";
+        $pass         =   "root";
         $charset      =   "utf8";
         $db_driver    =   "mysql";
         $port         =   3306;
+
+        // $host         =   "http://free-mind.tech/";
+        // $db_name      =   "teca36_cantina";
+        // $user         =   "teca36_cantina";
+        // $pass         =   "cantina@2023";
+        // $charset      =   "utf8";
+        // $db_driver    =   "mysql";
+        // $port         =   3306;
 
         # Informações sobre o sistema:
         $sistema_titulo = "Tcc";
