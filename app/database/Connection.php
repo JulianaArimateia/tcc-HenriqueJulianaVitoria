@@ -23,6 +23,7 @@ class Connection
         $db_driver    =   "mysql";
         $port         =   3306;
 
+        //kjashjn
         // $host         =   "http://free-mind.tech/";
         // $db_name      =   "teca36_cantina";
         // $user         =   "teca36_cantina";
