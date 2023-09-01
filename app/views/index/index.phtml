@@ -6,26 +6,37 @@
 <section class="prato__dia">
 
     <?php
+    use App\controllers\AuthController;
 
     $produtos = $this->view->produtos;
-    foreach ($produtos as $produto) {
+    $carrinho = $this->view->carrinho;
 
-        if ($produto['id_categoria'] == 7) {
+    foreach ($produtos as $produto) {
+        // Verifique se o produto está na categoria 'prato'
+        if ($produto['categoria'] == 'prato') {
             $metodo = '/adicionarCarrinho';
 
+            // Verifique se o produto está no carrinho da categoria 'prato'
+            $produtoNoCarrinho = false;
+            foreach ($carrinho as $item) {
+                if ($produto['id'] == $item['id_produtos'] && $_SESSION['id'] == $item['id_usuarios']) {
+                    $metodo = '/removerCarrinho';
+                    break;
+                }
+            }
+
             echo "
-            <div class='card__prato'>
+        <div class='card__prato'>
             <img src='" . $produto['nome_produto'] . "' alt='prato de comida' class='prato__img'>
             <div class='conteudo__prato'>
-                <h2 class='titulo__prato'>" . $produto['nome_produto'] . "</h2>
+                <h2 class='titulo__prato'>" . $produto['nome_produto'] . "</h2> 
                 <p class='texto__prato'>" . $produto['descricao'] . "</p>
                 <a href='" . $metodo . "?id=" . $produto['id'] . "' class='btn__prato'>Adicionar</a>
             </div>
         </div>
-                    ";
+        ";
         }
     }
-
     ?>
 
 </section>
@@ -42,88 +53,64 @@
 
 <!---------------------------------- Cardapio(Sessão) ---------------------------------->
 <section class="cardapio" id="cardapio">
+    
     <?php
-    $produtos = $this->view->produtos;
-    $carrinho = $this->view->carrinho;
-
-    use App\controllers\AuthController;
-
     if (AuthController::esta_logado()) {
         foreach ($produtos as $produto) {
-
-            if ($carrinho == null) {
-                echo "
-                    <div class='card__cardapio' id='card " . $produto['id_categoria'] . "'>
-                        <img src='" . $produto['imagem'] . "' alt='" . $produto['nome_produto'] . "' class='img__card'>
-                        <h3 class='nome__card'>" . $produto['nome_produto'] . "</h3>
-                        <p class='desc__card'>
-                            " . $produto['descricao'] . "
-                        </p>
-                        <div class='acoes__card'>
-                            <h2 class='preco__card'>
-                                " . $produto['valor'] . "
-                            </h2>
-                            <a href='/adicionarCarrinho?id=" . $produto['id'] . "' type='submit' href='' class='add__carrinho' id='add__carrinho'></a>
-                        </div>
-                    </div>
-                    ";
-            } else {
-                foreach ($carrinho as $item) {
-
-                    if ($produto['id'] != $item['id_produtos']) {
-                        echo "
-                    <div class='card__cardapio' id='card'>
-                        <img src='" . $produto['imagem'] . "' alt='" . $produto['nome_produto'] . "' class='img__card'>
-                        <h3 class='nome__card'>" . $produto['nome_produto'] . "</h3>
-                        <p class='desc__card'>
-                            " . $produto['descricao'] . "
-                        </p>
-                        <div class='acoes__card'>
-                            <h2 class='preco__card'>
-                                " . $produto['valor'] . "
-                            </h2>
-                            <a href='/adicionarCarrinho?id=" . $produto['id'] . "' type='submit' href='' class='add__carrinho' id='add__carrinho'></a>
-                        </div>
-                    </div>
-                    ";
-                    } else {
-                        echo "
-                            <div class='card__cardapio' id='card'>
-                                <img src='" . $produto['imagem'] . "' alt='" . $produto['nome_produto'] . "' class='img__card'>
-                                <h3 class='nome__card'>" . $produto['nome_produto'] . "</h3>
-                                <p class='desc__card'>
-                                    " . $produto['descricao'] . "
-                                </p>
-                                <div class='acoes__card'>
-                                    <h2 class='preco__card'>
-                                        " . $produto['valor'] . "
-                                    </h2>
-                                    <a href='/removerCarrinho?id=" . $produto['id'] . "' type='submit' href='' class='selecionado' id='add__carrinho'></a>
-                                </div>
-                            </div>
-                            ";
-                    }
+            // Verifique se o produto está no carrinho
+            $produtoNoCarrinho = false;
+            foreach ($carrinho as $item) {
+                if ($produto['id'] == $item['id_produtos'] && $_SESSION['id'] == $item['id_usuarios']) {
+                    $produtoNoCarrinho = true;
+                    break;
                 }
             }
+            echo "
+        <div class='card__cardapio' id='card'>
+            <img src='" . $produto['imagem'] . "' alt='" . $produto['nome_produto'] . "' class='img__card'>
+            <h3 class='nome__card'>" . $produto['nome_produto'] . "</h3>
+            <p class='desc__card'>
+                " . $produto['descricao'] . "
+            </p>
+            <div class='acoes__card'>
+                <h2 class='preco__card'>
+                    " . $produto['valor'] . "
+                </h2>";
+
+            if ($produtoNoCarrinho) {
+                echo "
+                <a href='/removerCarrinho?id=" . $produto['id'] . "' type='submit' href='' class='selecionado' id='add__carrinho'></a>
+            ";
+            } else {
+                echo "
+                <a href='/adicionarCarrinho?id=" . $produto['id'] . "' type='submit' href='' class='add__carrinho' id='add__carrinho'></a>
+            ";
+            }
+
+            echo "
+            </div>
+        </div>
+        ";
         }
     } else {
         foreach ($produtos as $produto) {
             echo "
-                    <div class='card__cardapio' id='card'>
-                        <img src='" . $produto['imagem'] . "' alt='" . $produto['nome_produto'] . "' class='img__card'>
-                        <h3 class='nome__card'>" . $produto['nome_produto'] . "</h3>
-                        <p class='desc__card'>
-                            " . $produto['descricao'] . "
-                        </p>
-                        <div class='acoes__card'>
-                            <h2 class='preco__card'>
-                                " . $produto['valor'] . "
-                            </h2>
-                            <a href='/adicionarCarrinho?id=" . $produto['id'] . "' type='submit' href='' class='add__carrinho' id='add__carrinho'></a>
-                        </div>
-                    </div>
-                    ";
+        <div class='card__cardapio' id='card'>
+            <img src='" . $produto['imagem'] . "' alt='" . $produto['nome_produto'] . "' class='img__card'>
+            <h3 class='nome__card'>" . $produto['nome_produto'] . "</h3>
+            <p class='desc__card'>
+                " . $produto['descricao'] . "
+            </p>
+            <div class='acoes__card'>
+                <h2 class='preco__card'>
+                    " . $produto['valor'] . "
+                </h2>
+                <a href='/adicionarCarrinho?id=" . $produto['id'] . "' type='submit' href='' class='add__carrinho' id='add__carrinho'></a>
+            </div>
+        </div>
+        ";
         }
     }
     ?>
+
 </section>
