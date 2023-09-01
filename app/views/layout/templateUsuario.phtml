@@ -22,15 +22,16 @@
                 use App\controllers\AuthController;
 
                 if (AuthController::esta_logado()) {
-                ?>
-                    <a href="/sair" class="btn__login">Sair</a>
-                <?php
+                    if ($_SESSION['nivel'] == 1) {
+                        echo "<a href='/adminLista'class='btn__login'>Admin</a>";
+                    } else {
+                        echo "<a href='/sair' class='btn__login'>Sair</a>";
+                    }
                 } else {
-                ?>
-                    <a href="/login" class="btn__login">Login</a>
-                <?php
+                    echo "<a href='/login' class='btn__login'>Login</a>";
                 }
                 ?>
+
             </div>
         </div>
         <nav class="nav__header">

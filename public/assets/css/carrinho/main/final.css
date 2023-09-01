@@ -1,0 +1,15 @@
+.total__pagar {
+    /* organizações */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: auto;
+
+    /* aparência */
+    border: 1px solid var(--color-main);
+    border-radius: 8px;
+
+    /* dimensões */
+    width: 900px;
+    height: 70px;
+}

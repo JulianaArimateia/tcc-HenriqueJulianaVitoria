@@ -2,39 +2,69 @@
     <link rel="stylesheet" href="assets/css/carrinho/style.css">
 </head>
 
-
 <table class="tabela">
     <thead>
-        <td></td>
-        <td>Nome do produto</td>
-        <td>Descrição</td>
-        <td>Preço</td>
-        <td>Qtd</td>
+        <tr>
+            <td></td>
+            <td>Nome do produto</td>
+            <td>Descrição</td>
+            <td>Preço</td>
+            <td>Qtd</td>
+        </tr>
     </thead>
     <tbody>
         <?php
-
         $produtos = $this->view->produtos;
         $carrinho = $this->view->carrinho;
 
         foreach ($produtos as $produto) {
             foreach ($carrinho as $item) {
+                if ($produto['id'] == $item['id_produtos'] && $_SESSION['id'] == $item['id_usuarios']) {
+                    echo "<tr class='produto__carrinho'>";
+                    echo "<td>{$produto['imagem']}</td>";
+                    echo "<td>{$produto['nome_produto']}</td>";
+                    echo "<td>{$produto['descricao']}</td>";
+                    echo "<td>{$produto['valor']}</td>";
+                    echo "<td class='qtd__carrinho'>";
 
-                if ($produto['id'] != $item['id_produtos']) {
-                } else {
-                    echo "
-                        <tr class='produto__carrinho'>
-                        <td>".$produto['imagem']."</td>
-                        <td>".$produto['nome_produto']."</td>
-                        <td>".$produto['descricao']."</td>
-                        <td>".$produto['valor']."</td>
-                        <td>".$item['quantidade']."</td>
-                        </tr>
-                        ";
+                    if ($item['quantidade'] > 1) {
+                        echo "<a href='/menosQtdCarrinho?id={$item['id']}'>-</a>";
+                    }
+                    echo "<div> </div>";
+                    echo "<div class='qtd'>{$item['quantidade']}</div>";
+                    echo "<a href='/maisQtdCarrinho?id={$item['id']}'>+</a>";
+
+                    echo "</td>";
+                    echo "</tr>";
                 }
             }
         }
-
         ?>
     </tbody>
+
+    <div class="total__pagar">
+        <h1>Total:</h1>
+        <h2>
+            <?php
+            $valores = [];
+            $total = 0;
+
+            foreach ($produtos as $produto) {
+                foreach ($carrinho as $item) {
+                    if ($produto['id'] == $item['id_produtos'] && $_SESSION['id'] == $item['id_usuarios']) {
+                        $subtotal = floatval($produto['valor']) * intval($item['quantidade']);
+                        $valores[] = $subtotal;
+                    }
+                }
+            }
+
+            $total = number_format(array_sum($valores), 2);
+            echo $total;
+            ?>
+
+
+        </h2>
+        <a href="/pagamento">Reservar</a>
+    </div>
+
 </table>
