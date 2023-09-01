@@ -45,30 +45,5 @@ class AdminController extends Action
         
 
 
-        if ($produto->validarCadastro()) {
-            //SUCCESS ao validar cadastro
-
-            if (count($produto->getProdutosPorNome()) == 0) {
-                // $imagem = formataArrayFile($_FILES['imagem']);
-                $produto->salvar();
-                $this->render("adicionar", "templateAdmin");
-            } else {
-                dd($produto);
-            }
-            // echo "Cadastro realizado com sucesso";
-            // $this->view->status = array(
-            //     "status" => "SUCCESS",
-            //     "msg"    => "Cadastro realizado com sucesso"
-            // );
-
-            $categoria = Container::getModel("categoria");
-
-            $categorias = $categoria->getCategorias();
-
-            $this->view->dados = $categorias;
-
-            $this->render("adicionar", "templateAdmin");
-        }
-        $this->render("adicionar", "templateAdmin");
     }
 }

@@ -53,20 +53,7 @@ class UsuarioController extends Action
         $this->render("pagamento", "templateUsuario");
     }
 
-    // public function index()
-    // {
-    //     AuthController::validaAutenticacao();
-
-    //     $usuario = Container::getModel("Usuario");
-    //     $usuarios = $usuario->getUsuarios();
-    //     $this->view->dados = $usuarios;
-
-    //     $this->render("index", "template_admin");
-    // }
-    // 
-    // 
-    // 
-    // 
+   
     //salvar
     public function salvar_usuario()
     {
@@ -79,7 +66,6 @@ class UsuarioController extends Action
         $usuario->__set('nome', isset($_POST['nome']) ? $_POST['nome'] : "");
         $usuario->__set('email', isset($_POST['email']) ? $_POST['email'] : "");
         $usuario->__set('senha', isset($_POST['senha']) ? md5($_POST['senha']) : "");
-        // $usuario->__set('nivel', isset($_POST['nivel']) ? $_POST['nivel'] : "");
         $usuario->__set('nivel', 0);
 
         if ($usuario->validarCadastro()) {
