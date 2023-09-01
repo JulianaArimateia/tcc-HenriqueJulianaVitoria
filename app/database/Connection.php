@@ -18,7 +18,7 @@ class Connection
         $host         =   "localhost";
         $db_name      =   "tcc";
         $user         =   "root";
-        $pass         =   "sucesso";
+        $pass         =   "root";
         $charset      =   "utf8";
         $db_driver    =   "mysql";
         $port         =   3306;
