@@ -110,10 +110,10 @@ class ProdutosModel extends Model
         $stmt->bindValue(':valor', $this->__get('valor'));
         $stmt->bindValue(':descricao', $this->__get('descricao'));
         $stmt->bindValue(':imagem', $this->__get('imagem'));
-        $stmt->bindValue(':nivel', 0);
+        $stmt->bindValue(':nivel', $this->__get('nivel'));
         $stmt->execute();
 
-        $this->__set('id', $this->db->lastInsertId());
+        // $this->__set('id', $this->db->lastInsertId());
 
         return $this;
     }

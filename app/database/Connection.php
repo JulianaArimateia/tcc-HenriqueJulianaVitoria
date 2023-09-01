@@ -16,9 +16,9 @@ class Connection
     {
         # Informações sobre o banco de dados:
         $host         =   "localhost";
-        $db_name      =   "tcc";
+        $db_name      =   "tcc_1";
         $user         =   "root";
-        $pass         =   "sucesso";
+        $pass         =   "";
         $charset      =   "utf8";
         $db_driver    =   "mysql";
         $port         =   3306;
