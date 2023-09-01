@@ -6,7 +6,6 @@
     position: fixed;
     width: 100%;
     height: 100vh;
-    z-index: -10;
     /* outras propriedades de estilo, como tamanho, posição, repetição, etc. */
 }
 
