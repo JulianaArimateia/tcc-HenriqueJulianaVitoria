@@ -63,14 +63,52 @@ class AdminController extends Action
 
         $this->render("adicionar", "templateAdmin");
     }
+
+    public function atualizar()
+    {
+        AuthController::validaAutenticacao();
+
+
+        //faz a instancia de produto com a conexão com banco de dados
+        $produto = Container::getModel('Produto');
+
+        //seta os dados do form nos atributos da classe Usuário
+        $produto->__set('id', isset($_POST['id']) ? $_POST['id'] : "");
+        $produto->__set('nome', isset($_POST['nome']) ? $_POST['nome'] : "");
+
+
+
+        if ($produto->validarCadastro()) {
+            //SUCCESS ao validar cadastro
+            $produto->atualizar();
+
+            $this->render("editar", "templateAdmin");
+        }
+    }
+
     public function editarProduto()
     {
         AuthController::validaAutenticacao();
-        $this->render("adicionar", "templateAdmin");
+
+        $produto = Container::getModel('Produtos');
+
+        //seta o id no atributos id da classe Usuário
+        $produto->__set('id', isset($_GET['id']) ? $_GET['id'] : "");
+
+
+        $this->render("editar", "templateAdmin");
     }
+
+
     public function excluirProduto()
     {
         AuthController::validaAutenticacao();
-        $this->render("adicionar", "templateAdmin");
+
+        $id_produtos = isset($_GET['id']) ? $_GET['id'] : '';
+
+        $produto = Container::getModel('Produtos');
+        $produto->deletarPro($id_produtos);
+
+        header("Location: /adminAdicionar");
     }
 }

@@ -126,7 +126,8 @@ class ProdutosModel extends Model
 
         $stmt = $this->db->prepare($query);
 
-        $stmt->bindValue(':nome', $this->__get('nome'));
+        $stmt->bindValue(':nome_produto', $this->__get('nome_produto'));
+        $stmt->bindValue(':descricao', $this->__get('descricao'));
 
         $stmt->bindValue(':id', $this->__get('id'));
 
