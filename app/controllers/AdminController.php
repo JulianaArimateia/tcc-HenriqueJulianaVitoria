@@ -53,4 +53,14 @@ class AdminController extends Action
         
         $this->render("adicionar", "templateAdmin");
     }
+    public function editarProduto()
+    {
+        AuthController::validaAutenticacao();
+        $this->render("adicionar", "templateAdmin");
+    }
+    public function excluirProduto()
+    {
+        AuthController::validaAutenticacao();
+        $this->render("adicionar", "templateAdmin");
+    }
 }
