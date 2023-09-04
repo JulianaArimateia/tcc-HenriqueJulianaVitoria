@@ -65,17 +65,17 @@ class ProdutosModel extends Model
     }
 
 
-    public function getProdutos()
-    {
-        $sql = "select p.id, p.nome_produto, p.id_categoria,
-         p.quantidade_produto, p.custo, p.valor, p.descricao,
-         p.created_at, p.updated_at, p.deleted_at 
-		 p.nivel, p.imagem, 
-		 c.nome as categoria from produtos as p inner join 
-			categorias as c on p.id_categoria = c.id";
+    // public function getProdutos()
+    // {
+    //     $sql = "select p.id, p.nome_produto, p.id_categoria,
+    //      p.quantidade_produto, p.custo, p.valor, p.descricao,
+    //      p.created_at, p.updated_at, p.deleted_at 
+	// 	 p.nivel, p.imagem, 
+	// 	 c.nome as categoria from produtos as p inner join 
+	// 		categorias as c on p.id_categoria = c.id";
 
-        return $this->db->query($sql)->fetchAll();
-    }
+    //     return $this->db->query($sql)->fetchAll();
+    // }
 
     public function getTotalProdutos()
     {
@@ -134,12 +134,12 @@ class ProdutosModel extends Model
 
         return $this;
     }
-    // public function getProdutos()
-    // {
-    //     $query = "select * from produtos";
-    //     $stmt = $this->db->prepare($query);
-    //     $stmt->execute();
+    public function getProdutos()
+    {
+        $query = "select * from produtos";
+        $stmt = $this->db->prepare($query);
+        $stmt->execute();
 
-    //     return $stmt->fetchAll(\PDO::FETCH_ASSOC);
-    // }
+        return $stmt->fetchAll(\PDO::FETCH_ASSOC);
+    }
 }
