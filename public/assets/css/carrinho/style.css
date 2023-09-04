@@ -2,13 +2,14 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400&display=swap');
 /* -------------------------------------------------Main------------------------------------------------- */
 @import url(main/tabela.css);
-@import url(main/pratos.css);
-@import url(main/cardapio.css);
+@import url(main/final.css);
 
 
 /* ------------------------------------------------Footer------------------------------------------------ */
 
 /* ------------------------------------------------Geral------------------------------------------------- */
+
+
 :root {
     --color-main: #FFB30E;
     --color-two: #a3a7b4;
@@ -20,4 +21,5 @@
 
 *{
     font-family: 'Montserrat', sans-serif;
+
 }

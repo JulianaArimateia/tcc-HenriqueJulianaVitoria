@@ -1,0 +1,72 @@
+.total__pagar {
+    /* organizações */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: auto;
+    margin-top: 50px;
+
+    /* aparência */
+
+    /* dimensões */
+    width: 600px;
+    height: 40px;
+}
+
+.total__pagar h1 {
+    /* organizações */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+
+    /* aparência */
+    background: var(--color-main);
+    color: white;
+    border-radius: 8px;
+    border: 1px;
+
+    /* dimensões */
+    height: 100%;
+    width: 20%;
+}
+
+.total__pagar h2 {
+    /* organizações */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+
+    /* aparência */
+
+    /* dimensões */
+    height: 100%;
+    width: 30%;
+}
+
+.total__pagar a {
+    /* organizações */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+
+    /* aparência */
+    background: var(--color-main);
+    color: white;
+    border-radius: 8px;
+    font-weight: bold;
+    text-decoration: none;
+    transition: .2s all;
+
+    /* dimensões */
+    height: 100%;
+    width: 20%;
+}
+
+.total__pagar a:hover{
+    background-color: white;
+    color: var(--color-main);
+    border: 1px solid var(--color-main);
+}

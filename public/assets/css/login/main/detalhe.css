@@ -1,3 +1,13 @@
+@import url('https://fonts.googleapis.com/css2?family=Pacifico&display=swap');
+
+.img__fundo{
+    background:url('../../../img/login/fundo.png') no-repeat center / cover;
+    height: 100vh;
+    width: 100%;
+    position: fixed;
+    /* outras propriedades de estilo, como tamanho, posição, repetição, etc. */
+}
+
 .detalhe {
     /* organizações */
     display: grid;
@@ -34,7 +44,8 @@
     /* aparências */
     text-align: center;
     color: white;
-
+    font-size: 1.8em;
+    font-family: 'Pacifico', cursive;
     /* dimensões */
 }
 

@@ -2,55 +2,46 @@
     <link rel="stylesheet" href="assets/css/login/style.css">
 </head>
 
-<?php
-    if(isset($_GET['cad']) && $_GET['cad'] == 1){
-        ?>
-        CADASTROU NO BANCO
-
-        <?php
-    } else {
-        ?>
-        CADASTROU NO BANCO
-
-        <?php
-
-    }
-?>
 
 
-<section class="formularios">
-    <form method="POST" class="form__dados" action="/salvar_usuario">
-        <label for="nome" class="label__dados">Digite seu nome:</label>
-        <input type="text" name="nome" class="input__dados" id="">
-        <label for="email" class="label__dados">Digite seu email:</label>
-        <input type="email" name="email" class="input__dados" id="">
-        <label for="senha" class="label__dados">Digite sua senha:</label>
-        <input type="password" name="senha" class="input__dados" id="">
-        <label for="confirmar__senha" class="label__dados">Digite novamente sua senha:</label>
-        <input type="password" name="confirmar__senha" class="input__dados" id="">
-        <button type="submit" class="btn__dados">Cadastrar</button>
-        <button id="alternar__2" class="btn__alternar">Já tem conta? clique aqui</button>
-    </form>
 
-    <form method="POST" class="form__dados" action="/autenticar">
-        <label for="email" class="label__dados">Digite seu email:</label>
-        <input type="email" name="email" class="input__dados" id="">
-        <label for="senha" class="label__dados">Digite sua senha:</label>
-        <input type="password" name="senha" class="input__dados" id="">
-        <button type="submit" class="btn__dados">Login</button>
-        <button id="alternar__1" class="btn__alternar">Não tem conta? clique aqui</button>
-    </form>
+<section class="img__fundo">
+    <div class="formularios">
+
+        <form method="POST" class="form__dados" action="/salvar_usuario">
+            <label for="nome" class="label__dados">Digite seu nome:</label>
+            <input type="text" name="nome" class="input__dados" id="">
+            <label for="email" class="label__dados">Digite seu email:</label>
+            <input type="email" name="email" class="input__dados" id="">
+            <label for="senha" class="label__dados">Digite sua senha:</label>
+            <input type="password" name="senha" class="input__dados" id="">
+            <label for="confirmar__senha" class="label__dados">Digite novamente sua senha:</label>
+            <input type="password" name="confirmar__senha" class="input__dados" id="">
+            <button type="submit" class="btn__dados">Cadastrar</button>
+            <button id="alternar__2" class="btn__alternar">Já tem conta? clique aqui</button>
+        </form>
+
+        <form method="POST" class="form__dados" action="/autenticar">
+            <label for="email" class="label__dados">Digite seu email:</label>
+            <input type="email" name="email" class="input__dados" id="">
+            <label for="senha" class="label__dados">Digite sua senha:</label>
+            <input type="password" name="senha" class="input__dados" id="">
+            <button type="submit" class="btn__dados">Login</button>
+            <button id="alternar__1" class="btn__alternar">Não tem conta? clique aqui</button>
+        </form>
+    </div>
 </section>
 
+
 <div class="detalhe" id="detalhe">
-    <h1 class="titulo__detalhe">Cantina Senai</h1>
+    <h1 class="titulo__detalhe">Bem-vindo a Cantina Sesi!</h1>
     <p class="texto__detalhe">
-        O nosso sistema oferece inumeras vantagens
-        Lorem ipsum dolor, sit amet consectetur
-        adipisicing elit. Ad quaerat, id ducimus,
-        a reiciendis obcaecati aliquam qui, odit
-        inventore adipisci magnam ipsum? Qui odio
-        adipisci ipsam rem esse sunt laborum!
+
+        Estamos felizes em vê-lo aqui. Para acessar todas as funcionalidades incríveis do nosso site e fazer pedidos de forma rápida e simples, precisamos que você faça um rápido cadastro.
+        <br>
+        <br>
+        Então, por que esperar? Vamos começar! Clique no botão "Cadastre-se" abaixo e faça parte da nossa comunidade de clientes satisfeitos. Se você já possui uma conta, basta fazer o login para continuar a desfrutar das nossas delícias!
+
     </p>
     <a href="/" class="btn__voltar">Voltar</a>
 </div>

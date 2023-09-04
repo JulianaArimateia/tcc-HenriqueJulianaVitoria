@@ -32,14 +32,26 @@ class UsuarioController extends Action
         header('Location: /');
     }
 
-
-
     public function removerCarrinho()
     {
         AuthController::validaAutenticacao();
         $carrinho = Container::getModel('carrinho');
         $carrinho->removeCarrinho($_GET['id'], $_SESSION['id']);
-        header('Location: /');
+        header('Location: '.$_SERVER['HTTP_REFERER'].'');
+    }
+
+    public function maisQtdCarrinho()
+    {
+        $carrinho = Container::getModel('carrinho');
+        $carrinho->maisQtd($_GET['id']);
+        header('Location: /carrinho');
+    }
+
+    public function menosQtdCarrinho()
+    {
+        $carrinho = Container::getModel('carrinho');
+        $carrinho->menosQtd($_GET['id']);
+        header('Location: /carrinho');
     }
 
     public function favoritos()
@@ -50,23 +62,10 @@ class UsuarioController extends Action
     public function pagamento()
     {
         AuthController::validaAutenticacao();
-        $this->render("pagamento", "templateUsuario");
+        $this->render("pagamento");
     }
 
-    // public function index()
-    // {
-    //     AuthController::validaAutenticacao();
 
-    //     $usuario = Container::getModel("Usuario");
-    //     $usuarios = $usuario->getUsuarios();
-    //     $this->view->dados = $usuarios;
-
-    //     $this->render("index", "template_admin");
-    // }
-    // 
-    // 
-    // 
-    // 
     //salvar
     public function salvar_usuario()
     {
@@ -79,7 +78,6 @@ class UsuarioController extends Action
         $usuario->__set('nome', isset($_POST['nome']) ? $_POST['nome'] : "");
         $usuario->__set('email', isset($_POST['email']) ? $_POST['email'] : "");
         $usuario->__set('senha', isset($_POST['senha']) ? md5($_POST['senha']) : "");
-        // $usuario->__set('nivel', isset($_POST['nivel']) ? $_POST['nivel'] : "");
         $usuario->__set('nivel', 0);
 
         if ($usuario->validarCadastro()) {
@@ -253,4 +251,4 @@ class UsuarioController extends Action
     //         // $this->index();
     //         header("Location: /usuario");
     //  }
-    }
+}

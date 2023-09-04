@@ -26,7 +26,7 @@ class CarrinhoModel extends Model
     public function addCarrinho($id, $user)
     {
         $query = "
-        insert into carrinho (id_usuarios, id_produtos, date_cadastro) values (:id_usuarios, :id_produtos, NOW())
+        insert into carrinho (id_usuarios, id_produtos, quantidade, date_cadastro) values (:id_usuarios, :id_produtos, 1, NOW())
         ";
 
         $stmt = $this->db->prepare($query);
@@ -70,6 +70,28 @@ class CarrinhoModel extends Model
         $stmt = $this->db->prepare($query);
 
         $stmt->bindValue(':id_usuarios', $_SESSION['id']);
+        $stmt->execute();
+
+        return $stmt->fetchAll(\PDO::FETCH_ASSOC);
+    }
+
+    public function maisQtd($id)
+    {
+        $query = "UPDATE carrinho SET quantidade = quantidade + 1 WHERE id = :id";
+        $stmt = $this->db->prepare($query);
+
+        $stmt->bindValue(':id', $id);
+        $stmt->execute();
+
+        return $stmt->fetchAll(\PDO::FETCH_ASSOC);
+    }
+
+    public function menosQtd($id)
+    {
+        $query = "UPDATE carrinho SET quantidade = quantidade - 1 WHERE id = :id";
+        $stmt = $this->db->prepare($query);
+
+        $stmt->bindValue(':id', $id);
         $stmt->execute();
 
         return $stmt->fetchAll(\PDO::FETCH_ASSOC);
