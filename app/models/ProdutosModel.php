@@ -88,7 +88,7 @@ class ProdutosModel extends Model
 
     public function deletarProdutos($id)
     {
-        $query = "delete from produtos where id = :id_produto";
+        $query = "delete from produtos where id = :id_produtos";
         // $query = "update produtos set ativo = 0, deleted_at = NOW() where id = :id_produtos";
         $stmt = $this->db->prepare($query);
         $stmt->bindValue(':id_produtos', $id);
@@ -135,12 +135,4 @@ class ProdutosModel extends Model
 
         return $this;
     }
-    // public function getProdutos()
-    // {
-    //     $query = "select * from produtos";
-    //     $stmt = $this->db->prepare($query);
-    //     $stmt->execute();
-
-    //     return $stmt->fetchAll(\PDO::FETCH_ASSOC);
-    // }
 }

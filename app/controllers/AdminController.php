@@ -86,6 +86,7 @@ class AdminController extends Action
         }
     }
 
+
     public function editarProduto()
     {
         AuthController::validaAutenticacao();
@@ -105,10 +106,10 @@ class AdminController extends Action
         AuthController::validaAutenticacao();
 
         $id_produtos = isset($_GET['id']) ? $_GET['id'] : '';
-
+        // dd($id_produtos);
         $produto = Container::getModel('Produtos');
-        $produto->deletarPro($id_produtos);
+        $produto->deletarProdutos($id_produtos);
 
-        header("Location: /adminAdicionar");
+        header("Location: /adminLista");
     }
 }

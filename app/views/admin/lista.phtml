@@ -21,10 +21,10 @@
         </thead>
         <tbody class="corpo__tabela">
 
-        <?php
+            <?php
             $produtos = $this->view->produtos;
 
-            foreach($produtos as $produto){
+            foreach ($produtos as $produto) {
                 echo "<tr class='linha__tabela'>
                 <td class='item__tabela'>{$produto['categoria']}</td>
                 <td class='item__tabela'>{$produto['nome_produto']}</td>
@@ -35,14 +35,11 @@
                 <td class='item__tabela item__status'>Ativo</td>
                 <td class='item__tabela'>
                    <a href='/editarProduto'><button class='btn btn-warning'>Editar</button></a>
-                   <a href='/excluirProduto'><button class='btn btn__excluir btn-danger '>Excluir</button></a>
+                   <a href='/excluirProduto?id=" . $produto['id'] . "'><button class='btn btn__excluir btn-danger '>Excluir</button></a>
                 </td>
             </tr>";
             }
-        ?>
-
-
-            
+            ?>
         </tbody>
     </table>
 </section>
