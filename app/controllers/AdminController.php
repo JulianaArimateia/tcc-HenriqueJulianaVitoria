@@ -59,6 +59,7 @@ class AdminController extends Action
         if ($produto->validarCadastro()) {
             //SUCCESS ao validar cadastro
             $produto->salvar();
+            header('Location: /adminLista');
         }
 
         $this->render("adicionar", "templateAdmin");
