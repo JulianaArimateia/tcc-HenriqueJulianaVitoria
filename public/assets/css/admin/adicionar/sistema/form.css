@@ -1,8 +1,8 @@
 .form__add {
     /* organizações */
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    justify-content: space-around;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
     margin: auto;
     margin-top: 5vh;
     padding: 1.2rem;
@@ -14,6 +14,20 @@
 }
 
 .campo__input {
+    /* organizações */
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    justify-content: space-around;
+    margin: 1vh auto;
+
+    /* aparências */
+
+    /* dimensões */
+    width: 95%;
+}
+
+.campo__input2 {
     /* organizações */
     margin: 1vh auto;
 
@@ -34,21 +48,25 @@
 
 .input__form {
     /* organizações */
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    justify-content: center;
     margin: auto;
 
     /* aparências */    
     border: none;
     border-radius: 8px;
+    background-color: white;
 
     /* dimensões */
     width: 100%;
-    height: 3rem;
 }
 
 .btn__add {
     /* organizações */
     margin: auto;
-    margin-left: 62%;
+    margin-left: 72%;
     margin-top: 2vh;
 
     /* aparências */
@@ -60,7 +78,7 @@
     font-size: 1.   2rem;
 
     /* dimensões */
-    width: 35%;
+    width: 210px;
     height: 4rem;
 }
 

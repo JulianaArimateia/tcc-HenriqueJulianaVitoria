@@ -41,55 +41,28 @@
     width: 70%;
 }
 
-.filtro__btn {
+.filtro__categoria {
     /* organizações */
-    display: grid;
-    grid-template-columns: 1fr;
-    justify-content: center;
+    display: flex;
+    flex-direction: column;
 
     /* aparência */
-    border: 1px solid var(--color-main);
-    border-radius: 10px;
-
-    /* dimensões */
-    height: 50px;
-    width: 50px;
-}
-
-.filtro__btn:focus {
-    /* organizações */
-
-    /* aparência */
-    background-color: var(--color-main);
 
     /* dimensões */
 }
 
-.filtro__salgado {
+.filtro__opcao {
     /* organizações */
+    display: flex;
+    justify-content: start;
 
     /* aparência */
-    background: url(../../../img/cardapio/salgado.png) no-repeat center/cover;
 
     /* dimensões */
 }
 
-.filtro__bebida {
-    /* organizações */
-
-    /* aparência */
-    background: url(../../../img/cardapio/bebida.png) no-repeat center/cover;
-
-    /* dimensões */
-}
-
-.filtro__doce {
-    /* organizações */
-
-    /* aparência */
-    background: url(../../../img/cardapio/doce.png) no-repeat center/cover;
-
-    /* dimensões */
+.filtro__opcao label{
+    margin-left: 5px;
 }
 
 .img__filtro {

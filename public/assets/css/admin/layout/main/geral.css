@@ -1,6 +1,6 @@
 .corpo {
     /* organizações */
-    padding-left: 15%;
+    padding-left: 210px;
 
     /* aparências */
     background-color: var(--color-three);
@@ -19,7 +19,7 @@
     background-color: var(--color-main);
 
     /* dimensões */
-    width: 15%;
+    width: 210px;
     height: 100vh;
 }
 

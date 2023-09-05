@@ -9,47 +9,55 @@
     </h1>
     <form class="form__add" action="/salvarProduto" method="POST">
         <div class="campo__input">
-            <label for="imagem" class="label__input">Coloque a imagem do produto:</label>
-            <input type="file" name="imagem" class="input__form">
+            <div class="campo__input2">
+                <label for="imagem" class="label__input">Selecione a imagem do produto:</label>
+                <input name="imagem" type="file" class="form-control">
+            </div>
+            <div class="campo__input2">
+                <label for="categoria" class="label__input">Digite a categoria do produto:</label>
+                <select name="categoria" class="input__form">
+                    <option value="" disabled selected></option>
+                    <option value="1">Salgado Assado</option>
+                    <option value="2">Salgado Frito</option>
+                    <option value="3">Refrigerante</option>
+                    <option value="4">Suco</option>
+                </select>
+            </div>
         </div>
 
         <div class="campo__input">
-            <label for="categoria" class="label__input">Digite a categoria do produto:</label>
-            <select name="categoria" class="input__form">
-                <option value="" disabled selected></option>
-                <option value="1">Salgado Assado</option>
-                <option value="2">Salgado Frito</option>
-                <option value="3">Refrigerante</option>
-                <option value="4">Suco</option>
-            </select>
+            <div class="campo__input2">
+                <label for="nome" class="label__input">Digite o nome do produto:</label>
+                <input type="text" name="nome_produto" class="input__form">
+            </div>
+
+
+            <div class="campo__input2">
+                <label for="custo" class="label__input">Digite o custo do produto:</label>
+                <input type="floatval" name="custo" class="input__form">
+            </div>
         </div>
 
         <div class="campo__input">
-            <label for="nome" class="label__input">Digite o nome do produto:</label>
-            <input type="text" name="nome_produto" class="input__form">
+            <div class="campo__input2">
+                <label for="valor" class="label__input">Digite o valor do produto:</label>
+                <input type="floatval" name="valor" class="input__form">
+            </div>
+
+            <div class="campo__input2">
+                <label for="quantidade_produto" class="label__input">Digite a quantidade do produto:</label>
+                <input type="floatval" name="quantidade_produto" class="input__form">
+            </div>
+
         </div>
 
-        <div class="campo__input">
+        <div class="campo__input2">
             <label for="descricao" class="label__input">Digite a descrição do produto:</label>
             <textarea type="text" name="descricao" class="input__form"></textarea>
         </div>
 
-        <div class="campo__input">
-            <label for="custo" class="label__input">Digite o custo do produto:</label>
-            <input type="number" name="custo" class="input__form">
-        </div>
-
-        <div class="campo__input">
-            <label for="valor" class="label__input">Digite o valor do produto:</label>
-            <input type="number" name="valor" class="input__form">
-        </div>
-
-        <div class="campo__input">
-            <label for="quantidade_produto" class="label__input">Digite a quantidade do produto:</label>
-            <input type="number" name="quantidade_produto" class="input__form">
-        </div>
-
         <div></div>
+
         <button type="submit" class="btn__add">Adicionar Produto</button>
     </form>
 </section>

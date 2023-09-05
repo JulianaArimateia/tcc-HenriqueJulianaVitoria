@@ -6,7 +6,7 @@
     <h1 class="titulo__sistema">
         Tabela de produtos
     </h1>
-    <input type="text" class="filtro__lista" placeholder="Buscar produto...">
+    <input type="text" class="filtro__lista" placeholder="Buscar produto..." id="filtro">
     <img src="assets/img/lupa.png" width="30rem" style="margin-left: -3rem;" alt="">
     <table class="tabela">
         <thead class="header__tabela">
@@ -16,7 +16,7 @@
             <th>Quantidade</th>
             <th>Valor</th>
             <th>Custo</th>
-            <th>Status</th>
+            <th>% Lucro</th>
             <th>Editar</th>
         </thead>
         <tbody class="corpo__tabela">
@@ -25,21 +25,27 @@
             $produtos = $this->view->produtos;
 
             foreach ($produtos as $produto) {
-                echo "<tr class='linha__tabela'>
-                <td class='item__tabela'>{$produto['categoria']}</td>
-                <td class='item__tabela'>{$produto['nome_produto']}</td>
-                <td class='item__tabela'>{$produto['descricao']}</td>
-                <td class='item__tabela'>{$produto['quantidade_produto']}</td>
-                <td class='item__tabela'>{$produto['valor']}</td>
-                <td class='item__tabela'>{$produto['custo']}</td>
-                <td class='item__tabela item__status'>Ativo</td>
-                <td class='item__tabela'>
-                   <a href='/editarProduto'><button class='btn btn-warning'>Editar</button></a>
-                   <a href='/excluirProduto?id=" . $produto['id'] . "'><button class='btn btn__excluir btn-danger '>Excluir</button></a>
-                </td>
-            </tr>";
+
+                $lucro = number_format(((100 / $produto['custo']) * $produto['valor']) - 100, 1);
+
+                echo
+                "<tr class='linha__tabela' id='produto'>
+                    <td class='item__tabela'>{$produto['categoria']}</td>
+                    <td class='item__tabela'>{$produto['nome_produto']}</td>
+                    <td class='item__tabela'>{$produto['descricao']}</td>
+                    <td class='item__tabela'>{$produto['quantidade_produto']}</td>
+                    <td class='item__tabela'>{$produto['valor']}</td>
+                    <td class='item__tabela'>{$produto['custo']}</td>
+                    <td class='item__tabela'>{$lucro}%</td>
+                    <td class='item__tabela'>
+                        <a href='/editarProduto'><button class='btn btn-warning'>Editar</button></a>
+                        <a href='/excluirProduto?id=" . $produto['id'] . "'><button class='btn btn__excluir btn-danger '>Excluir</button></a>
+                    </td>
+                </tr>";
             }
             ?>
         </tbody>
     </table>
 </section>
+
+<script src="assets/js/admin/filtro-lista.js"></script>
