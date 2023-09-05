@@ -56,7 +56,7 @@ class ProdutosModel extends Model
     //recuperar uma Produtos por id
     public function getProdutosPorId()
     {
-        $query = "select id, nome from produtos where id = :id";
+        $query = "select id, nome, from produtos where id = :id";
         $stmt = $this->db->prepare($query);
         $stmt->bindValue(':id', $this->__get('id'));
         $stmt->execute();
@@ -118,21 +118,24 @@ class ProdutosModel extends Model
         return $this;
     }
 
-    //atualizar
-    public function atualizar()
-    {
 
-        $query = "update produtos set nome = :nome, updated_at = NOW() where id=:id";
-
+public function atualizar()
+{
+        $query = "update produtos SET nome_produto = :nome_produto, id_categoria = :id_categoria, quantidade_produto = :quantidade_produto, custo = :custo, valor = :valor, descricao = :descricao, imagem = :imagem, nivel = :nivel, updated_at = NOW() WHERE id = :id";
         $stmt = $this->db->prepare($query);
 
         $stmt->bindValue(':nome_produto', $this->__get('nome_produto'));
+        $stmt->bindValue(':id_categoria', $this->__get('id_categoria'));
+        $stmt->bindValue(':quantidade_produto', $this->__get('quantidade_produto'));
+        $stmt->bindValue(':custo', $this->__get('custo'));
+        $stmt->bindValue(':valor', $this->__get('valor'));
         $stmt->bindValue(':descricao', $this->__get('descricao'));
-
+        $stmt->bindValue(':imagem', $this->__get('imagem'));
+        $stmt->bindValue(':nivel', $this->__get('nivel'));
         $stmt->bindValue(':id', $this->__get('id'));
-
         $stmt->execute();
 
         return $this;
     }
+
 }

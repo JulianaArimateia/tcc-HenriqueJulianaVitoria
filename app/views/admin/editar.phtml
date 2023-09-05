@@ -1,2 +1,63 @@
-Editar Produto aqui!!!
-<a href="/atualizar">atualizar</a>
+<head>
+    <link rel="stylesheet" href="assets/css/admin/adicionar/style.css">
+</head>
+
+<?php
+$id = $_GET['id'];
+?>
+
+<section class="sistema">
+    <h1 class="titulo__sistema">
+        Atualizar produto
+    </h1>
+    <form class="form__add" action='/atualizarProduto?id=<?=$id?>' method="POST">
+
+        <div class="campo__input">
+            <label for="imagem" class="label__input">Nova imagem do produto:</label>
+            <input type="file" name="imagem" class="input__form">
+        </div>
+
+        <div class="campo__input">
+            <label for="categoria" class="label__input">Nova categoria do produto:</label>
+            <select name="categoria" class="input__form">
+                <option value="" disabled selected></option>
+                <option value="1">Salgado Assado</option>
+                <option value="2">Salgado Frito</option>
+                <option value="3">Biscoito</option>
+                <option value="4">Refrigerante</option>
+                <option value="5">Suco</option>
+                <option value="6">Outroas bebidas</option>
+                <option value="7">Pratos</option>
+                <option value="8">Doce</option>
+            </select>
+        </div>
+
+        <div class="campo__input">
+            <label for="nome_produto" class="label__input">Novo nome do produto:</label>
+            <input type="text" name="nome_produto" class="input__form">
+        </div>
+
+        <div class="campo__input">
+            <label for="descricao" class="label__input">Nova descrição do produto:</label>
+            <textarea type="text" name="descricao" class="input__form"></textarea>
+        </div>
+
+        <div class="campo__input">
+            <label for="custo" class="label__input">Novo custo do produto:</label>
+            <input type="number" name="custo" class="input__form">
+        </div>
+
+        <div class="campo__input">
+            <label for="valor" class="label__input">Novo valor do produto:</label>
+            <input type="number" name="valor" class="input__form">
+        </div>
+
+        <div class="campo__input">
+            <label for="quantidade_produto" class="label__input">Nova quantidade do produto:</label>
+            <input type="number" name="quantidade_produto" class="input__form">
+        </div>
+
+        <div></div>
+        <button type="submit" class="btn__add">Atualizar Produto</button>
+    </form>
+</section>

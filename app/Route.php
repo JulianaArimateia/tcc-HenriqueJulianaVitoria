@@ -29,7 +29,7 @@ class Route extends Bootstrap
         $routes['salvaProtudo'] = array('route' => '/salvarProduto', 'controller' => 'adminController', 'action' => 'salvarProduto');
         $routes['editarProtudo'] = array('route' => '/editarProduto', 'controller' => 'adminController', 'action' => 'editarProduto');
         $routes['excluirProtudo'] = array('route' => '/excluirProduto', 'controller' => 'adminController', 'action' => 'excluirProduto');
-        $routes['atualizarProtudo'] = array('route' => '/atualizar', 'controller' => 'adminController', 'action' => 'atualizar');
+        $routes['atualizarProtudo'] = array('route' => '/atualizarProduto', 'controller' => 'adminController', 'action' => 'atualizarProduto');
 
         // //UsuarioController
         $routes['usuario'] = array('route' => '/usuario', 'controller' => 'usuarioController', 'action' => 'index');
