@@ -69,10 +69,10 @@ class ProdutosModel extends Model
     {
         $sql = "select p.id, p.nome_produto, p.id_categoria,
          p.quantidade_produto, p.custo, p.valor, p.descricao,
-         p.created_at, p.updated_at, p.deleted_at, 
+         p.created_at, p.updated_at, p.deleted_at,
 		 p.nivel, p.imagem, 
 		 c.nome as categoria from produtos as p inner join 
-		 categoria as c on p.id_categoria = c.id";
+			categoria as c on p.id_categoria = c.id";
 
         return $this->db->query($sql)->fetchAll();
     }

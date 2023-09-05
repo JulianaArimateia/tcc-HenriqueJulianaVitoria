@@ -29,6 +29,8 @@
 
                     if ($item['quantidade'] > 1) {
                         echo "<a href='/menosQtdCarrinho?id={$item['id']}'>-</a>";
+                    } else {
+                        echo "<a href='/menosQtdCarrinho?id={$item['id']}'><img src='assets/img/icons/icons_admin/lixeira.png' width='15px'></a>";
                     }
                     echo "<div> </div>";
                     echo "<div class='qtd'>{$item['quantidade']}</div>";
@@ -37,6 +39,12 @@
                     echo "</td>";
                     echo "</tr>";
                 }
+
+                if($item['quantidade'] == 0){
+                    header('location: /removerCarrinho?id='. $item['id_produtos']. '');
+                }
+
+
             }
         }
         ?>

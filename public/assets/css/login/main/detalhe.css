@@ -3,11 +3,8 @@
 .img__fundo{
     background:url('../../../img/login/fundo.png') no-repeat center / cover;
     height: 100vh;
-<<<<<<< HEAD
     width: 100%;
     position: fixed;
-=======
->>>>>>> 4ca25ea6336d983bb311dc63238f4b668f8e64a5
     /* outras propriedades de estilo, como tamanho, posição, repetição, etc. */
 }
 

@@ -37,7 +37,7 @@ class UsuarioController extends Action
         AuthController::validaAutenticacao();
         $carrinho = Container::getModel('carrinho');
         $carrinho->removeCarrinho($_GET['id'], $_SESSION['id']);
-        header('Location: /');
+        header('Location: '.$_SERVER['HTTP_REFERER'].'');
     }
 
     public function maisQtdCarrinho()
