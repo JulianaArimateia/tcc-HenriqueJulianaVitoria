@@ -38,7 +38,7 @@
                     <td class='item__tabela'>{$produto['custo']}</td>
                     <td class='item__tabela'>{$lucro}%</td>
                     <td class='item__tabela'>
-                        <a href='/editarProduto'><button class='btn btn-warning'>Editar</button></a>
+                        <a href='/editarProduto?id=" . $produto['id'] . "'><button class='btn btn-warning'>Editar</button></a>
                         <a href='/excluirProduto?id=" . $produto['id'] . "'><button class='btn btn__excluir btn-danger '>Excluir</button></a>
                     </td>
                 </tr>";
