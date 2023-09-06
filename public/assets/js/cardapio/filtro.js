@@ -1,35 +1,42 @@
-let opcoes = document.querySelectorAll('#opcao')
-let produtos = document.querySelectorAll('.card__cardapio')
+let checkboxes = document.querySelectorAll('.opcao');
+let produtos = document.querySelectorAll('.card__cardapio');
 
-for (let i = 0; i <= opcao.length; i++) {
+checkboxes.forEach(checkbox => {
+    checkbox.addEventListener('change', function () {
+        let filtroSelecionado = [];
 
-    let opcao = opcoes[i]
-
-    opcao.addEventListener('change', function () {
-
-        opcao.classList.toggle('ativo')
-
-        for (let x = 0; x <= produtos.length; x++) {
-
-            let produto = produtos[x]
-
-            produto.classList.add('none')
-
-            if (opcao.classList.value.includes('ativo') == true) {
-
-                if (produto.classList.value.includes(opcao.value) == true) {
-                    produto.classList.remove('none')
-                } else {
-                    produto.classList.add('none')
-                }
-
+        checkboxes.forEach(checkbox => {
+            if (checkbox.checked) {
+                filtroSelecionado.push(checkbox.value);
             }
+        });
 
+        produtos.forEach(produto => {
+            let produtoClasses = produto.classList;
+            let correspondeAoFiltro = false;
+
+            filtroSelecionado.forEach(filtro => {
+                if (produtoClasses.contains(filtro)) {
+                    correspondeAoFiltro = true;
+                }
+            });
+
+            if (correspondeAoFiltro) {
+                produto.classList.remove('none');
+            } else {
+                produto.classList.add('none');
+            }
+        });
+
+        if (filtroSelecionado.length == 0) {
+            produtos.forEach(produto => {
+                produto.classList.remove('none')
+            })
         }
+    });
+});
 
-    })
 
-}
 
 // ---------------------------------------------------------------------------------------------------------
 
