@@ -25,15 +25,22 @@
     /* dimensões */
 }
 
+.qtd__coluna{
+    width: 80px;
+}
+
 .qtd__carrinho {
     /* organizações */
     display: flex;
     justify-content: space-between;
     align-items: center;
+    padding: 0;
 
     /* aparência */
 
     /* dimensões */
+    height: 100%;
+    width: 100%;
 }
 
 .qtd__carrinho a {
@@ -56,4 +63,8 @@
     /* aparência */
 
     /* dimensões */
+}
+
+.img__card{
+    width: 50px;
 }

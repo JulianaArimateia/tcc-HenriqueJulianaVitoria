@@ -2,61 +2,25 @@
     <link rel="stylesheet" href="assets/css/carrinho/style.css">
 </head>
 
-<table class="tabela">
-    <thead>
-        <tr>
-            <td></td>
-            <td>Nome do produto</td>
-            <td>Descrição</td>
-            <td>Preço</td>
-            <td>Qtd</td>
-        </tr>
-    </thead>
-    <tbody>
+<div class="pagamento">
+    <div class="header__pag">
+        <h2>Pagamento</h2>
+        <select name="metodo" id="metodo">
+            <option value="pix">Pix</option>
+            <option value="debito">Débito</option>
+            <option value="credito">Crédito</option>
+        </select>
+    </div>
+
+    <div class="corpo__pag">
+
+    </div>
+
+    <div class="footer__pag">
         <?php
         $produtos = $this->view->produtos;
         $carrinho = $this->view->carrinho;
 
-        foreach ($produtos as $produto) {
-            foreach ($carrinho as $item) {
-                if ($produto['id'] == $item['id_produtos'] && $_SESSION['id'] == $item['id_usuarios']) {
-                    echo "<tr class='produto__carrinho'>";
-                    echo "<td><img src='assets/img/produto/" . $produto['imagem'] . "' alt='" . $produto['nome_produto'] . "' class='img__card'></td>";
-                    echo "<td>{$produto['nome_produto']}</td>";
-                    echo "<td>{$produto['descricao']}</td>";
-                    echo "<td>{$produto['valor']}</td>";
-                    echo "<td class='qtd__carrinho'>";
-
-                    if ($item['quantidade'] > 1) {
-                        echo "<a href='/menosQtdCarrinho?id={$item['id']}'>-</a>";
-                    } else {
-                        echo "<a href='/menosQtdCarrinho?id={$item['id']}'><img src='assets/img/icons/icons_admin/lixeira.png' width='15px'></a>";
-                    }
-
-                    echo "<div class='qtd'>{$item['quantidade']}</div>";
-
-                    echo "<a id='mais' href='/maisQtdCarrinho?id={$item['id']}'>+</a>";
-
-                    echo "</td>";
-                    echo "</tr>";
-                }
-
-                if($item['quantidade'] == 0){
-                    header('location: /removerCarrinho?id='. $item['id_produtos']. '');
-                }
-
-
-            }
-        }
-        ?>
-    </tbody>
-
-</table>
-
-<div class="total__pagar">
-    <h1>Total:</h1>
-    <h2>
-        <?php
         $valores = [];
         $total = 0;
 
@@ -70,10 +34,57 @@
         }
 
         $total = number_format(array_sum($valores), 2);
-        echo "R$ " . number_format($total, 2, ',', '.') ;
+        echo "R$ " . number_format($total, 2, ',', '.');
         ?>
-
-
-    </h2>
-    <a href="/pagamento">Reservar</a>
+    </div>
 </div>
+
+
+
+
+
+
+<table class="tabela">
+    <thead>
+        <tr>
+            <td></td>
+            <td>Nome do produto</td>
+            <td>Descrição</td>
+            <td>Preço</td>
+            <td class="qtd__coluna">Qtd</td>
+        </tr>
+    </thead>
+    <tbody>
+        <?php
+        foreach ($produtos as $produto) {
+            foreach ($carrinho as $item) {
+                if ($produto['id'] == $item['id_produtos'] && $_SESSION['id'] == $item['id_usuarios']) {
+                    echo "<tr class='produto__carrinho'>";
+                    echo "<td><img src='assets/img/produto/" . $produto['imagem'] . "' alt='" . $produto['nome_produto'] . "' class='img__card'></td>";
+                    echo "<td>{$produto['nome_produto']}</td>";
+                    echo "<td>{$produto['descricao']}</td>";
+                    echo "<td>{$produto['valor']}</td>";
+                    echo "<td class='qtd__carrinho'>";
+                    if ($item['quantidade'] > 1) {
+                        echo "<a href='/menosQtdCarrinho?id={$item['id']}'>-</a>";
+                    } else {
+                        echo "<a href='/menosQtdCarrinho?id={$item['id']}'><img src='assets/img/icons/icons_admin/lixeira.png' width='15px'></a>";
+                    }
+                    echo "<div class='qtd'>{$item['quantidade']}</div>";
+                    if ($item['quantidade'] == $produto['quantidade_produto']) {
+                    } else {
+                        echo "<a id='mais' href='/maisQtdCarrinho?id={$item['id']}'>+</a>";
+                    }
+
+                    echo "</td>";
+                    echo "</tr>";
+                }
+
+                if ($item['quantidade'] == 0) {
+                    header('location: /removerCarrinho?id=' . $item['id_produtos'] . '');
+                }
+            }
+        }
+        ?>
+    </tbody>
+</table>

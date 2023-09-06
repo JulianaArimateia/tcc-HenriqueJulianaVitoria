@@ -1,0 +1,16 @@
+.corpo {
+    /* organizações */
+    display: flex;
+
+    /* aparências */
+    background: linear-gradient(90deg, var(--color-main) 35%, white 35% 100%);
+
+    /* dimensões */
+    height: 100vh;
+}
+
+/* organizações */
+
+/* aparências */
+
+/* dimensões */
