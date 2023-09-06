@@ -59,31 +59,37 @@ class AdminController extends Action
         if ($produto->validarCadastro()) {
             //SUCCESS ao validar cadastro
             $produto->salvar();
+            header('Location: /adminLista');
         }
 
         $this->render("adicionar", "templateAdmin");
     }
 
-    public function atualizar()
+    public function atualizarProduto()
     {
         AuthController::validaAutenticacao();
 
+        $produto = Container::getModel('Produtos');
 
-        //faz a instancia de produto com a conexão com banco de dados
-        $produto = Container::getModel('Produto');
-
-        //seta os dados do form nos atributos da classe Usuário
-        $produto->__set('id', isset($_POST['id']) ? $_POST['id'] : "");
-        $produto->__set('nome', isset($_POST['nome']) ? $_POST['nome'] : "");
-
-
+        // Setar os dados do formulário nos atributos do objeto Produto
+        $produto->__set('id', isset($_GET['id']) ? $_GET['id'] : "");
+        $produto->__set('nome_produto', isset($_POST['nome_produto']) ? $_POST['nome_produto'] : "");
+        $produto->__set('id_categoria', isset($_POST['categoria']) ? $_POST['categoria'] : "");
+        $produto->__set('quantidade_produto', isset($_POST['quantidade_produto']) ? $_POST['quantidade_produto'] : "");
+        $produto->__set('custo', isset($_POST['custo']) ? $_POST['custo'] : "");
+        $produto->__set('valor', isset($_POST['valor']) ? $_POST['valor'] : "");
+        $produto->__set('descricao', isset($_POST['descricao']) ? $_POST['descricao'] : "");
+        $produto->__set('imagem', isset($_POST['imagem']) ? $_POST['imagem'] : "");
+        $produto->__set('nivel', 0);
 
         if ($produto->validarCadastro()) {
-            //SUCCESS ao validar cadastro
+            // Atualizar os dados do produto no banco de dados
             $produto->atualizar();
-
-            $this->render("editar", "templateAdmin");
+            // Redirecionar para a página de lista de produtos ou fazer qualquer outra ação necessária após a atualização
+            header('Location: /adminLista');
         }
+
+        $this->render("editar", "templateAdmin");
     }
 
 
@@ -93,12 +99,14 @@ class AdminController extends Action
 
         $produto = Container::getModel('Produtos');
 
-        //seta o id no atributos id da classe Usuário
+        // Setar o ID do produto a ser editado
         $produto->__set('id', isset($_GET['id']) ? $_GET['id'] : "");
-
+        // Buscar os dados do produto no banco de dados
+        $produto->getProdutos();
 
         $this->render("editar", "templateAdmin");
     }
+
 
 
     public function excluirProduto()

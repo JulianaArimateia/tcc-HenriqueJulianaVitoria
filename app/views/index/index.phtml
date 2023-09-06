@@ -44,11 +44,41 @@
 
 <!---------------------------------- Filtro de classes(Salgados, doces e bebidas) ---------------------------------->
 <section class="filtros">
-    <input type="text" class="filtro__input" placeholder="Buscar produto">
+    <input type="text" class="filtro__input" placeholder="Buscar produto" id="filtro">
     <div class="filtro__classe">
-        <button class="filtro__btn filtro__salgado"></button>
-        <button class="filtro__btn filtro__bebida"></button>
-        <button class="filtro__btn filtro__doce"></button>
+        <div class="filtro__categoria">
+            <h4>Salgados</h4>
+            <div class="filtro__opcao">
+                <input name="assado" type="checkbox" id="opcao" value="assado">
+                <label for="assado">Assados</label>
+            </div>
+            <div class="filtro__opcao">
+                <input name="frito" type="checkbox" id="opcao" value="frito">
+                <label for="frito">Fritos</label>
+            </div>
+        </div>
+        <div class="filtro__categoria">
+            <h4>Bebidas</h4>
+            <div class="filtro__opcao">
+                <input name="refri" type="checkbox" id="opcao" value="refrigerante">
+                <label for="refri">Refrigerantes</label>
+            </div>
+            <div class="filtro__opcao">
+                <input name="suco" type="checkbox" id="opcao" value="suco">
+                <label for="suco">Sucos</label>
+            </div>
+        </div>
+        <div class="filtro__categoria">
+            <h4>Outros...</h4>
+            <div class="filtro__opcao">
+                <input name="doce" type="checkbox" id="opcao" value="doce">
+                <label for="doce">Doces</label>
+            </div>
+            <div class="filtro__opcao">
+                <input name="biscoito" type="checkbox" id="opcao" value="biscoito">
+                <label for="biscoito">Biscoitos</label>
+            </div>
+        </div>
     </div>
 </section>
 
@@ -67,7 +97,7 @@
                 }
             }
             echo "
-         <div class='card__cardapio' id='card'>
+         <div class='card__cardapio " . $produto['categoria'] . "'>
             <img src='" . $produto['imagem'] . "' alt='" . $produto['nome_produto'] . "' class='img__card'>
             <h3 class='nome__card'>" . $produto['nome_produto'] . "</h3>
             <p class='desc__card'>
@@ -96,7 +126,7 @@
     } else {
         foreach ($produtos as $produto) {
             echo "
-        <div class='card__cardapio' id='card'>
+        <div class='card__cardapio " . $produto['categoria'] . "'>
             <img src='" . $produto['imagem'] . "' alt='" . $produto['nome_produto'] . "' class='img__card'>
             <h3 class='nome__card'>" . $produto['nome_produto'] . "</h3>
             <p class='desc__card'>
@@ -115,3 +145,5 @@
     ?>
 
 </section>
+
+<script src="assets/js/cardapio/filtro.js"></script>
