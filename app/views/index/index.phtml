@@ -98,7 +98,7 @@
             }
             echo "
          <div class='card__cardapio " . $produto['categoria'] . "'>
-            <img src='" . $produto['imagem'] . "' alt='" . $produto['nome_produto'] . "' class='img__card'>
+            <img src='assets/img/produto/" . $produto['imagem'] . "' alt='" . $produto['nome_produto'] . "' class='img__card'>
             <h3 class='nome__card'>" . $produto['nome_produto'] . "</h3>
             <p class='desc__card'>
                 " . $produto['descricao'] . "
@@ -127,7 +127,7 @@
         foreach ($produtos as $produto) {
             echo "
         <div class='card__cardapio " . $produto['categoria'] . "'>
-            <img src='" . $produto['imagem'] . "' alt='" . $produto['nome_produto'] . "' class='img__card'>
+            <img src='assets/img/produto/" . $produto['imagem'] . "' alt='" . $produto['nome_produto'] . "' class='img__card'>
             <h3 class='nome__card'>" . $produto['nome_produto'] . "</h3>
             <p class='desc__card'>
                 " . $produto['descricao'] . "

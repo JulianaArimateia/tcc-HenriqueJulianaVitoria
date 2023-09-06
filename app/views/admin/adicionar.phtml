@@ -7,7 +7,7 @@
     <h1 class="titulo__sistema">
         Adicionar produtos
     </h1>
-    <form class="form__add" action="/salvarProduto" method="POST">
+    <form class="form__add" action="/salvarProduto" method="POST" enctype="multipart/form-data">
         <div class="campo__input">
             <div class="campo__input2">
                 <label for="imagem" class="label__input">Selecione a imagem do produto:</label>
@@ -15,13 +15,17 @@
             </div>
             <div class="campo__input2">
                 <label for="categoria" class="label__input">Digite a categoria do produto:</label>
-                <select name="categoria" class="input__form">
-                    <option value="" disabled selected></option>
-                    <option value="1">Salgado Assado</option>
-                    <option value="2">Salgado Frito</option>
-                    <option value="3">Refrigerante</option>
-                    <option value="4">Suco</option>
-                </select>
+                 <select name="categoria" class="input__form">
+                <option value="" disabled selected></option>
+                <option value="1">Salgado Assado</option>
+                <option value="2">Salgado Frito</option>
+                <option value="3">Biscoito</option>
+                <option value="4">Refrigerante</option>
+                <option value="5">Suco</option>
+                <option value="6">Outroas bebidas</option>
+                <option value="7">Pratos</option>
+                <option value="8">Doce</option>
+            </select>
             </div>
         </div>
 

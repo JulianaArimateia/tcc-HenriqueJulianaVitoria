@@ -40,14 +40,7 @@ class Route extends Bootstrap
         $routes['sair'] = array('route' => '/sair', 'controller' => 'AuthController', 'action' => 'sair');
         $routes['autenticar'] = array('route' => '/autenticar', 'controller' => 'AuthController', 'action' => 'autenticar');
 
-        // //CategoriaController
-        // $routes['categoria'] = array('route' => '/categoria', 'controller' => 'categoriaController', 'action' => 'index');
-        // $routes['nova_categoria'] = array('route' => '/nova_categoria', 'controller' => 'categoriaController', 'action' => 'cadastrar');
-        // $routes['salvar_categoria'] = array('route' => '/salvar_categoria', 'controller' => 'categoriaController', 'action' => 'salvar_categoria');
-        // $routes['categoria_excluir'] = array('route' => '/categoria_excluir', 'controller' => 'categoriaController', 'action' => 'excluir');
-        // $routes['categoria_editar'] = array('route' => '/categoria_editar', 'controller' => 'categoriaController', 'action' => 'editar');
-        // $routes['categoria_atualizar'] = array('route' => '/categoria_atualizar', 'controller' => 'categoriaController', 'action' => 'atualizar');
-
+      
         $this->setRoutes($routes);
     }
 }
