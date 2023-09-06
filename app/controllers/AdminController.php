@@ -53,14 +53,21 @@ class AdminController extends Action
         $produto->__set('custo', isset($_POST['custo']) ? $_POST['custo'] : "");
         $produto->__set('valor', isset($_POST['valor']) ? $_POST['valor'] : "");
         $produto->__set('descricao', isset($_POST['descricao']) ? $_POST['descricao'] : "");
-        $produto->__set('imagem', isset($_POST['imagem']) ? $_POST['imagem'] : "");
+        $produto->__set('imagem', isset($_FILES['imagem']["name"]) ? $_FILES['imagem']["name"] : "");
         $produto->__set('nivel', 0);
-
+    
         if ($produto->validarCadastro()) {
             //SUCCESS ao validar cadastro
             $produto->salvar();
+            $name = $_FILES["imagem"]["name"];
+            $arquivo = ($_FILES["imagem"]["tmp_name"]);
+            move_uploaded_file($arquivo, "assets/img/produto/$name");
+
             header('Location: /adminLista');
         }
+
+
+
 
         $this->render("adicionar", "templateAdmin");
     }

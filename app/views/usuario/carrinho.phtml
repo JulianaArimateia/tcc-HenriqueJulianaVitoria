@@ -21,7 +21,7 @@
             foreach ($carrinho as $item) {
                 if ($produto['id'] == $item['id_produtos'] && $_SESSION['id'] == $item['id_usuarios']) {
                     echo "<tr class='produto__carrinho'>";
-                    echo "<td>{$produto['imagem']}</td>";
+                    echo "<td><img src='assets/img/produto/" . $produto['imagem'] . "' alt='" . $produto['nome_produto'] . "' class='img__card'></td>";
                     echo "<td>{$produto['nome_produto']}</td>";
                     echo "<td>{$produto['descricao']}</td>";
                     echo "<td>{$produto['valor']}</td>";
