@@ -32,9 +32,10 @@
                     } else {
                         echo "<a href='/menosQtdCarrinho?id={$item['id']}'><img src='assets/img/icons/icons_admin/lixeira.png' width='15px'></a>";
                     }
-                    echo "<div> </div>";
+
                     echo "<div class='qtd'>{$item['quantidade']}</div>";
-                    echo "<a href='/maisQtdCarrinho?id={$item['id']}'>+</a>";
+
+                    echo "<a id='mais' href='/maisQtdCarrinho?id={$item['id']}'>+</a>";
 
                     echo "</td>";
                     echo "</tr>";
@@ -69,7 +70,7 @@
         }
 
         $total = number_format(array_sum($valores), 2);
-        echo $total;
+        echo "R$ " . number_format($total, 2, ',', '.') ;
         ?>
 
 
