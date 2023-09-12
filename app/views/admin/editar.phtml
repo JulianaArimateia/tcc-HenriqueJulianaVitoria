@@ -10,7 +10,7 @@ $id = isset($_GET['id']);
     <h1 class="titulo__sistema">
         Atualizar produto
     </h1>
-    <form class="form__add" action='/atualizarProduto?id=<?=$id?>' method="POST">
+    <form class="form__add" action='/atualizarProduto?id=<? $produto['id']?>' method="POST" enctype="multipart/form-data">
 
         <div class="campo__input">
             <label for="imagem" class="label__input">Nova imagem do produto:</label>
