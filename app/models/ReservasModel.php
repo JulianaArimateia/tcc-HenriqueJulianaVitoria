@@ -22,26 +22,17 @@ class ReservasModel extends Model
         $this->$atributo = $valor;
     }
 
-    //validar se um cadastro pode ser feito
-    // public function validarCadastro()
-    // {
-    //     $valido = true;
+    // validar se um cadastro pode ser feito
+    public function validarCadastro()
+    {
+        $valido = true;
 
-    //     if (strlen($this->__get('nome_reserva')) < 3) {
-    //         $valido = false;
-    //     }
+        if (strlen($this->__get('nome_reserva')) < 3) {
+            $valido = false;
+        }
 
-    //     return $valido;
-    // }
-    //recuperar um reservas por nome
-    // public function getReservasPorNome()
-    // {
-    //     $query = "select id, nome, ativo from reservas where nome = :nome";
-    //     $stmt = $this->db->prepare($query);
-    //     $stmt->bindValue(':nome', $this->__get('nome'));
-    //     $stmt->execute();
-    //     return $stmt->fetchAll(\PDO::FETCH_ASSOC);
-    // }
+        return $valido;
+    }
 
     //recuperar uma reservas por id
     public function getReservasPorId()
@@ -97,20 +88,4 @@ class ReservasModel extends Model
         return $this;
     }
 
-    //atualizar
-    // public function atualizar()
-    // {
-
-    //     $query = "update reservas set nome = :nome, updated_at = NOW() where id=:id";
-
-    //     $stmt = $this->db->prepare($query);
-
-    //     $stmt->bindValue(':nome', $this->__get('nome'));
-
-    //     $stmt->bindValue(':id', $this->__get('id'));
-
-    //     $stmt->execute();
-
-    //     return $this;
-    // }
 }

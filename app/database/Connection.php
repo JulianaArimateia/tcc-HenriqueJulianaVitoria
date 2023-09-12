@@ -16,7 +16,7 @@ class Connection
     {
         # Informações sobre o banco de dados:
         $host         =   "localhost";
-        $db_name      =   "tcc_1";
+        $db_name      =   "tcc";
         $user         =   "root";
         $pass         =   "sucesso";
         $charset      =   "utf8";

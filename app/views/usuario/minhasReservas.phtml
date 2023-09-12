@@ -1,0 +1,31 @@
+<head>
+    <link rel="stylesheet" href="assets/css/reservas/style.css">
+</head>
+
+<table class="tabela">
+    <thead>
+        <tr>
+            <td>Token</td>
+            <td>Produtos</td>
+            <td>Data programada</td>
+            <td>valor</td>
+        </tr>
+    </thead>
+    <tbody>
+        <?php
+        $reservas = $this->view->reservas;
+        $carrinho = $this->view->carrinho;
+
+        foreach ($carrinho as $item) {
+            if ($reservas['id_usuarios'] ==  $_SESSION['id'] && $carrinho['id_usuarios'] == $reservas['id_usuarios']) {
+                echo "<tr>";
+                echo "<td>{$reservas['id']}</td>";
+                echo "<td><a href='produtosReserva?id=" . $reservas['id'] . "'>Ver Todos...</a></td>";
+                echo "<td>{$reservas['data_entrega']}</td>";
+                echo "<td>{$reservas['valor_produto']}</td>";
+                echo "</tr>";
+            }
+        }
+        ?>
+    </tbody>
+</table>

@@ -106,7 +106,6 @@ class AdminController extends Action
         // Setar o ID do produto a ser editado
         $produto->__set('id', isset($_GET['id']) ? $_GET['id'] : "");
         // Buscar os dados do produto no banco de dados
-        $produto->getProdutos();
 
         $this->render("editar", "templateAdmin");
     }
