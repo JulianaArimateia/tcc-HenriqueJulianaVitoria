@@ -89,7 +89,6 @@ class ProdutosModel extends Model
     public function deletarProdutos($id)
     {
         $query = "delete from produtos where id = :id_produtos";
-        // $query = "update produtos set ativo = 0, deleted_at = NOW() where id = :id_produtos";
         $stmt = $this->db->prepare($query);
         $stmt->bindValue(':id_produtos', $id);
         $stmt->execute();
