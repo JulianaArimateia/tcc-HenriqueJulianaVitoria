@@ -9,8 +9,8 @@ class CarrinhoModel extends Model
 {
 
     private $id;
-    private $id_produto;
-    private $id_usuario;
+    private $id_produtos;
+    private $id_usuarios;
     private $date_cadastro;
 
     public function __get($atributo)
