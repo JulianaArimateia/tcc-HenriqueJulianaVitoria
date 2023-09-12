@@ -140,7 +140,7 @@ public function atualizar()
         $stmt->bindValue(':descricao', $this->__get('descricao'));
         $stmt->bindValue(':imagem', $this->__get('imagem'));
         $stmt->bindValue(':nivel', $this->__get('nivel'));
-        $stmt->bindValue(':id', $this->__get('id'));
+        $stmt->bindValue('id', $this->__get('id'));
         $stmt->execute();
 
         return $this;
