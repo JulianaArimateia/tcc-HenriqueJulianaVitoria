@@ -30,12 +30,6 @@ class ReservasModel extends Model
         if (strlen($this->__get('nome_reserva')) < 3) {
             $valido = false;
         }
-<<<<<<< HEAD
-=======
-
-        return $valido;
-    }
->>>>>>> ac86a26678e46df1e9f579367e09246bb343628d
 
         return $valido;
     }
@@ -91,8 +85,4 @@ class ReservasModel extends Model
 
         return $this;
     }
-<<<<<<< HEAD
-=======
-
->>>>>>> ac86a26678e46df1e9f579367e09246bb343628d
 }

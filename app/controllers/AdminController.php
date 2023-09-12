@@ -28,6 +28,12 @@ class AdminController extends Action
         $this->render("adicionar", "templateAdmin");
     }
 
+    public function detalhesReserva()
+    {
+        AuthController::validaAutenticacao();
+        $this->render("detalhes", "templateAdmin");
+    }
+
     public function reservas()
     {
         AuthController::validaAutenticacao();
@@ -106,11 +112,12 @@ class AdminController extends Action
         // Setar o ID do produto a ser editado
         $produto->__set('id', isset($_GET['id']) ? $_GET['id'] : "");
         // Buscar os dados do produto no banco de dados
-        $produto->getProdutos();
-$produtos = $produto->getProdutoPorId();
+       
 
-      
-        $this->view->dados = $produto;
+        $produtos =  $produto->getProdutos();
+
+
+        $this->view->dados = $produtos;
 
         $this->render("editar", "templateAdmin");
     }

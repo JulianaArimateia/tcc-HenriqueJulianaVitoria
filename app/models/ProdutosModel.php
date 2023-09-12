@@ -54,25 +54,24 @@ class ProdutosModel extends Model
     //recuperar um Produtos por nome
     public function getProdutosPorNome()
     {
-        $query = "select id, nome_produto from produtos where nome_produto = :nome_produto";
+        $query = "select id, nome_produto, id_categoria, quantidade, custo, valor, descricao, nivel, imagem from produtos where nome_produto = :nome_produto";
         $stmt = $this->db->prepare($query);
         $stmt->bindValue(':nome_produto', $this->__get('nome_produto'));
         $stmt->execute();
-
-        return $stmt->fetchAll(\PDO::FETCH_ASSOC);
+// $stmt->fetchAll(\PDO::FETCH_ASSOC);
+        return $this;
     }
 
     //recuperar uma Produtos por id
     public function getProdutosPorId()
     {
-        $query = "select id, nome, from produtos where id = :id";
+        $query = "select id, nome_produto, from produtos where id = :id";
         $stmt = $this->db->prepare($query);
         $stmt->bindValue(':id', $this->__get('id'));
         $stmt->execute();
 
         return $stmt->fetchAll(\PDO::FETCH_ASSOC);
     }
-
 
     public function getProdutos()
     {

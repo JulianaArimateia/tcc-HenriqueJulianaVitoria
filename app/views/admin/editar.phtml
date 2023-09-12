@@ -2,22 +2,15 @@
     <link rel="stylesheet" href="assets/css/admin/adicionar/style.css">
 </head>
 
-<<<<<<< HEAD
 <?php
 $id = isset($_GET['id']) ? $_GET['id'] : "";
 ?>
 
-=======
->>>>>>> ac86a26678e46df1e9f579367e09246bb343628d
 <section class="sistema">
     <h1 class="titulo__sistema">
         Atualizar produto
     </h1>
-<<<<<<< HEAD
     <form class="form__add" action='/atualizarProduto?id=<?= $id ?>' method="POST" enctype="multipart/form-data">
-=======
-    <form class="form__add" action='/atualizarProduto?id=<?=$_GET['id']?>' method="POST" enctype="multipart/form-data">
->>>>>>> ac86a26678e46df1e9f579367e09246bb343628d
 
         <div class="campo__input">
             <label for="imagem" class="label__input">Nova imagem do produto:</label>
@@ -27,7 +20,7 @@ $id = isset($_GET['id']) ? $_GET['id'] : "";
         <div class="campo__input">
             <label for="categoria" class="label__input">Nova categoria do produto:</label>
             <select name="categoria" class="input__form">
-                <option value="" disabled selected></option>
+                <option value=" " disabled selected></option>
                 <option value="1">Salgado Frito</option>
                 <option value="2">Salgado Assado</option>
                 <option value="3">Refrigerante</option>
@@ -40,27 +33,27 @@ $id = isset($_GET['id']) ? $_GET['id'] : "";
         </div>
         <div class="campo__input">
             <label for="nome_produto" class="label__input">Novo nome do produto:</label>
-            <input type="text" name="nome_produto" class="input__form">
+            <input type="text" name="nome_produto" class="input__form" value="<?= isset($this->view->dados[0]['id']) ? $this->view->dados[0]['nome_produto'] : ""; ?>">
         </div>
 
         <div class="campo__input">
             <label for="descricao" class="label__input">Nova descrição do produto:</label>
-            <textarea type="text" name="descricao" class="input__form"></textarea>
+            <textarea type="text" name="descricao" class="input__form" value="<?= isset($this->view->dados[0]['id']) ? $this->view->dados[0]['descricao'] : ""; ?>"></textarea>
         </div>
 
         <div class="campo__input">
             <label for="custo" class="label__input">Novo custo do produto:</label>
-            <input type="number" name="custo" class="input__form">
+            <input type="number" name="custo" class="input__form" value="<?= isset($this->view->dados[0]['id']) ? $this->view->dados[0]['custo'] : ""; ?>">
         </div>
 
         <div class="campo__input">
             <label for="valor" class="label__input">Novo valor do produto:</label>
-            <input type="number" name="valor" class="input__form">
+            <input type="number" name="valor" class="input__form" value="<?= isset($this->view->dados[0]['id']) ? $this->view->dados[0]['valor'] : ""; ?>">
         </div>
 
         <div class="campo__input">
             <label for="quantidade_produto" class="label__input">Nova quantidade do produto:</label>
-            <input type="number" name="quantidade_produto" class="input__form">
+            <input type="number" name="quantidade_produto" class="input__form" value="<?= isset($this->view->dados[0]['id']) ? $this->view->dados[0]['quantidade_produto'] : ""; ?>">
         </div>
 
         <div></div>
