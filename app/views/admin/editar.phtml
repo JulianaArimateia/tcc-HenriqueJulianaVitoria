@@ -3,7 +3,7 @@
 </head>
 
 <?php
-$id = $_GET['id'];
+$id = isset($_GET['id']);
 ?>
 
 <section class="sistema">
@@ -34,7 +34,7 @@ $id = $_GET['id'];
 
         <div class="campo__input">
             <label for="nome_produto" class="label__input">Novo nome do produto:</label>
-            <input type="text" name="nome_produto" class="input__form">
+            <input type="text" name="nome_produto" class="input__form" value="<?= isset($this->view->dados[0]['id']) ? $this->view->dados[0]['nome_produto'] : ""; ?>">
         </div>
 
         <div class="campo__input">
