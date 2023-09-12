@@ -3,14 +3,14 @@
 </head>
 
 <?php
-$id = isset($_GET['id']);
+$id = isset($_GET['id']) ? $_GET['id'] : "";
 ?>
 
 <section class="sistema">
     <h1 class="titulo__sistema">
         Atualizar produto
     </h1>
-    <form class="form__add" action='/atualizarProduto?id=<?=isset($_GET['id'])?>' method="POST" enctype="multipart/form-data">
+    <form class="form__add" action='/atualizarProduto?id=<?= $id ?>' method="POST" enctype="multipart/form-data">
 
         <div class="campo__input">
             <label for="imagem" class="label__input">Nova imagem do produto:</label>
@@ -31,10 +31,9 @@ $id = isset($_GET['id']);
                 <option value="8">Outro</option>
             </select>
         </div>
-
         <div class="campo__input">
             <label for="nome_produto" class="label__input">Novo nome do produto:</label>
-            <input type="text" name="nome_produto" class="input__form" value="<?= isset($this->view->dados[0]['id']) ? $this->view->dados[0]['nome_produto'] : ""; ?>">
+            <input type="text" name="nome_produto" class="input__form">
         </div>
 
         <div class="campo__input">

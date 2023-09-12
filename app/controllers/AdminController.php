@@ -55,7 +55,7 @@ class AdminController extends Action
         $produto->__set('descricao', isset($_POST['descricao']) ? $_POST['descricao'] : "");
         $produto->__set('imagem', isset($_FILES['imagem']["name"]) ? $_FILES['imagem']["name"] : "");
         $produto->__set('nivel', 0);
-    
+
         if ($produto->validarCadastro()) {
             //SUCCESS ao validar cadastro
             $produto->salvar();
@@ -107,6 +107,10 @@ class AdminController extends Action
         $produto->__set('id', isset($_GET['id']) ? $_GET['id'] : "");
         // Buscar os dados do produto no banco de dados
         $produto->getProdutos();
+$produtos = $produto->getProdutoPorId();
+
+      
+        $this->view->dados = $produto;
 
         $this->render("editar", "templateAdmin");
     }

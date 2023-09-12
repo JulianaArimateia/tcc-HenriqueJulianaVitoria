@@ -38,6 +38,15 @@ class ProdutosModel extends Model
         if (strlen($this->__get('nome_produto')) < 1) {
             $valido = false;
         }
+        if (strlen($this->__get('custo')) < 1) {
+            $valido = false;
+        }
+        if (strlen($this->__get('valor')) < 1) {
+            $valido = false;
+        }
+        if (strlen($this->__get('quantidade_produto')) < 1) {
+            $valido = false;
+        }
 
         return $valido;
     }
