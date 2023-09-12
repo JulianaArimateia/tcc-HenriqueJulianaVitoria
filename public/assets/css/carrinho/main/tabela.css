@@ -1,16 +1,38 @@
+.scroll {
+    margin-top: 5vh;
+    width: 55%;
+    height: 70vh;
+    overflow-y: scroll;
+}
+
+.scroll::-webkit-scrollbar {
+    width: 14px;
+}
+
+.scroll::-webkit-scrollbar-track {
+    background: var(--color-three);
+}
+
+.scroll::-webkit-scrollbar-thumb {
+    background-color: var(--color-main);
+    border-radius: 20px;
+    width: 8px;
+    border: 3px solid var(--color-three);
+}
+
 .tabela {
     /* organizações */
     margin: auto;
-    margin-top: 5vh;
 
     /* aparência */
     background-color: var(--color-main);
     text-align: center;
     color: white;
+    overflow-y: scroll;
 
     /* dimensões */
-    width: 50%;
-    height: 2rem;
+    width: 100%;
+    height: 10px;
 }
 
 .produto__carrinho {
@@ -23,9 +45,11 @@
     border-bottom: 1px solid var(--color-main);
 
     /* dimensões */
+    height: 60px;
+
 }
 
-.qtd__coluna{
+.qtd__coluna {
     width: 80px;
 }
 
@@ -39,8 +63,8 @@
     /* aparência */
 
     /* dimensões */
-    height: 100%;
     width: 100%;
+    height: 60px;
 }
 
 .qtd__carrinho a {
@@ -65,6 +89,6 @@
     /* dimensões */
 }
 
-.img__card{
+.img__card {
     width: 50px;
 }
