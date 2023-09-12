@@ -1,10 +1,10 @@
 .corpo {
     /* organizações */
     display: flex;
+    justify-content: space-around;
 
     /* aparências */
-    background: linear-gradient(90deg, var(--color-main) 35%, white 35% 100%);
-
+    background-color: white;
     /* dimensões */
     height: 100vh;
 }

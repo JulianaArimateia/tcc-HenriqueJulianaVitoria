@@ -1,16 +1,15 @@
 .pagamento {
     /* organizações */
-    margin-left: 100px;
-    margin-top: 55px;
+    margin-top: 5vh;
 
     /* aparências */
     background: white;
     border-radius: 8px;
-    box-shadow: 0 1px 8px 4px lightgray;
+    box-shadow: 0 0 8px 3px lightgray;
 
     /* dimensões */
-    width: 560px;
-    height: 560px;
+    width: 500px;
+    height: 200px;
 }
 
 .header__pag {
@@ -24,7 +23,7 @@
     color: var(--color-main);
 
     /* dimensões */
-    height: 50px;
+    height: 25%;
 }
 
 .header__pag h2 {
@@ -42,10 +41,76 @@
     /* aparências */
     color: var(--color-main);
     border: 1px solid var(--color-main);
+    border-radius: 8px;
 
     /* dimensões */
     width: 100px;
     height: 30px;
+}
+
+.corpo__pag {
+    /* organizações */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    /* aparências */
+
+    /* dimensões */
+    height: 45%;
+}
+
+.valor {
+    /* organizações */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: auto;
+
+    /* aparências */
+    color: var(--color-main);
+
+    /* dimensões */
+    width: 100%;
+}
+
+.footer__pag {
+    /* organizações */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    /* aparências */
+
+    /* dimensões */
+    height: 30%;
+}
+
+.btn__pag {
+    /* organizações */
+    position: relative;
+    margin: auto;
+
+    /* aparências */
+    border-radius: 0 0 8px 8px;
+    border: 2px solid var(--color-main);
+    background-color: var(--color-main);
+    color: white;
+    transition: .2s all;
+
+    /* dimensões */
+    height: 50px;
+    width: 98%;
+}
+
+.btn__pag:hover {
+    /* organizações */
+
+    /* aparências */
+    background-color: white;
+    color: var(--color-main);
+
+    /* dimensões */
 }
 
 /* organizações */
