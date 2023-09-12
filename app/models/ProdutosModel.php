@@ -35,7 +35,7 @@ class ProdutosModel extends Model
     {
         $valido = true;
 
-        if (strlen($this->__get('nome_produto')) < 3) {
+        if (strlen($this->__get('nome_produto')) < 1) {
             $valido = false;
         }
 

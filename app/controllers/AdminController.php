@@ -65,12 +65,9 @@ class AdminController extends Action
 
             header('Location: /adminLista');
         }
-
-
-
-
         $this->render("adicionar", "templateAdmin");
     }
+
 
     public function atualizarProduto()
     {
