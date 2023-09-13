@@ -1,0 +1,21 @@
+.sistema {
+    /* organizações */
+    padding-top: 6vh;
+    margin: auto;
+
+    /* aparências */
+
+    /* dimensões */
+    width: 85%;
+    min-height: 100vh;
+}
+
+.titulo__sistema {
+    /* organizações */
+
+    /* aparências */
+    font-size: 3rem;
+    font-family: Arial, Helvetica, sans-serif;
+
+    /* dimensões */
+}

@@ -10,6 +10,7 @@ class ReservasModel extends Model
     private $id;
     private $id_usuarios;
     private $valor_produto;
+    private $data_entrega;
 
 
     public function __get($atributo)
@@ -33,8 +34,8 @@ class ReservasModel extends Model
 
         return $valido;
     }
-   
-    
+
+
     //recuperar uma reservas por id
     public function getReservasPorId()
     {
@@ -52,6 +53,7 @@ class ReservasModel extends Model
     // 		usuarios as u on u.id = c.id_usuario"  . " and c.ativo = 1";
     // 	return $this->db->query($sql)->fetchAll();
     // }
+
 
     public function getReservas()
     {
