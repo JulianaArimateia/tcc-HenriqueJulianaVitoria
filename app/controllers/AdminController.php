@@ -144,12 +144,4 @@ class AdminController extends Action
         header("Location: /adminLista");
     }
 
-    public function Pagamento()
-    {
-        AuthController::validaAutenticacao();
-
-    
-        $this->render("pagamento", "templateAdmin");
-    }
-
 }

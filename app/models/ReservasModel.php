@@ -49,9 +49,9 @@ class ReservasModel extends Model
 
     public function getReservas()
     {
-    	$sql = "select r.id, r.id_usuarios, r.id_carrinho, r.data_entrega, u.nome as nome_usuario, u.email as email_usuario, c.quantidade as quantidade, c.valor as valor  from reserva as r inner join 
-    		usuarios as u on u.id = r.id_usuarios";
-    	return $this->db->query($sql)->fetchAll();
+        $sql = "select r.id, r.id_usuarios, r.id_carrinho, r.data_entrega, u.nome as nome_usuario, u.email as email_usuario, c.quantidade as quantidade, c.valor_produto as valor_produto, c.id_produtos as id_produtos  from reserva as r inner join 
+    		usuarios as u on u.id = r.id_usuarios inner join carrinho as c on c.id = r.id_carrinho";
+        return $this->db->query($sql)->fetchAll();
     }
 
     public function deletarReservas($id)
