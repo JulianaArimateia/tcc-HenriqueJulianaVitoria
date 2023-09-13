@@ -9,6 +9,9 @@ class CategoriaModel extends Model
 
 	private $id;
 	private $nome;
+	private $created_at;
+	private $updated_at;
+	private $deleted_at;
 
 
 
@@ -22,15 +25,6 @@ class CategoriaModel extends Model
 		$this->$atributo = $valor;
 	}
 
-
-
-	// public function getCategorias()
-	//  {
-	// 	$sql = "select c.id, c.nome, u.nome as nome_usuario, u.sobrenome as sobrenome_usuario from categorias as c inner join 
-	//  		usuarios as u on u.id = c.id_usuario"  . " and c.ativo = 1";
-
-	// 	return $this->db->query($sql)->fetchAll();
-	//  }
 	public function getCategorias()
 	{
 		$query = "select * from categoria";

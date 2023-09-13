@@ -44,7 +44,9 @@ class Route extends Bootstrap
         $routes['sair'] = array('route' => '/sair', 'controller' => 'AuthController', 'action' => 'sair');
         $routes['autenticar'] = array('route' => '/autenticar', 'controller' => 'AuthController', 'action' => 'autenticar');
 
-      
+        //pagamento
+        $routes['pagamento'] = array('route' => '/pagamento', 'controller' => 'AdminController', 'action' => 'pagamento');
+
         $this->setRoutes($routes);
     }
 }

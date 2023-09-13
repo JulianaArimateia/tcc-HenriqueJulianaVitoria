@@ -12,7 +12,7 @@ class CarrinhoModel extends Model
     private $id_produtos;
     private $id_usuarios;
     private $quantidade;
-    private $valor;
+    private $valor_produto;
     private $date_cadastro;
 
     public function __get($atributo)
@@ -56,12 +56,12 @@ class CarrinhoModel extends Model
 
     public function getCarrinho()
     {
-        $query = "select * from carrinho";
-        $stmt = $this->db->prepare($query);
-        $stmt->execute();
-
-        return $stmt->fetchAll(\PDO::FETCH_ASSOC);
+        $sql = "SELECT c.id, c.id_produtos, c.id_usuarios, c.quantidade, c.valor_produto, p.nome_produto as nome_produto, p.descricao as descricao_produto, p.quantidade_produto as quantidade_total
+        FROM carrinho as c
+        INNER JOIN produtos as p ON p.id = c.id_produtos;";
+        return $this->db->query($sql)->fetchAll();
     }
+
 
     public function getCarrinhoPorID()
     {
