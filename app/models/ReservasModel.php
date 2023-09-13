@@ -33,7 +33,8 @@ class ReservasModel extends Model
 
         return $valido;
     }
-
+   
+    
     //recuperar uma reservas por id
     public function getReservasPorId()
     {
@@ -45,9 +46,6 @@ class ReservasModel extends Model
         return $stmt->fetchAll(\PDO::FETCH_ASSOC);
     }
 
-    //-----------------------------------------------------//
-    //perguntar pro fabio
-    //---------------------------------------------//
     // public function getReservas()
     // {
     // 	$sql = "select c.id, c.nome, c.id_usuario, c.ativo, c.created_at, u.nome as nome_usuario, u.sobrenome as sobrenome_usuario from produtos as c inner join 
@@ -87,5 +85,4 @@ class ReservasModel extends Model
 
         return $this;
     }
-
 }
