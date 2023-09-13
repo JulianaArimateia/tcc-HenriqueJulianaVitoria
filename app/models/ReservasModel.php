@@ -47,17 +47,6 @@ class ReservasModel extends Model
         return $stmt->fetchAll(\PDO::FETCH_ASSOC);
     }
 
-<<<<<<< HEAD
-=======
-    // public function getReservas()
-    // {
-    // 	$sql = "select c.id, c.nome, c.id_usuario, c.ativo, c.created_at, u.nome as nome_usuario, u.sobrenome as sobrenome_usuario from produtos as c inner join 
-    // 		usuarios as u on u.id = c.id_usuario"  . " and c.ativo = 1";
-    // 	return $this->db->query($sql)->fetchAll();
-    // }
-
-
->>>>>>> 1fadbc90982ff50fe9cd30aea0d4678546625d30
     public function getReservas()
     {
     	$sql = "select r.id, r.id_usuarios, r.valor_produto, r.data_entrega, u.nome as nome_usuario, u.email as email_usuario from reserva as r inner join 
