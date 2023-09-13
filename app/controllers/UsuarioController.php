@@ -129,6 +129,17 @@ class UsuarioController extends Action
         }
     }
 
+    public function reservar()
+    {
+        $carrinho = Container::getModel('carrinho');
+        $carrinho = $carrinho->getCarrinhoPorID();
+        
+
+        $reservas = Container::getModel('reservas');
+        $reservas->addReserva($carrinho);
+        header('Location: /minhasReservas');
+    }
+
     public function minhasReservas()
     {
         AuthController::validaAutenticacao();

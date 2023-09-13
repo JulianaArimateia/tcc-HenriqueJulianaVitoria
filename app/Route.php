@@ -15,6 +15,7 @@ class Route extends Bootstrap
 
         //UsuarioController
         $routes['carrinho'] = array('route' => '/carrinho', 'controller' => 'usuarioController', 'action' => 'carrinho');
+        $routes['reservar'] = array('route' => '/reservar', 'controller' => 'usuarioController', 'action' => 'reservar');
         $routes['minhasReservas'] = array('route' => '/minhasReservas', 'controller' => 'usuarioController', 'action' => 'minhasReservas');
         $routes['adicionar_carrinho'] = array('route' => '/adicionarCarrinho', 'controller' => 'usuarioController', 'action' => 'adicionarCarrinho');
         $routes['remover_carrinho'] = array('route' => '/removerCarrinho', 'controller' => 'usuarioController', 'action' => 'removerCarrinho');
@@ -28,6 +29,7 @@ class Route extends Bootstrap
         $routes['adicionar'] = array('route' => '/adminAdicionar', 'controller' => 'adminController', 'action' => 'adicionar');
         $routes['reservas'] = array('route' => '/adminReservas', 'controller' => 'adminController', 'action' => 'reservas');
         $routes['detalhesReserva'] = array('route' => '/detalhesReserva', 'controller' => 'adminController', 'action' => 'detalhesReserva');
+        $routes['deletarReserva'] = array('route' => '/deletarReserva', 'controller' => 'adminController', 'action' => 'deletarReserva');
         $routes['salvaProtudo'] = array('route' => '/salvarProduto', 'controller' => 'adminController', 'action' => 'salvarProduto');
         $routes['editarProtudo'] = array('route' => '/editarProduto', 'controller' => 'adminController', 'action' => 'editarProduto');
         $routes['excluirProtudo'] = array('route' => '/excluirProduto', 'controller' => 'adminController', 'action' => 'excluirProduto');

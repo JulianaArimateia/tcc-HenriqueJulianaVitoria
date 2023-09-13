@@ -9,7 +9,8 @@ class ReservasModel extends Model
 
     private $id;
     private $id_usuarios;
-    private $valor_produto;
+    private $id_carrinho;
+    private $data_entrega;
 
 
     public function __get($atributo)
@@ -33,8 +34,8 @@ class ReservasModel extends Model
 
         return $valido;
     }
-   
-    
+
+
     //recuperar uma reservas por id
     public function getReservasPorId()
     {
@@ -46,6 +47,8 @@ class ReservasModel extends Model
         return $stmt->fetchAll(\PDO::FETCH_ASSOC);
     }
 
+<<<<<<< HEAD
+=======
     // public function getReservas()
     // {
     // 	$sql = "select c.id, c.nome, c.id_usuario, c.ativo, c.created_at, u.nome as nome_usuario, u.sobrenome as sobrenome_usuario from produtos as c inner join 
@@ -53,14 +56,14 @@ class ReservasModel extends Model
     // 	return $this->db->query($sql)->fetchAll();
     // }
 
+
+>>>>>>> 1fadbc90982ff50fe9cd30aea0d4678546625d30
     public function getReservas()
     {
-        $query = "select * from reserva";
-
-        return $this->db->query($query)->fetchAll();
-    } //perguntar sobre a quantidade essa quantidade de usuarios e pq precisa disso
-
-
+    	$sql = "select r.id, r.id_usuarios, r.valor_produto, r.data_entrega, u.nome as nome_usuario, u.email as email_usuario from reserva as r inner join 
+    		usuarios as u on u.id = r.id_usuarios";
+    	return $this->db->query($sql)->fetchAll();
+    }
 
     public function deletarReservas($id)
     {

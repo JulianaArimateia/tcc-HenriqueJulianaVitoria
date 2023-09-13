@@ -84,12 +84,21 @@
         $total = number_format(array_sum($valores), 2);
         echo
         " <h2 class='valor'>
-    Total: R$ " . number_format($total, 2, ',', '.') .
-            " </h2>";
+            Total: R$ " . number_format($total, 2, ',', '.') .
+        " </h2>
+        <input type='date'>
+        ";
         ?>
     </div>
 
     <div class="footer__pag">
-        <button class="btn__pag">Confrmar Compra</button>
+        <?php
+        if ($total == 0) {
+            echo "<a href='/' class='voltar__home'>Adicione ao carrinho</a>";
+        } else {
+            echo "<a href='/reservar?valor=" . $total . "' class='btn__pag'>Confirmar compra</a>";
+        }
+        ?>
+        
     </div>
 </div>

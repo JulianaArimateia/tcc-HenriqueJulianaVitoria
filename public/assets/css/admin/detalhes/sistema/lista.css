@@ -1,0 +1,16 @@
+.info {
+    /* organizações */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    /* aparências */
+    border-bottom: 1px solid var(--color-main);
+
+    /* dimensões */
+    height: 50px;
+}
+
+.info h5{
+    margin: 0;
+}
