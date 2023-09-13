@@ -15,6 +15,7 @@ class Route extends Bootstrap
 
         //UsuarioController
         $routes['carrinho'] = array('route' => '/carrinho', 'controller' => 'usuarioController', 'action' => 'carrinho');
+        $routes['reservar'] = array('route' => '/reservar', 'controller' => 'usuarioController', 'action' => 'reservar');
         $routes['minhasReservas'] = array('route' => '/minhasReservas', 'controller' => 'usuarioController', 'action' => 'minhasReservas');
         $routes['adicionar_carrinho'] = array('route' => '/adicionarCarrinho', 'controller' => 'usuarioController', 'action' => 'adicionarCarrinho');
         $routes['remover_carrinho'] = array('route' => '/removerCarrinho', 'controller' => 'usuarioController', 'action' => 'removerCarrinho');

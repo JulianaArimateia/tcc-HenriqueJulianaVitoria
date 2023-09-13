@@ -89,6 +89,9 @@
 .btn__pag {
     /* organizações */
     position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     margin: auto;
 
     /* aparências */
@@ -96,6 +99,7 @@
     border: 2px solid var(--color-main);
     background-color: var(--color-main);
     color: white;
+    text-decoration: none;
     transition: .2s all;
 
     /* dimensões */
@@ -109,8 +113,23 @@
     /* aparências */
     background-color: white;
     color: var(--color-main);
+    cursor: pointer;
 
     /* dimensões */
+}
+
+.voltar__home {
+    /* organizações */
+
+    /* aparências */
+    color: var(--color-main);
+    text-decoration: none;
+    font-size: 2rem;
+    text-align: center;
+    border-top: 1px solid var(--color-main);
+
+    /* dimensões */
+    width: 100%;
 }
 
 /* organizações */
