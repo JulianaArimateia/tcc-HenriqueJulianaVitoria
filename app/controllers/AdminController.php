@@ -34,6 +34,15 @@ class AdminController extends Action
         $this->render("detalhes", "templateAdmin");
     }
 
+    public function deletarReservas()
+    {
+        AuthController::validaAutenticacao();
+        $id_reserva = isset($_GET['id']) ? $_GET['id'] : '';
+        $reservas = Container::getModel('Reservas');
+        $reservas = $reservas->deletarReservas($id_reserva);
+         header("Location: /adminReservas");
+    }
+
     public function reservas()
     {
         AuthController::validaAutenticacao();
@@ -112,7 +121,7 @@ class AdminController extends Action
         // Setar o ID do produto a ser editado
         $produto->__set('id', isset($_GET['id']) ? $_GET['id'] : "");
         // Buscar os dados do produto no banco de dados
-       
+
 
         $produtos =  $produto->getProdutos();
 

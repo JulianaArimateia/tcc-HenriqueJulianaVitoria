@@ -1,7 +1,6 @@
 <head>
     <link rel="stylesheet" href="assets/css/admin/lista/style.css">
 </head>
-
 <section class="sistema">
     <h1 class="titulo__sistema">
         Tabela de reservas
@@ -12,20 +11,20 @@
         <thead class="header__tabela">
             <th>Email Reservante</th>
             <th>Produto</th>
-            <th>Descrição</th>
             <th>Quantidade</th>
             <th>Valor</th>
             <th>Data</th>
-            <th>mais</th>
+            <th>Token</th>
+            <th>Ações</th>
         </thead>
         <tbody class="corpo__tabela">
             <tr>
                 <td class='item__tabela'>jjjjj@gmail</td>
                 <td class='item__tabela'>coxinha</td>
-                <td class='item__tabela'>frango</td>
                 <td class='item__tabela'>1</td>
                 <td class='item__tabela'>7,00</td>
                 <td class='item__tabela'>12/09</td>
+                <td class='item__tabela'>1234567890</td>
                 <td class='item__tabela'>
                     <a href="/detalhesReserva">
                         <button class="btn btn-warning">
@@ -34,7 +33,7 @@
                                 <path d="M8 5.5a2.5 2.5 0 1 0 0 5 2.5 2.5 0 0 0 0-5zM4.5 8a3.5 3.5 0 1 1 7 0 3.5 3.5 0 0 1-7 0z" />
                             </svg></button></a>
 
-                    <a href="/excluirReserva"><button class="btn btn-danger">
+                    <a href="/deletarReserva?id="><button class="btn btn-danger">
                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x-lg" viewBox="0 0 16 16">
                                 <path d="M2.146 2.854a.5.5 0 1 1 .708-.708L8 7.293l5.146-5.147a.5.5 0 0 1 .708.708L8.707 8l5.147 5.146a.5.5 0 0 1-.708.708L8 8.707l-5.146 5.147a.5.5 0 0 1-.708-.708L7.293 8 2.146 2.854Z" />
                             </svg></button></a>
