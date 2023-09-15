@@ -2,42 +2,59 @@
     <link rel="stylesheet" href="assets/css/admin/detalhes/style.css">
 </head>
 
-<section class="sistema">
-    <h1 class="titulo__sistema">Detalhes do pedido</h1>
-    <div class="info">
+
+<section class='sistema'>
+    <h1 class='titulo__sistema'>Detalhes do pedido</h1>
+
+
+    <?php
+
+    $reservas = $this->view->reservas;
+    $produtosReserva = $this->view->produtosReserva;
+
+    foreach ($reservas as $reserva) {
+        foreach ($produtosReserva as $PR) {
+            echo "
+        <div class='info'>
         <h5>Nome do cliente :</h5>
-        <h5> INFORMAÇÃO</h5>
+        <h5>  " . $reserva['nome_usuario'] . "</h5>
     </div>
-    <div class="info">
+    <div class='info'>
         <h5> Email do cliente :</h5>
-        <h5> INFORMAÇÃO</h5>
+        <h5>  " . $reserva['email_usuario'] . "</h5>
     </div>
-    <div class="info">
+    <div class='info'>
         <h5>Nome do produto :</h5>
-        <h5> INFORMAÇÃO</h5>
+        <h5>  " . $PR['nome_produto'] . "</h5>
     </div>
-    <div class="info">
+    <div class='info'>
         <h5>Descrição do produto :</h5>
-        <h5> INFORMAÇÃO</h5>
+        <h5>  " . $PR['descricao'] . "</h5>
     </div>
-    <div class="info">
+    <div class='info'>
         <h5>Categoria :</h5>
-        <h5> INFORMAÇÃO</h5>
+        <h5>  " . $PR['id_categoria'] . "</h5>
     </div>
-    <div class="info">
+    <div class='info'>
         <h5>Quantidade :</h5>
-        <h5> INFORMAÇÃO</h5>
+        <h5>  " . $reserva['quantidade'] . "</h5>
     </div>
-    <div class="info">
+    <div class='info'>
         <h5>Valor :</h5>
-        <h5> INFORMAÇÃO</h5>
+        <h5> R$ " . $reserva['valor_produto'] . "</h5>
     </div>
-    <div class="info">
+    <div class='info'>
         <h5>Data de Retirada :</h5>
-        <h5> INFORMAÇÃO</h5>
+        <h5>  " . $reserva['data_entrega'] . "</h5>
     </div>
-    <div class="info">
+    <div class='info'>
         <h5>Token :</h5>
-        <h5> INFORMAÇÃO</h5>
+        <h5>   " . $reserva['id'] . "</h5>
     </div>
+        ";
+        }
+    }
+
+    ?>
+
 </section>

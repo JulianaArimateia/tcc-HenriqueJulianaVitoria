@@ -51,11 +51,6 @@
     </table>
 </div>
 
-
-
-
-
-
 <div class="pagamento">
     <div class="header__pag">
         <h2>Pagamento</h2>
@@ -65,18 +60,24 @@
             <option value="credito">Crédito</option>
         </select>
     </div>
-
     <div class="corpo__pag">
         <?php
 
         $valores = [];
         $total = 0;
 
+        $idCarrinho = 0;
+        $idProduto = 0;
+
         foreach ($produtos as $produto) {
             foreach ($carrinho as $item) {
                 if ($produto['id'] == $item['id_produtos'] && $_SESSION['id'] == $item['id_usuarios']) {
                     $subtotal = floatval($produto['valor']) * intval($item['quantidade']);
                     $valores[] = $subtotal;
+
+
+                    $idCarrinho = $item['id'];
+                    $idProduto = $produto['id'];
                 }
             }
         }
@@ -85,20 +86,18 @@
         echo
         " <h2 class='valor'>
             Total: R$ " . number_format($total, 2, ',', '.') .
-        " </h2>
-        <input type='date'>
-        ";
-        ?>
-    </div>
+            " </h2>
 
-    <div class="footer__pag">
-        <?php
+        <form method='POST' action='/reservar?valor=" . $total . "&carrinho=" . $idCarrinho . "&produto=" . $idProduto . "' enctype='multipart/form-data'>
+        <input type='date' name='data_entrega'>";
+
         if ($total == 0) {
-            echo "<a href='/' class='voltar__home'>Adicione ao carrinho</a>";
+            echo "<a type='submit' href='/' class='voltar__home'>Adicione ao carrinho</a>";
         } else {
-            echo "<a href='/reservar?valor=" . $total . "' class='btn__pag'>Confirmar compra</a>";
-        }
+            echo "<button type='submit'  class='btn__pag'>Confirmar compra</button>";
+        };
+
+        echo "</form>";
         ?>
-        
     </div>
 </div>

@@ -14,16 +14,19 @@
     <tbody>
         <?php
         $reservas = $this->view->reservas;
-        $carrinho = $this->view->carrinho;
+        $produtos = $this->view->produtos;
 
-        foreach ($carrinho as $item) {
-            if ($reservas['id_usuarios'] ==  $_SESSION['id'] && $carrinho['id_usuarios'] == $reservas['id_usuarios']) {
-                echo "<tr>";
-                echo "<td>{$reservas['id']}</td>";
-                echo "<td><a href='produtosReserva?id=" . $reservas['id'] . "'>Ver Todos...</a></td>";
-                echo "<td>{$reservas['data_entrega']}</td>";
-                echo "<td>{$reservas['valor_produto']}</td>";
-                echo "</tr>";
+
+        foreach ($reservas as $reserva) {
+            foreach($produtos as $produto){
+                if ($reserva['id_usuarios'] == $_SESSION['id'] && $produto['id'] == $reserva['id_produtos']) {
+                    echo "<tr>";
+                    echo "<td>{$produto['nome_produto']}</td>";
+                    echo "<td>{$reserva['data_entrega']}</td>";
+                    echo "<td>R$ {$reserva['valor_produto']}</td>";
+                    echo "<td></td>";
+                    echo "</tr>";
+                }
             }
         }
         ?>

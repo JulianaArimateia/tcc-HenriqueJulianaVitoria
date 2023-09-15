@@ -31,16 +31,33 @@ class AdminController extends Action
     public function detalhesReserva()
     {
         AuthController::validaAutenticacao();
+
+        $reservas = Container::getModel('Reservas');
+        $reservas = $reservas->getReservasPorId();
+        $this->view->reservas = $reservas;
+
+        $produtosReserva = Container::getModel('produtosReserva');
+        $produtosReserva = $produtosReserva->getProdutosReservasPorId();
+        $this->view->produtosReserva = $produtosReserva;
+
         $this->render("detalhes", "templateAdmin");
     }
 
-    public function deletarReservas()
+    public function deletarReserva()
     {
         AuthController::validaAutenticacao();
+
         $id_reserva = isset($_GET['id']) ? $_GET['id'] : '';
+
+        $produtosReserva = Container::getModel('ProdutosReserva');
+        $produtosReserva = $produtosReserva->deletarProdutosReserva($id_reserva);
+
         $reservas = Container::getModel('Reservas');
         $reservas = $reservas->deletarReservas($id_reserva);
-         header("Location: /adminReservas");
+
+
+
+        header("Location: /adminReservas");
     }
 
     public function reservas()
@@ -143,5 +160,4 @@ class AdminController extends Action
 
         header("Location: /adminLista");
     }
-
 }
