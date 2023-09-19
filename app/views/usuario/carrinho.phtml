@@ -87,7 +87,7 @@
         <h2 class='valor'>
             Total: R$ <?= number_format($total, 2, ',', '.') ?> </h2>
 
-        <form method='POST' action="/reservar" enctype='multipart/form-data'>
+        <form method='POST' action="/pagamento" enctype='multipart/form-data'>
             <input type='date' name='data_entrega'>
             <input type="hidden" value="<?= $total; ?>" name="valor_produto">
             <input type="hidden" value="<?= $idCarrinho; ?>" name="id_carrinho">
