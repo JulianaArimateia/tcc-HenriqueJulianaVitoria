@@ -133,10 +133,15 @@ class UsuarioController extends Action
     {
         $carrinho = Container::getModel('carrinho');
         $carrinho = $carrinho->getCarrinhoPorID();
-        
+
 
         $reservas = Container::getModel('reservas');
-        $reservas->addReserva($carrinho);
+        $reservas->__set('data_entrega', isset($_POST['data_entrega']) ? $_POST['data_entrega'] : "");
+        $reservas->addReserva();
+
+        // $produtos = Container::getModel('produtosReservas');
+        // $produtos->addProdutosReserva();
+
         header('Location: /minhasReservas');
     }
 
@@ -144,9 +149,9 @@ class UsuarioController extends Action
     {
         AuthController::validaAutenticacao();
 
-        $carrinho = Container::getModel('carrinho');
-        $carrinho = $carrinho->getCarrinhoPorID();
-        $this->view->carrinho = $carrinho;
+        $produtos = Container::getModel('produtos');
+        $produtos = $produtos->getProdutos();
+        $this->view->produtos = $produtos;
 
         $reservas = Container::getModel('reservas');
         $reservas = $reservas->getReservas();
