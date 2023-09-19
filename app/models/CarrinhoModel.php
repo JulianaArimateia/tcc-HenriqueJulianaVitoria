@@ -53,10 +53,11 @@ class CarrinhoModel extends Model
 
     public function getCarrinho()
     {
-        $sql = "SELECT c.id, c.id_produtos, c.id_usuarios, c.quantidade, c.valor_produto, p.nome_produto as nome_produto, p.descricao as descricao_produto, p.quantidade_produto as quantidade_total
+        $sql = "SELECT c.id, c.id_produtos, c.id_usuarios, c.quantidade, p.nome_produto as nome_produto, p.descricao as descricao_produto, p.quantidade_produto as quantidade_total
         FROM carrinho as c
         INNER JOIN produtos as p ON p.id = c.id_produtos;";
         return $this->db->query($sql)->fetchAll();
+
     }
 
 

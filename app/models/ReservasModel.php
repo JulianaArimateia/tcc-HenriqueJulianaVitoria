@@ -74,9 +74,9 @@ class ReservasModel extends Model
         $query = "INSERT INTO reserva (id_usuarios, valor_produto, data_entrega, id_carrinho) VALUES (:id_usuarios, :valor_produto, :data_entrega, :id_carrinho)";
         $stmt = $this->db->prepare($query);
         $stmt->bindValue(':id_usuarios', $_SESSION['id']);
-        $stmt->bindValue(':valor_produto', $_GET['valor']);
+        $stmt->bindValue(':valor_produto', $this->__get['valor_produto']);
         $stmt->bindValue(':data_entrega', $this->__get('data_entrega'));
-        $stmt->bindValue(':id_carrinho', $_GET['carrinho']);
+        $stmt->bindValue(':id_carrinho', $this->__get['id_carrinho']);
         $stmt->execute();
 
         // Obter o último ID inserido na tabela 'reserva'
@@ -85,9 +85,15 @@ class ReservasModel extends Model
         // Segunda consulta para inserir na tabela 'produtos_reserva'
         $query = "INSERT INTO produtos_reserva (id_produto, id_reserva) VALUES (:id_produto, :id_reserva)";
         $stmt = $this->db->prepare($query);
-        $stmt->bindValue(':id_produto', $_GET['produto']);
+        $stmt->bindValue(':id_produto', $this->__get['id_produto']);
         $stmt->bindValue(':id_reserva', $id_reserva); // Usando o último ID inserido na primeira tabela
         $stmt->execute();
+
+        // $query = "delete from carrinho where id_produtos = :id_produtos and id_usuarios = :id_usuarios;";
+        // $stmt = $this->db->prepare($query);
+        // $stmt->bindValue(':id_produtos', $_GET['produto']);
+        // $stmt->bindValue(':id_usuarios', $_SESSION['id']);
+        // $stmt->execute();
 
         return $this;
     }

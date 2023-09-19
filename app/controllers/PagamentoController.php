@@ -14,7 +14,7 @@ class PagamentoController extends Action
     public function estrutura()
     {
         AuthController::validaAutenticacao();
-  
+
         $this->render("estrutura", "templateAdmin");
     }
 
@@ -22,6 +22,8 @@ class PagamentoController extends Action
     {
         AuthController::validaAutenticacao();
 
-        $this->render("pagamento", "templateAdmin");
+        $this->view->dados = $_POST;
+
+        $this->render("pagamento");
     }
 }
