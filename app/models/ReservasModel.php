@@ -91,16 +91,10 @@ class ReservasModel extends Model
         $query = "INSERT INTO reserva (id_usuarios, valor_produto, data_entrega, quantidade, produto) VALUES (:id_usuarios, :valor_produto, :data_entrega, :quantidade, :produto)";
         $stmt = $this->db->prepare($query);
         $stmt->bindValue(':id_usuarios', $_SESSION['id']);
-<<<<<<< HEAD
         $stmt->bindValue(':data_entrega', $this->__get('data_entrega'));
         $stmt->bindValue(':valor_produto', $_GET['valor']);
         $stmt->bindValue(':quantidade', $_GET['quantidade']);
         $stmt->bindValue(':produto', $_GET['produto']);
-=======
-        $stmt->bindValue(':valor_produto', $this->__get['valor_produto']);
-        $stmt->bindValue(':data_entrega', $this->__get('data_entrega'));
-        $stmt->bindValue(':id_carrinho', $this->__get['id_carrinho']);
->>>>>>> bacddfe385e26c902310d1f93cbdf4b8a0c7a8c9
         $stmt->execute();
 
         // Obter o último ID inserido na tabela 'reserva'
