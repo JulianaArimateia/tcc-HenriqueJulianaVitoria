@@ -69,20 +69,41 @@
         $idCarrinho = 0;
         $idProduto = 0;
 
+        $quantidade = null;
+        $idProduto = null;
+
         foreach ($produtos as $produto) {
             foreach ($carrinho as $item) {
                 if ($produto['id'] == $item['id_produtos'] && $_SESSION['id'] == $item['id_usuarios']) {
                     $subtotal = floatval($produto['valor']) * intval($item['quantidade']);
                     $valores[] = $subtotal;
 
-
-                    $idCarrinho = $item['id'];
+                    $quantidade = $item['quantidade'];
                     $idProduto = $produto['id'];
                 }
             }
         }
 
         $total = number_format(array_sum($valores), 2);
+        echo
+        " 
+        <form method='POST' 
+        action='/reservar?valor=" . $total . "&quantidade=" . $quantidade . "&produto=" . $idProduto . "' 
+        enctype='multipart/form-data'>
+            <div class='form__itens'>
+                <h2 class='valor'>
+                    Total: R$ " . number_format($total, 2, ',', '.') . "
+                </h2>
+                <input type='date' name='data_entrega' class='data__input'>
+            </div>";
+
+        if ($total == 0) {
+            echo "<a type='submit' href='/' class='voltar__home'>Adicione ao carrinho</a>";
+        } else {
+            echo "<button type='submit'  class='btn__pag'>Confirmar compra</button>";
+        };
+
+        echo "</form>";
         ?>
         <h2 class='valor'>
             Total: R$ <?= number_format($total, 2, ',', '.') ?> </h2>

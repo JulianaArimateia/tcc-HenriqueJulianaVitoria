@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Core\Model\Model;
+use App\controllers\AuthController;
 
 class ReservasModel extends Model
 {
@@ -50,8 +51,23 @@ class ReservasModel extends Model
 
     public function getReservas()
     {
-        $sql = "select r.id, r.id_usuarios, r.id_carrinho, r.valor_produto, r.data_entrega, u.nome as nome_usuario, u.email as email_usuario, c.quantidade as quantidade, c.id_produtos as id_produtos  from reserva as r inner join 
-        usuarios as u on u.id = r.id_usuarios inner join carrinho as c on c.id = r.id_carrinho;";
+        AuthController::esta_logado();
+
+        $sql = "SELECT
+        r.id,
+        r.id_usuarios,
+        r.id_carrinho,
+        r.valor_produto,
+        r.quantidade,
+        r.produto,
+        DATE_FORMAT(r.data_entrega, '%d/%m/%Y') AS data_formatada,
+        u.nome AS nome_usuario,
+        u.email AS email_usuario
+    FROM
+        reserva AS r
+    INNER JOIN
+        usuarios AS u ON u.id = r.id_usuarios
+    ";
         return $this->db->query($sql)->fetchAll();
     }
 
@@ -70,13 +86,15 @@ class ReservasModel extends Model
     //salvar
     public function addReserva()
     {
+        AuthController::esta_logado();
         // Primeira consulta para inserir na tabela 'reserva'
-        $query = "INSERT INTO reserva (id_usuarios, valor_produto, data_entrega, id_carrinho) VALUES (:id_usuarios, :valor_produto, :data_entrega, :id_carrinho)";
+        $query = "INSERT INTO reserva (id_usuarios, valor_produto, data_entrega, quantidade, produto) VALUES (:id_usuarios, :valor_produto, :data_entrega, :quantidade, :produto)";
         $stmt = $this->db->prepare($query);
         $stmt->bindValue(':id_usuarios', $_SESSION['id']);
-        $stmt->bindValue(':valor_produto', $this->__get['valor_produto']);
         $stmt->bindValue(':data_entrega', $this->__get('data_entrega'));
-        $stmt->bindValue(':id_carrinho', $this->__get['id_carrinho']);
+        $stmt->bindValue(':valor_produto', $_GET['valor']);
+        $stmt->bindValue(':quantidade', $_GET['quantidade']);
+        $stmt->bindValue(':produto', $_GET['produto']);
         $stmt->execute();
 
         // Obter o último ID inserido na tabela 'reserva'
