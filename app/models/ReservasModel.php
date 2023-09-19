@@ -11,6 +11,9 @@ class ReservasModel extends Model
     private $id;
     private $id_usuarios;
     private $id_carrinho;
+    private $valor_produto;
+    private $produto;
+    private $quantidade;
     private $data_entrega;
 
 
@@ -92,10 +95,11 @@ class ReservasModel extends Model
         $stmt = $this->db->prepare($query);
         $stmt->bindValue(':id_usuarios', $_SESSION['id']);
         $stmt->bindValue(':data_entrega', $this->__get('data_entrega'));
-        $stmt->bindValue(':valor_produto', $_GET['valor']);
-        $stmt->bindValue(':quantidade', $_GET['quantidade']);
-        $stmt->bindValue(':produto', $_GET['produto']);
+        $stmt->bindValue(':valor_produto', $this->__get('valor_produto'));
+        $stmt->bindValue(':quantidade', $this->__get('quantidade'));
+        $stmt->bindValue(':produto', $this->__get('produto'));
         $stmt->execute();
+
 
         // Obter o último ID inserido na tabela 'reserva'
         $id_reserva = $this->db->lastInsertId();

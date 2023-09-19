@@ -69,9 +69,6 @@
         $idCarrinho = 0;
         $idProduto = 0;
 
-        $quantidade = null;
-        $idProduto = null;
-
         foreach ($produtos as $produto) {
             foreach ($carrinho as $item) {
                 if ($produto['id'] == $item['id_produtos'] && $_SESSION['id'] == $item['id_usuarios']) {
@@ -85,34 +82,17 @@
         }
 
         $total = number_format(array_sum($valores), 2);
-        echo
-        " 
-        <form method='POST' 
-        action='/reservar?valor=" . $total . "&quantidade=" . $quantidade . "&produto=" . $idProduto . "' 
-        enctype='multipart/form-data'>
-            <div class='form__itens'>
-                <h2 class='valor'>
-                    Total: R$ " . number_format($total, 2, ',', '.') . "
-                </h2>
-                <input type='date' name='data_entrega' class='data__input'>
-            </div>";
-
-        if ($total == 0) {
-            echo "<a type='submit' href='/' class='voltar__home'>Adicione ao carrinho</a>";
-        } else {
-            echo "<button type='submit'  class='btn__pag'>Confirmar compra</button>";
-        };
-
-        echo "</form>";
         ?>
-        <h2 class='valor'>
-            Total: R$ <?= number_format($total, 2, ',', '.') ?> </h2>
-
         <form method='POST' action="/reservar" enctype='multipart/form-data'>
-            <input type='date' name='data_entrega'>
-            <input type="hidden" value="<?= $total; ?>" name="valor_produto">
-            <input type="hidden" value="<?= $idCarrinho; ?>" name="id_carrinho">
-            <input type="hidden" value="<?= $idProduto; ?>" name="id_produto">
+            <div class="form__itens">
+                <h2 class='valor'>
+                    Total: R$ <?= number_format($total, 2, ',', '.') ?>
+                </h2>
+                <input type='date' name='data_entrega' class="data__input">
+            </div>
+            <input type="hidden" value="<?= number_format($total, 2); ?>" name="valor_produto">
+            <input type="hidden" value="<?= number_format($quantidade); ?>" name="quantidade">
+            <input type="hidden" value="<?= number_format($idProduto); ?>" name="produto">
 
             <?php
 
@@ -123,7 +103,7 @@
                 // echo "<button type='submit'  class='btn__pag'>Confirmar compra</button>";
 
             ?>
-                <button type="submit"  class='btn__pag'>Pagamento</button>
+                <button type="submit" class='btn__pag'>Pagamento</button>
             <?php
             };
 
