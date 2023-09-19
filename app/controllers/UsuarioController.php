@@ -131,17 +131,15 @@ class UsuarioController extends Action
 
     public function reservar()
     {
-        $carrinho = Container::getModel('carrinho');
-        $carrinho = $carrinho->getCarrinhoPorID();
-
+        // $carrinho = Container::getModel('carrinho');
+        // $carrinho = $carrinho->getCarrinhoPorID();
 
         $reservas = Container::getModel('reservas');
         $reservas->__set('data_entrega', isset($_POST['data_entrega']) ? $_POST['data_entrega'] : "");
+        $reservas->__set('valor_produto', isset($_POST['valor_produto']) ? $_POST['valor_produto'] : "");
+        $reservas->__set('id_carrinho', isset($_POST['id_carrinho']) ? $_POST['id_carrinho'] : "");
+        $reservas->__set('id_produto', isset($_POST['id_produto']) ? $_POST['id_produto'] : "");
         $reservas->addReserva();
-
-        // $produtos = Container::getModel('produtosReservas');
-        // $produtos->addProdutosReserva();
-
         header('Location: /minhasReservas');
     }
 
