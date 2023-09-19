@@ -1,6 +1,6 @@
 <?php
 
-// require 'vendor/autoload.php'; // Carrega a SDK do Mercado Pago
+require 'vendor/autoload.php'; // Carrega a SDK do Mercado Pago
 
 MercadoPago\SDK::setAccessToken("SEU_ACCESS_TOKEN");
 
@@ -32,4 +32,6 @@ $preference->notification_url  = 'http://localhost.net/mercadopago/notification.
     var_dump($preference->init_point);
 
 ?>
+    
+
     
