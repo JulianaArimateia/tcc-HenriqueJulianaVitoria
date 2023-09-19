@@ -13,3 +13,23 @@
     width: 50%;
     height: 10px;
 }
+
+.item__tabela {
+    /* organizações */
+
+    /* aparências */
+    background-color: white;
+    color: var(--color-main);
+    border-bottom: 1px solid var(--color-main);
+
+    /* dimensões */
+    height: 2rem;
+}
+
+
+
+/* organizações */
+
+/* aparências */
+
+/* dimensões */

@@ -27,6 +27,8 @@ class CarrinhoModel extends Model
 
     public function addCarrinho($id, $user)
     {
+        AuthController::esta_logado();
+
         $query = "
         insert into carrinho (id_usuarios, id_produtos, quantidade, date_cadastro) values (:id_usuarios, :id_produtos, 1, NOW())";
         $stmt = $this->db->prepare($query);
@@ -39,6 +41,8 @@ class CarrinhoModel extends Model
 
     public function removeCarrinho($id, $user)
     {
+        AuthController::esta_logado();
+
         $query = "delete from carrinho where id_produtos = :id_produtos and id_usuarios = :id_usuarios;";
 
         $stmt = $this->db->prepare($query);
@@ -53,7 +57,9 @@ class CarrinhoModel extends Model
 
     public function getCarrinho()
     {
-        $sql = "SELECT c.id, c.id_produtos, c.id_usuarios, c.quantidade, c.valor_produto, p.nome_produto as nome_produto, p.descricao as descricao_produto, p.quantidade_produto as quantidade_total
+        AuthController::esta_logado();
+
+        $sql = "SELECT c.id, c.id_produtos, c.id_usuarios, c.quantidade, p.nome_produto as nome_produto, p.descricao as descricao_produto, p.quantidade_produto as quantidade_total
         FROM carrinho as c
         INNER JOIN produtos as p ON p.id = c.id_produtos;";
         return $this->db->query($sql)->fetchAll();
