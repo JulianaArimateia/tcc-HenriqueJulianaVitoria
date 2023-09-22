@@ -96,7 +96,7 @@ class ReservasModel extends Model
         $stmt->bindValue(':id_usuarios', $_SESSION['id']);
         $stmt->bindValue(':data_entrega', $this->__get('data_entrega'));
         $stmt->bindValue(':valor_produto', $this->__get('valor_produto'));
-        $stmt->bindValue(':quantidade', $this->__get('quantidade'));
+        $stmt->bindValue(':quantidade', $this->__get('quantidade'));    
         $stmt->bindValue(':produto', $this->__get('produto'));
         $stmt->execute();
 
