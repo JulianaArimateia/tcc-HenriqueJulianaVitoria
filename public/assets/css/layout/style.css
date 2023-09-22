@@ -3,6 +3,8 @@
 @import url(header/geral.css);
 @import url(header/info.css);
 
+@import url(header/responsivo.css);
+
 /* -------------------------------------------------Main------------------------------------------------- */
 
 .corpo{

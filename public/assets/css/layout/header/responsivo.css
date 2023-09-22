@@ -1,0 +1,22 @@
+@media screen and (max-width: 600px) {
+
+    .cabecalho {
+        /* organizações */
+
+        /* aparências */
+        font-size: .9rem;
+
+        /* dimensões */
+    }
+
+    .logo__header {
+        /* organizações */
+
+        /* aparências */
+        font-size: .9rem;
+
+        /* dimensões */
+        width: 5vh;
+        height: 4.9vh;
+    }
+}
