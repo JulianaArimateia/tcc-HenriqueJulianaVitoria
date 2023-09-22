@@ -66,8 +66,8 @@
         $valores = [];
         $total = 0;
 
-        $idCarrinho = 0;
-        $idProduto = 0;
+        $quantidade = 0;
+        $idProdutos = [];
 
         foreach ($produtos as $produto) {
             foreach ($carrinho as $item) {
@@ -76,7 +76,7 @@
                     $valores[] = $subtotal;
 
                     $quantidade = $item['quantidade'];
-                    $idProduto = $produto['id'];
+                    $idProdutos[] = $produto['id'];
                 }
             }
         }
@@ -90,24 +90,20 @@
                 </h2>
                 <input type='date' name='data_entrega' class="data__input">
             </div>
-            <input type="hidden" value="<?= number_format($total, 2); ?>" name="valor_produto">
-            <input type="hidden" value="<?= number_format($quantidade); ?>" name="quantidade">
-            <input type="hidden" value="<?= number_format($idProduto); ?>" name="produto">
+            <input type="hidden" value="<?= number_format($total, 2); ?>" name='valor_produto'>
+            <input type='hidden' name='quantidade' value="<?= $quantidade ?>">
+            <input type="hidden" value="<?= serialize($idProdutos); ?>" name='produto'>
 
             <?php
-
-
             if ($total == 0) {
                 echo "<a type='submit' href='/' class='voltar__home'>Adicione ao carrinho</a>";
             } else {
                 // echo "<button type='submit'  class='btn__pag'>Confirmar compra</button>";
-
             ?>
                 <button type="submit" class='btn__pag'>Pagamento</button>
             <?php
             };
-
-            echo "</form>";
             ?>
+        </form>
     </div>
 </div>
