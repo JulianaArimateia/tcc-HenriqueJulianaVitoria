@@ -17,7 +17,6 @@ class ProdutosModel extends Model
     private $created_at;
     private $updated_at;
     private $deleted_at;
-    private $nivel;
     private $imagem;
 
     public function __get($atributo)
@@ -54,11 +53,11 @@ class ProdutosModel extends Model
     //recuperar um Produtos por nome
     public function getProdutosPorNome()
     {
-        $query = "select id, nome_produto, id_categoria, quantidade, custo, valor, descricao, nivel, imagem from produtos where nome_produto = :nome_produto";
+        $query = "select id, nome_produto, id_categoria, quantidade, custo, valor, descricao, imagem from produtos where nome_produto = :nome_produto";
         $stmt = $this->db->prepare($query);
         $stmt->bindValue(':nome_produto', $this->__get('nome_produto'));
         $stmt->execute();
-// $stmt->fetchAll(\PDO::FETCH_ASSOC);
+        // $stmt->fetchAll(\PDO::FETCH_ASSOC);
         return $this;
     }
 
@@ -77,8 +76,7 @@ class ProdutosModel extends Model
     {
         $sql = "select p.id, p.nome_produto, p.id_categoria,
          p.quantidade_produto, p.custo, p.valor, p.descricao,
-         p.created_at, p.updated_at, p.deleted_at,
-		 p.nivel, p.imagem, 
+         p.created_at, p.updated_at, p.deleted_at, p.imagem, 
 		 c.nome as categoria from produtos as p inner join 
 			categoria as c on p.id_categoria = c.id";
 
@@ -108,7 +106,7 @@ class ProdutosModel extends Model
     public function salvar()
     {
 
-        $query = "insert into produtos(nome_produto, id_categoria, quantidade_produto, custo, valor, descricao, imagem, nivel ) values (:nome_produto, :id_categoria, :quantidade_produto, :custo, :valor, :descricao, :imagem, :nivel )";
+        $query = "insert into produtos(nome_produto, id_categoria, quantidade_produto, custo, valor, descricao, imagem ) values (:nome_produto, :id_categoria, :quantidade_produto, :custo, :valor, :descricao, :imagem )";
         $stmt = $this->db->prepare($query);
         $stmt->bindValue(':nome_produto', $this->__get('nome_produto'));
         $stmt->bindValue(':id_categoria', $this->__get('id_categoria'));
@@ -117,7 +115,6 @@ class ProdutosModel extends Model
         $stmt->bindValue(':valor', $this->__get('valor'));
         $stmt->bindValue(':descricao', $this->__get('descricao'));
         $stmt->bindValue(':imagem', $this->__get('imagem'));
-        $stmt->bindValue(':nivel', $this->__get('nivel'));
         $stmt->execute();
 
         // $this->__set('id', $this->db->lastInsertId());
@@ -126,9 +123,9 @@ class ProdutosModel extends Model
     }
 
 
-public function atualizar()
-{
-        $query = "update produtos SET nome_produto = :nome_produto, id_categoria = :id_categoria, quantidade_produto = :quantidade_produto, custo = :custo, valor = :valor, descricao = :descricao, imagem = :imagem, nivel = :nivel, updated_at = NOW() WHERE id = :id";
+    public function atualizar()
+    {
+        $query = "update produtos SET nome_produto = :nome_produto, id_categoria = :id_categoria, quantidade_produto = :quantidade_produto, custo = :custo, valor = :valor, descricao = :descricao, imagem = :imagem, updated_at = NOW() WHERE id = :id";
         $stmt = $this->db->prepare($query);
 
         $stmt->bindValue(':nome_produto', $this->__get('nome_produto'));
@@ -138,11 +135,9 @@ public function atualizar()
         $stmt->bindValue(':valor', $this->__get('valor'));
         $stmt->bindValue(':descricao', $this->__get('descricao'));
         $stmt->bindValue(':imagem', $this->__get('imagem'));
-        $stmt->bindValue(':nivel', $this->__get('nivel'));
         $stmt->bindValue('id', $this->__get('id'));
         $stmt->execute();
 
         return $this;
     }
-
 }
