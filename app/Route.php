@@ -22,6 +22,8 @@ class Route extends Bootstrap
         $routes['mais_carrinho'] = array('route' => '/maisQtdCarrinho', 'controller' => 'usuarioController', 'action' => 'maisQtdCarrinho');
         $routes['menos_carrinho'] = array('route' => '/menosQtdCarrinho', 'controller' => 'usuarioController', 'action' => 'menosQtdCarrinho');
         $routes['favoritos'] = array('route' => '/favoritos', 'controller' => 'usuarioController', 'action' => 'favoritos');
+        $routes['addFavoritos'] = array('route' => '/addFavoritos', 'controller' => 'usuarioController', 'action' => 'addFavoritos');
+        $routes['removeFavoritos'] = array('route' => '/removeFavoritos', 'controller' => 'usuarioController', 'action' => 'removeFavoritos');
         $routes['pagamento'] = array('route' => '/pagamento', 'controller' => 'usuarioController', 'action' => 'pagamento');
 
         //AdminController

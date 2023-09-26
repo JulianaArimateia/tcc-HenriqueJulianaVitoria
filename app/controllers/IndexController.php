@@ -28,8 +28,17 @@ class IndexController extends Action
         } else {
             $carrinho = $carrinho->getCarrinho();
         }
+
+        $favoritos = Container::getModel('Favoritos');
+
+        if(AuthController::esta_logado()){
+            $favoritos = $favoritos->getFavoritosPorID();
+        } else {
+            $favoritos = $favoritos->getFavoritos();
+        }
         
         $this->view->carrinho = $carrinho;
+        $this->view->favoritos = $favoritos;
 
 
 

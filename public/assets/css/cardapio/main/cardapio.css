@@ -33,7 +33,7 @@
     height: 360px;
 }
 
-.card__cardapio:hover{
+.card__cardapio:hover {
     box-shadow: 0 6px 11px 4px lightgray;
 }
 
@@ -137,42 +137,75 @@
     /* dimensões */
 }
 
-.selecionado{
-        /* organizações */
-        margin: auto;
+.selecionado {
+    /* organizações */
+    margin: auto;
 
-        /* aparência */
-        border-radius: 8px;
-        border: 1px solid var(--color-main);
-        background: url(../../../img/cardapio/carrinho.png) no-repeat center;
-        background-color: var(--color-main);
-        transition: .2s all;
-    
-        /* dimensões */
-        width: 30%;
-        height: 2rem;
+    /* aparência */
+    border-radius: 8px;
+    border: 1px solid var(--color-main);
+    background: url(../../../img/cardapio/carrinho.png) no-repeat center;
+    background-color: var(--color-main);
+    transition: .2s all;
+
+    /* dimensões */
+    width: 30%;
+    height: 2rem;
+}
+
+.add__favoritos {
+    /* organizações */
+    position: relative;
+    margin: auto;
+    margin-left: 200px;
+
+    /* aparência */
+    background: url(../../../img/cardapio/favoritos__icon.png) no-repeat center / cover;
+    background-color: white;
+    transition: .2s all;
+
+    /* dimensões */
+    height: 2rem;
+    width: 2rem;
+}
+
+.remove__favoritos {
+    /* organizações */
+    position: relative;
+    margin: auto;
+    margin-left: 200px;
+
+    /* aparência */
+    background: url(../../../img/cardapio/favoritado.png) no-repeat center / cover;
+    background-color: white;
+    transition: .2s all;
+
+    /* dimensões */
+    height: 2rem;
+    width: 2rem;
 }
 
 .favoritado {
     /* organizações */
     position: relative;
-    top: 4%;
-    left: 40%;
+    margin: auto;
+    margin-left: 200px;
 
     /* aparência */
-    border: none;
     background: url(../../../img/cardapio/favoritado.png) no-repeat center / cover;
+    background-color: white;
+    transition: .2s all;
 
     /* dimensões */
-    height: 30px;
-    width: 30px;
+    height: 2rem;
+    width: 2rem;
 }
 
-.none{
+.none {
     display: none;
 }
 
-.none{
+.none {
     display: none;
 }
 

@@ -3,18 +3,59 @@
 </head>
 
 <section class="cardapio" id="cardapio">
-    <div class="card__cardapio">
-        <button class="favoritado"></button>
-        <img src="assets/img/cardapio/hamburguer.png" alt="produto" class="img__card">
-        <h3 class="nome__card">Hamburguer</h3>
-        <p class="desc__card">
-            Salgado de hamburguer(bovino), presunto e catupiry.
-        </p>
-        <div class="acoes__card">
-            <h2 class="preco__card">
-                R$7,00
-            </h2>
-            <button class="add__carrinho"></button>
-        </div>
-    </div>
+    <?php
+
+
+    $produtos = $this->view->produtos;
+    $carrinho = $this->view->carrinho;
+    $favoritos = $this->view->favoritos;
+
+    foreach ($produtos as $produto) {
+        // Verifique se o produto está no carrinho
+        $favoritado = false;
+        $produtoNoCarrinho = false;
+        foreach ($carrinho as $item) {
+            if ($produto['id'] == $item['id_produtos'] && $_SESSION['id'] == $item['id_usuarios']) {
+                $produtoNoCarrinho = true;
+                break;
+            }
+        }
+
+        foreach ($favoritos as $item) {
+            if ($produto['id'] == $item['id_produtos'] && $_SESSION['id'] == $item['id_usuarios']) {
+                $favoritado = true;
+                break;
+            }
+        }
+        if ($favoritado) {
+            echo "
+            <div class='card__cardapio " . $produto['categoria'] . "'>";
+            echo "<a href='removeFavoritos?id=" . $produto['id'] . "' type='submit' class='remove__favoritos' id='add__favoritos'></a>";
+            echo "<img src='assets/img/produto/" . $produto['imagem'] . "' alt='" . $produto['nome_produto'] . "' class='img__card'>
+               <h3 class='nome__card'>" . $produto['nome_produto'] . "</h3>
+               <p class='desc__card'>
+                   " . $produto['descricao'] . "
+               </p>
+               <div class='acoes__card'>
+                   <h2 class='preco__card'>
+                       R$" . $produto['valor'] . "
+                   </h2>";
+
+            if ($produtoNoCarrinho) {
+                echo "
+                   <a href='/removerCarrinho?id=" . $produto['id'] . "' type='submit' href='' class='selecionado' id='add__carrinho'></a>
+               ";
+            } else {
+                echo "
+                   <a href='/adicionarCarrinho?id=" . $produto['id'] . "' type='submit' href='' class='add__carrinho' id='add__carrinho'></a>
+               ";
+            }
+
+            echo "
+               </div>
+           </div>
+           ";
+        }
+    }
+    ?>
 </section>

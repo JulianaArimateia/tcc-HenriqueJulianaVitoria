@@ -23,12 +23,39 @@ class UsuarioController extends Action
         $this->render("carrinho", "templateUsuario");
     }
 
+    public function favoritos()
+    {
+        AuthController::validaAutenticacao();
+
+        $produto = Container::getModel('Produtos');
+        $produtos = $produto->getProdutos();
+        $this->view->produtos = $produtos;
+
+        $carrinho = Container::getModel('carrinho');
+        $carrinho = $carrinho->getCarrinhoPorID();
+        $this->view->carrinho = $carrinho;
+
+        $favoritos = Container::getModel('favoritos');
+        $favoritos = $favoritos->getFavoritos();
+        $this->view->favoritos = $favoritos;
+
+        $this->render("favoritos", "templateUsuario");
+    }
+
     // ADICIONA AO CARRINHO
     public function adicionarCarrinho()
     {
         AuthController::validaAutenticacao();
         $carrinho = Container::getModel('carrinho');
         $carrinho->addCarrinho($_GET['id'], $_SESSION['id']);
+        header('Location: ' . $_SERVER['HTTP_REFERER'] . '');
+        }
+
+    public function addFavoritos()
+    {
+        AuthController::validaAutenticacao();
+        $favoritos = Container::getModel('favoritos');
+        $favoritos->addFavoritos($_GET['id'], $_SESSION['id']);
         header('Location: /');
     }
 
@@ -37,6 +64,14 @@ class UsuarioController extends Action
         AuthController::validaAutenticacao();
         $carrinho = Container::getModel('carrinho');
         $carrinho->removeCarrinho($_GET['id'], $_SESSION['id']);
+        header('Location: ' . $_SERVER['HTTP_REFERER'] . '');
+    }
+
+    public function removeFavoritos()
+    {
+        AuthController::validaAutenticacao();
+        $favoritos = Container::getModel('favoritos');
+        $favoritos->removeFavoritos($_GET['id'], $_SESSION['id']);
         header('Location: ' . $_SERVER['HTTP_REFERER'] . '');
     }
 
@@ -54,11 +89,6 @@ class UsuarioController extends Action
         header('Location: /carrinho');
     }
 
-    public function favoritos()
-    {
-        AuthController::validaAutenticacao();
-        $this->render("favoritos", "templateUsuario");
-    }
     public function pagamento()
     {
         AuthController::validaAutenticacao();

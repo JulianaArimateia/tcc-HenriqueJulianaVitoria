@@ -11,6 +11,7 @@
 
     $produtos = $this->view->produtos;
     $carrinho = $this->view->carrinho;
+    $favoritos = $this->view->favoritos;
 
     foreach ($produtos as $produto) {
         // Verifique se o produto está na categoria 'prato'
@@ -28,7 +29,7 @@
 
             echo "
         <div class='card__prato'>
-            <img src='assets/img/produto/". $produto['imagem'] . "' alt='prato' class='prato__img'>
+            <img src='assets/img/produto/" . $produto['imagem'] . "' alt='prato' class='prato__img'>
             <div class='conteudo__prato'>
                 <h2 class='titulo__prato'>" . $produto['nome_produto'] . "</h2> 
                 <p class='texto__prato'>" . $produto['descricao'] . "</p>
@@ -89,6 +90,7 @@
     if (AuthController::esta_logado()) {
         foreach ($produtos as $produto) {
             // Verifique se o produto está no carrinho
+            $favoritado = false;
             $produtoNoCarrinho = false;
             foreach ($carrinho as $item) {
                 if ($produto['id'] == $item['id_produtos'] && $_SESSION['id'] == $item['id_usuarios']) {
@@ -96,9 +98,22 @@
                     break;
                 }
             }
+
+            foreach ($favoritos as $item) {
+                if ($produto['id'] == $item['id_produtos'] && $_SESSION['id'] == $item['id_usuarios']) {
+                    $favoritado = true;
+                    break;
+                }
+            }
             echo "
-         <div class='card__cardapio " . $produto['categoria'] . "'>
-            <img src='assets/img/produto/" . $produto['imagem'] . "' alt='" . $produto['nome_produto'] . "' class='img__card'>
+         <div class='card__cardapio " . $produto['categoria'] . "'>";
+
+            if ($favoritado) {
+                echo "<a href='removeFavoritos?id=" . $produto['id'] . "' type='submit' class='remove__favoritos' id='add__favoritos'></a>";
+            } else {
+                echo "<a href='addFavoritos?id=" . $produto['id'] . "' type='submit' class='add__favoritos' id='add__favoritos'></a>";
+            }
+            echo "<img src='assets/img/produto/" . $produto['imagem'] . "' alt='" . $produto['nome_produto'] . "' class='img__card'>
             <h3 class='nome__card'>" . $produto['nome_produto'] . "</h3>
             <p class='desc__card'>
                 " . $produto['descricao'] . "
@@ -127,6 +142,7 @@
         foreach ($produtos as $produto) {
             echo "
         <div class='card__cardapio " . $produto['categoria'] . "'>
+        <a href='/addFavoritos?id=" . $produto['id'] . "' type='submit' class='add__favoritos' id='add__favoritos'></a>
             <img src='assets/img/produto/" . $produto['imagem'] . "' alt='" . $produto['nome_produto'] . "' class='img__card'>
             <h3 class='nome__card'>" . $produto['nome_produto'] . "</h3>
             <p class='desc__card'>
@@ -136,7 +152,7 @@
                 <h2 class='preco__card'>
                     " . $produto['valor'] . "
                 </h2>
-                <a href='/adicionarCarrinho?id=" . $produto['id'] . "' type='submit' href='' class='add__carrinho' id='add__carrinho'></a>
+                <a href='/adicionarCarrinho?id=" . $produto['id'] . "' type='submit' class='add__carrinho' id='add__carrinho'></a>
             </div>
         </div>
         ";
@@ -146,4 +162,4 @@
 
 </section>
 
-<script src="assets/js/cardapio/filtro.js"></script>
+<script src=" assets/js/cardapio/filtro.js"></script>
