@@ -50,7 +50,7 @@ class ReservasModel extends Model
     {
         AuthController::esta_logado();
 
-        $sql = "SELECT r.id, r.id_usuarios, r.id_carrinho, r.valor_produto, r.quantidade, DATE_FORMAT(r.data_entrega, '%d/%m/%Y') AS data_formatada, u.nome AS nome_usuario, u.email AS email_usuario FROM reserva AS r INNER JOIN usuarios AS u ON u.id = r.id_usuarios";
+        $sql = "SELECT r.id, r.id_usuarios, r.valor_produto, r.quantidade, DATE_FORMAT(r.data_entrega, '%d/%m/%Y') AS data_formatada, u.nome AS nome_usuario, u.email AS email_usuario FROM reserva AS r INNER JOIN usuarios AS u ON u.id = r.id_usuarios";
         return $this->db->query($sql)->fetchAll();
     }
 
