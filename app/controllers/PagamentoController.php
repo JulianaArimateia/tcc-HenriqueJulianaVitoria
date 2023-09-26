@@ -22,6 +22,8 @@ class PagamentoController extends Action
     {
         AuthController::validaAutenticacao();
 
+        dd($_POST);
+
         $this->render("pagamento", "templateAdmin");
     }
 }
