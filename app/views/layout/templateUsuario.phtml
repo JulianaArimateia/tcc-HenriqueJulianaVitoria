@@ -15,8 +15,16 @@
             <a href="#" class="logo__header">Cantina Senai</a>
             <div class="funcoes__header">
                 <a href="/favoritos" class="funcao__item btn__favoritos"></a>
+
                 <?php
-                if (isset($this->view->carrinho)) {
+
+                use App\controllers\AuthController;
+
+
+
+                if (AuthController::esta_logado()) {
+
+
                     $carrinho = $this->view->carrinho;
                     $c = 0;
                     if ($carrinho == null) {
@@ -28,23 +36,14 @@
                         }
                         echo $c . "</a>";
                     }
-                } else {
-                    echo "<a href='/carrinho' class='funcao__item btn__carrinho'></a>";
-                }
 
-
-                ?>
-                <?php
-
-                use App\controllers\AuthController;
-
-                if (AuthController::esta_logado()) {
                     if ($_SESSION['nivel'] == 1) {
                         echo "<a href='/adminLista' class='btn__login'>Admin</a>";
                     } else {
                         echo "<a href='/sair' class='btn__login'>Sair</a>";
                     }
                 } else {
+                    echo "<a href='/carrinho' class='funcao__item btn__carrinho'></a>";
                     echo "<a href='/login' class='btn__login'>Login</a>";
                 }
                 ?>
