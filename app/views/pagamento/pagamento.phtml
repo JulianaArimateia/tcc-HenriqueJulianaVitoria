@@ -1,30 +1,98 @@
 <?php
+// dd($this->view->dados);
 
+$endpoint = 'https://sandbox.api.pagseguro.com/orders';
+$token = 'seu-token-aqui';
 
-use \vendor\MercadoPago\Payer;
+$body =
+  [
+    "reference_id" => "ex-00001",
+    "customer" => [
+      "name" => "Jose da Silva",
+      "email" => "email@test.com",
+      "tax_id" => "12345678909",
+      "phones" => [
+        [
+          "country" => "55",
+          "area" => "11",
+          "number" => "999999999",
+          "type" => "MOBILE"
+        ]
+      ]
+    ],
+    "items" => [
+      [
+        "name" => "nome do item",
+        "quantity" => 1,
+        "unit_amount" => 500
+      ]
+    ],
+    "qr_codes" => [
+      [
+        "amount" => [
+          "value" => 500
+        ],
+        "expiration_date" => "2023-12-30T20:15:59-03:00",
+      ]
+    ],
+    "shipping" => [
+      "address" => [
+        "street" => "Avenida Brigadeiro Faria Lima",
+        "number" => "1384",
+        "complement" => "apto 12",
+        "locality" => "Pinheiros",
+        "city" => "São Paulo",
+        "region_code" => "SP",
+        "country" => "BRA",
+        "postal_code" => "01452002"
+      ]
+    ],
+    "notification_urls" => [
+      "https://alexandrecardoso-pagseguro.ultrahook.com"
+    ]
+  ];
 
-  MercadoPago\SDK::setAccessToken("ENV_ACCESS_TOKEN");
+$curl = curl_init();
+curl_setopt($curl, CURLOPT_URL, $endpoint);
+curl_setopt($curl, CURLOPT_POST, true);
+curl_setopt($curl, CURLOPT_POSTFIELDS, json_encode($body));
+curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
+curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, true);
+curl_setopt($curl, CURLOPT_CAINFO, "cacert.pem");
+curl_setopt($curl, CURLOPT_HTTPHEADER, [
+  'Content-Type:application/json',
+  'Authorization: Bearer ' . $token
+]);
 
-  $payment = new MercadoPago\Payment();
+$response = curl_exec($curl);
+$error = curl_error($curl);
 
-  $payment->transaction_amount = 100;
-  $payment->token = "ff8080814c11e237014c1ff593b57b4d";
-  $payment->installments = 1;
-  $payment->payer = array(
-        "type" => "customer",
-        "id" => "123456789-jxOV430go9fx2e",
-        "email" => "Payer@gmail.com"
-    ); 
+curl_close($curl);
 
-  $payment->save();
+if ($error) {
+  var_dump($error);
+  die();
+}
 
-  $copia_e_cola =  $payment->point_or_interaction->transaction_data->qr_code;
+$data = json_decode($response, true);
 
-  echo $copia_e_cola;
-  die;
+var_dump($data);
+?>
 
-  echo '<pre>';
-  var_dump($payment)
-  
-  ?>
-      
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>QrCode Pix Pagseguro</title>
+</head>
+
+<body>
+  <?php if ($data) : ?>
+    <img src="<?php echo $data['qr_codes'][0]['links'][0]['href'] ?>" alt="">
+  <?php endif; ?>
+</body>
+
+</html>

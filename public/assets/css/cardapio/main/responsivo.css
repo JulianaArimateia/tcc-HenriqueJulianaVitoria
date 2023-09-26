@@ -1,0 +1,41 @@
+@media screen and (max-width: 600px) {
+    .filtros {
+        /* organizações */
+        padding: 2vh 0;
+
+        /* aparência */
+        box-shadow: 0 3px 8px 1px lightgray;
+
+        /* dimensões */
+        width: 100%;
+    }
+
+    .cardapio {
+        /* organizações */
+        grid-template-columns: 1fr;
+
+        /* aparências */
+
+        /* dimensões */
+        width: 100%;
+        height: auto;
+    }
+
+    .filtro__input {
+        margin: 0;
+        font-size: .9rem;
+    }
+
+    .filtro__categoria {
+        /* organizações */
+        display: flex;
+        flex-direction: column;
+
+        /* aparência */
+        font-size: .9rem;
+
+        /* dimensões */
+        width: 33%;
+    }
+
+}

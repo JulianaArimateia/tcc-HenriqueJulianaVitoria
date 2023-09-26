@@ -57,7 +57,31 @@
     /* aparências */
 
     /* dimensões */
-    height: 45%;
+    height: 75%;
+}
+
+form {
+    /* organizações */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    /* aparências */
+
+    /* dimensões */
+    height: 150px;
+}
+
+.form__itens {
+    /* organizações */
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin-top: 30px;
+
+    /* aparências */
+
+    /* dimensões */
 }
 
 .valor {
@@ -71,19 +95,29 @@
     color: var(--color-main);
 
     /* dimensões */
-    width: 100%;
 }
 
-.footer__pag {
+.data__input {
     /* organizações */
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    margin: auto;
+    padding: 7px;
 
     /* aparências */
+    color: black;
+    border: 1px solid var(--color-main);
+    background-color: var(--color-main);
+    text-align: center;
+    border-radius: 8px;
 
     /* dimensões */
-    height: 30%;
+}
+
+.data__input:focus{
+    outline: none;
+}
+.data__input::-webkit-calendar-picker-indicator{
+    cursor: pointer;
+    color: white;
 }
 
 .btn__pag {
@@ -93,6 +127,8 @@
     align-items: center;
     justify-content: center;
     margin: auto;
+    margin-top: 5px;
+    margin-bottom: 5px;
 
     /* aparências */
     border-radius: 0 0 8px 8px;
@@ -104,7 +140,7 @@
 
     /* dimensões */
     height: 50px;
-    width: 98%;
+    width: 490px;
 }
 
 .btn__pag:hover {
@@ -129,7 +165,8 @@
     border-top: 1px solid var(--color-main);
 
     /* dimensões */
-    width: 100%;
+    height: 50px;
+    width: 490px;
 }
 
 /* organizações */

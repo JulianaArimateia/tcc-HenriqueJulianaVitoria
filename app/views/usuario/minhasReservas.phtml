@@ -19,10 +19,10 @@
 
         foreach ($reservas as $reserva) {
             foreach($produtos as $produto){
-                if ($reserva['id_usuarios'] == $_SESSION['id'] && $produto['id'] == $reserva['id_produtos']) {
-                    echo "<tr>";
+                if ($reserva['id_usuarios'] == $_SESSION['id']) {
+                    echo "<tr class='item__tabela'>";
                     echo "<td>{$produto['nome_produto']}</td>";
-                    echo "<td>{$reserva['data_entrega']}</td>";
+                    echo "<td class='data'>{$reserva['data_formatada']}</td>";
                     echo "<td>R$ {$reserva['valor_produto']}</td>";
                     echo "<td></td>";
                     echo "</tr>";
