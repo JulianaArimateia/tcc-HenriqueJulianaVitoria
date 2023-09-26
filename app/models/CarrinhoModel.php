@@ -57,11 +57,6 @@ class CarrinhoModel extends Model
 
     public function getCarrinho()
     {
-<<<<<<< HEAD
-=======
-        AuthController::esta_logado();
-
->>>>>>> c7b6f6cb791b70ab98a0f8875e683c774dbec7a8
         $sql = "SELECT c.id, c.id_produtos, c.id_usuarios, c.quantidade, p.nome_produto as nome_produto, p.descricao as descricao_produto, p.quantidade_produto as quantidade_total
         FROM carrinho as c
         INNER JOIN produtos as p ON p.id = c.id_produtos;";
