@@ -1,32 +1,37 @@
 <?php
 
-// require 'vendor/autoload.php'; // Carrega a SDK do Mercado Pago
+require 'vendor/autoload.php'; // Carrega a SDK do Mercado Pago
 
 MercadoPago\SDK::setAccessToken("SEU_ACCESS_TOKEN");
 
 
-$payment = new MercadoPago\Payment();
-$payment->transaction_amount = 100;
+$preference = new MercadoPago\Preference();
 
-$payment->payer = array (
-    "email" => "comprador@example.com"
+$item           = new MercadoPago\Item();
+$item->title    = 'Produto';
+$item->quantity = 1;
+$item->title    = 100;
+
+$preference->items = array($item);
+$preference->external_reference = 'EXTERNAL_REFERENCE';
+
+$preference->payment_methods = array(
+  "excluded_payment_types" => array(
+    array(
+        "id" => "ticket",
+    )
+    ),
 );
 
-$payment->payment_method_id = "pix";
-$payment->external_reference = "SEU_REFERENCIA_EXTERNA";
 
+$preference->notification_url  = 'http://localhost.net/mercadopago/notification.php';
 
-$payment->save();
+    $preference->save();
 
-$copia_e_cola  =  $payment->point_or_interaction->transaction_data->qr_code;
-$ticket_url    =  $payment->point_or_interaction->transaction_data->ticket_url;
-$img_qrcode    =  'data:image/png;base64,'.$payment->point_or_interaction->transaction_data->qr_code_base64;
-
-echo '<img width="300" src="'.$img_qrcode.'">';
-die;
-
-echo '<pre>';
-var_dump($payment)
+    echo'<pre>';
+    var_dump($preference->init_point);
 
 ?>
+    
+
     
