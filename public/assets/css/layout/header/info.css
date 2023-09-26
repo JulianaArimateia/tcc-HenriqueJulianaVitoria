@@ -56,11 +56,17 @@
 
 .btn__favoritos {
     background: url(../../../img/layout/favoritos__icon.png) no-repeat center/ cover;
+    color: var(--color-main);
+    text-decoration: none;
 }
 
 .btn__carrinho {
     background: url(../../../img/layout/carrinho__icon.png) no-repeat center/ cover;
     margin-right: 2rem;
+    color: var(--color-main);
+    text-decoration: none;
+    font-weight: bold;
+    padding-left: 1.4rem;
 }
 
 .btn__login {

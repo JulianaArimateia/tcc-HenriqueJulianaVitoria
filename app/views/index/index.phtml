@@ -2,9 +2,7 @@
     <link rel="stylesheet" href="assets/css/cardapio/style.css">
 </head>
 
-
 <section class="prato__dia">
-
     <?php
 
     use App\controllers\AuthController;
@@ -28,22 +26,20 @@
             }
 
             echo "
-        <div class='card__prato'>
-            <img src='assets/img/produto/" . $produto['imagem'] . "' alt='prato' class='prato__img'>
-            <div class='conteudo__prato'>
-                <h2 class='titulo__prato'>" . $produto['nome_produto'] . "</h2> 
-                <p class='texto__prato'>" . $produto['descricao'] . "</p>
-                <a href='" . $metodo . "?id=" . $produto['id'] . "' class='btn__prato'>Adicionar</a>
+            <div class='card__prato'>
+                <img src='assets/img/produto/" . $produto['imagem'] . "' alt='prato' class='prato__img'>
+                <div class='conteudo__prato'>
+                    <h2 class='titulo__prato'>" . $produto['nome_produto'] . "</h2> 
+                    <p class='texto__prato'>" . $produto['descricao'] . "</p>
+                    <a href='" . $metodo . "?id=" . $produto['id'] . "' class='btn__prato'>Adicionar</a>
+                </div>
             </div>
-        </div>
-        ";
+            ";
         }
     }
     ?>
-
 </section>
 
-<!---------------------------------- Filtro de classes(Salgados, doces e bebidas) ---------------------------------->
 <section class="filtros">
     <input type="text" class="filtro__input" placeholder="Buscar produto" id="filtro">
     <div class="filtro__classe">
@@ -83,9 +79,7 @@
     </div>
 </section>
 
-<!---------------------------------- Cardapio(Sessão) ---------------------------------->
 <section class="cardapio" id="cardapio">
-
     <?php
     if (AuthController::esta_logado()) {
         foreach ($produtos as $produto) {
@@ -106,7 +100,7 @@
                 }
             }
             echo "
-         <div class='card__cardapio " . $produto['categoria'] . "'>";
+            <div class='card__cardapio " . $produto['categoria'] . "'>";
 
             if ($favoritado) {
                 echo "<a href='removeFavoritos?id=" . $produto['id'] . "' type='submit' class='remove__favoritos' id='add__favoritos'></a>";
@@ -124,13 +118,9 @@
                 </h2>";
 
             if ($produtoNoCarrinho) {
-                echo "
-                <a href='/removerCarrinho?id=" . $produto['id'] . "' type='submit' href='' class='selecionado' id='add__carrinho'></a>
-            ";
+                echo "<a href='/removerCarrinho?id=" . $produto['id'] . "' type='submit' href='' class='selecionado' id='add__carrinho'></a>";
             } else {
-                echo "
-                <a href='/adicionarCarrinho?id=" . $produto['id'] . "' type='submit' href='' class='add__carrinho' id='add__carrinho'></a>
-            ";
+                echo "<a href='/adicionarCarrinho?id=" . $produto['id'] . "' type='submit' href='' class='add__carrinho' id='add__carrinho'></a>";
             }
 
             echo "
@@ -141,8 +131,8 @@
     } else {
         foreach ($produtos as $produto) {
             echo "
-        <div class='card__cardapio " . $produto['categoria'] . "'>
-        <a href='/addFavoritos?id=" . $produto['id'] . "' type='submit' class='add__favoritos' id='add__favoritos'></a>
+            <div class='card__cardapio " . $produto['categoria'] . "'>
+            <a href='/addFavoritos?id=" . $produto['id'] . "' type='submit' class='add__favoritos' id='add__favoritos'></a>
             <img src='assets/img/produto/" . $produto['imagem'] . "' alt='" . $produto['nome_produto'] . "' class='img__card'>
             <h3 class='nome__card'>" . $produto['nome_produto'] . "</h3>
             <p class='desc__card'>
@@ -159,7 +149,6 @@
         }
     }
     ?>
-
 </section>
 
-<script src=" assets/js/cardapio/filtro.js"></script>
+<script src="assets/js/cardapio/filtro.js"></script>

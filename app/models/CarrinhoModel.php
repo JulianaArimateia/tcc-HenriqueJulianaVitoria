@@ -43,12 +43,21 @@ class CarrinhoModel extends Model
     {
         AuthController::esta_logado();
 
-        $query = "delete from carrinho where id_produtos = :id_produtos and id_usuarios = :id_usuarios;";
+        if ($id >= 0) {
+            $query = "delete from carrinho where id_produtos = :id_produtos and id_usuarios = :id_usuarios;";
 
-        $stmt = $this->db->prepare($query);
+            $stmt = $this->db->prepare($query);
 
-        $stmt->bindValue(':id_produtos', $id);
-        $stmt->bindValue(':id_usuarios', $user);
+            $stmt->bindValue(':id_produtos', $id);
+            $stmt->bindValue(':id_usuarios', $user);
+        } else {
+            $query = "delete from carrinho where id_usuarios = :id_usuarios;";
+
+            $stmt = $this->db->prepare($query);
+
+            $stmt->bindValue(':id_usuarios', $user);
+        }
+
 
         $stmt->execute();
 
@@ -61,7 +70,6 @@ class CarrinhoModel extends Model
         FROM carrinho as c
         INNER JOIN produtos as p ON p.id = c.id_produtos;";
         return $this->db->query($sql)->fetchAll();
-
     }
 
 

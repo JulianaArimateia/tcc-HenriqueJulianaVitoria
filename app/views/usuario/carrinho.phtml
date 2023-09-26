@@ -1,109 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="assets/css/carrinho/style.css">
+    <title>Carrinho de Compras</title>
 </head>
+<body>
+    <!-- Tabela de Produtos no Carrinho -->
+    <div class="scroll">
+        <table class="tabela">
+            <thead>
+                <tr>
+                    <td></td>
+                    <td>Nome do produto</td>
+                    <td>Descrição</td>
+                    <td>Preço</td>
+                    <td class="qtd__coluna">Quantidade</td>
+                </tr>
+            </thead>
+            <tbody>
+                <?php
+                $produtos = $this->view->produtos;
+                $carrinho = $this->view->carrinho;
+                foreach ($produtos as $produto) {
+                    foreach ($carrinho as $item) {
+                        if ($produto['id'] == $item['id_produtos'] && $_SESSION['id'] == $item['id_usuarios']) {
+                            echo "<tr class='produto__carrinho'>";
+                            echo "<td><img src='assets/img/produto/{$produto['imagem']}' alt='{$produto['nome_produto']}' class='img__card'></td>";
+                            echo "<td>{$produto['nome_produto']}</td>";
+                            echo "<td>{$produto['descricao']}</td>";
+                            echo "<td>{$produto['valor']}</td>";
+                            echo "<td class='qtd__carrinho'>";
+                            if ($item['quantidade'] > 1) {
+                                echo "<a href='/menosQtdCarrinho?id={$item['id']}'>-</a>";
+                            } else {
+                                echo "<a href='/menosQtdCarrinho?id={$item['id']}'><img src='assets/img/icons/icons_admin/lixeira.png' width='15px'></a>";
+                            }
+                            echo "<div class='qtd'>{$item['quantidade']}</div>";
+                            if ($item['quantidade'] == $produto['quantidade_produto']) {
+                            } else {
+                                echo "<a id='mais' href='/maisQtdCarrinho?id={$item['id']}'>+</a>";
+                            }
+                            echo "</td>";
+                            echo "</tr>";
+                        }
+                        if ($item['quantidade'] == 0) {
+                            header('location: /removerCarrinho?id=' . $item['id_produtos'] . '');
+                        }
+                    }
+                }
+                ?>
+            </tbody>
+        </table>
+    </div>
 
-<div class="scroll">
-    <table class="tabela">
-        <thead>
-            <tr>
-                <td></td>
-                <td>Nome do produto</td>
-                <td>Descrição</td>
-                <td>Preço</td>
-                <td class="qtd__coluna">Qtd</td>
-            </tr>
-        </thead>
-        <tbody>
+    <!-- Formulário de Pagamento -->
+    <div class="pagamento">
+        <div class="header__pag">
+            <h2>Pagamento</h2>
+            <select name="metodo" id="metodo">
+                <option value="pix">Pix</option>
+                <option value="debito">Débito</option>
+                <option value="credito">Crédito</option>
+            </select>
+        </div>
+        <div class="corpo__pag">
             <?php
-            $produtos = $this->view->produtos;
-            $carrinho = $this->view->carrinho;
+            $valores = [];
+            $total = 0;
+            $quantidade = 0;
+            $idProdutos = [];
+
             foreach ($produtos as $produto) {
                 foreach ($carrinho as $item) {
                     if ($produto['id'] == $item['id_produtos'] && $_SESSION['id'] == $item['id_usuarios']) {
-                        echo "<tr class='produto__carrinho'>";
-                        echo "<td><img src='assets/img/produto/" . $produto['imagem'] . "' alt='" . $produto['nome_produto'] . "' class='img__card'></td>";
-                        echo "<td>{$produto['nome_produto']}</td>";
-                        echo "<td>{$produto['descricao']}</td>";
-                        echo "<td>{$produto['valor']}</td>";
-                        echo "<td class='qtd__carrinho'>";
-                        if ($item['quantidade'] > 1) {
-                            echo "<a href='/menosQtdCarrinho?id={$item['id']}'>-</a>";
-                        } else {
-                            echo "<a href='/menosQtdCarrinho?id={$item['id']}'><img src='assets/img/icons/icons_admin/lixeira.png' width='15px'></a>";
-                        }
-                        echo "<div class='qtd'>{$item['quantidade']}</div>";
-                        if ($item['quantidade'] == $produto['quantidade_produto']) {
-                        } else {
-                            echo "<a id='mais' href='/maisQtdCarrinho?id={$item['id']}'>+</a>";
-                        }
-
-                        echo "</td>";
-                        echo "</tr>";
-                    }
-
-                    if ($item['quantidade'] == 0) {
-                        header('location: /removerCarrinho?id=' . $item['id_produtos'] . '');
+                        $subtotal = floatval($produto['valor']) * intval($item['quantidade']);
+                        $valores[] = $subtotal;
+                        $quantidade = $item['quantidade'];
+                        $idProdutos[] = $produto['id'];
                     }
                 }
             }
+
+            $total = number_format(array_sum($valores), 2);
             ?>
-        </tbody>
-    </table>
-</div>
-
-<div class="pagamento">
-    <div class="header__pag">
-        <h2>Pagamento</h2>
-        <select name="metodo" id="metodo">
-            <option value="pix">Pix</option>
-            <option value="debito">Débito</option>
-            <option value="credito">Crédito</option>
-        </select>
-    </div>
-    <div class="corpo__pag">
-        <?php
-
-        $valores = [];
-        $total = 0;
-
-        $quantidade = 0;
-        $idProdutos = [];
-
-        foreach ($produtos as $produto) {
-            foreach ($carrinho as $item) {
-                if ($produto['id'] == $item['id_produtos'] && $_SESSION['id'] == $item['id_usuarios']) {
-                    $subtotal = floatval($produto['valor']) * intval($item['quantidade']);
-                    $valores[] = $subtotal;
-
-                    $quantidade = $item['quantidade'];
-                    $idProdutos[] = $produto['id'];
+            <form method="POST" action="/reservar" enctype="multipart/form-data">
+                <div class="form__itens">
+                    <h2 class="valor">Total: R$ <?= number_format($total, 2, ',', '.') ?></h2>
+                    <input type="date" name="data_entrega" class="data__input">
+                </div>
+                <input type="hidden" value="<?= number_format($total, 2); ?>" name="valor_produto">
+                <input type="hidden" name="quantidade" value="<?= $quantidade ?>">
+                <input type="hidden" value="<?= serialize($idProdutos); ?>" name="produto">
+                <?php
+                if ($total == 0) {
+                    echo "<a type='submit' href='/' class='voltar__home'>Adicione ao carrinho</a>";
+                } else {
+                    echo "<button type='submit' class='btn__pag'>Pagamento</button>";
                 }
-            }
-        }
-
-        $total = number_format(array_sum($valores), 2);
-        ?>
-        <form method='POST' action="/reservar" enctype='multipart/form-data'>
-            <div class="form__itens">
-                <h2 class='valor'>
-                    Total: R$ <?= number_format($total, 2, ',', '.') ?>
-                </h2>
-                <input type='date' name='data_entrega' class="data__input">
-            </div>
-            <input type="hidden" value="<?= number_format($total, 2); ?>" name='valor_produto'>
-            <input type='hidden' name='quantidade' value="<?= $quantidade ?>">
-            <input type="hidden" value="<?= serialize($idProdutos); ?>" name='produto'>
-
-            <?php
-            if ($total == 0) {
-                echo "<a type='submit' href='/' class='voltar__home'>Adicione ao carrinho</a>";
-            } else {
-                // echo "<button type='submit'  class='btn__pag'>Confirmar compra</button>";
-            ?>
-                <button type="submit" class='btn__pag'>Pagamento</button>
-            <?php
-            };
-            ?>
-        </form>
+                ?>
+            </form>
+        </div>
     </div>
-</div>
+</body>
+</html>

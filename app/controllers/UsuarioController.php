@@ -8,6 +8,7 @@ use App\controllers\AuthController;
 
 class UsuarioController extends Action
 {
+    // Página do carrinho
     public function carrinho()
     {
         AuthController::validaAutenticacao();
@@ -23,6 +24,7 @@ class UsuarioController extends Action
         $this->render("carrinho", "templateUsuario");
     }
 
+    // Página de favoritos
     public function favoritos()
     {
         AuthController::validaAutenticacao();
@@ -42,15 +44,16 @@ class UsuarioController extends Action
         $this->render("favoritos", "templateUsuario");
     }
 
-    // ADICIONA AO CARRINHO
+    // Adicionar produto ao carrinho
     public function adicionarCarrinho()
     {
         AuthController::validaAutenticacao();
         $carrinho = Container::getModel('carrinho');
         $carrinho->addCarrinho($_GET['id'], $_SESSION['id']);
         header('Location: ' . $_SERVER['HTTP_REFERER'] . '');
-        }
+    }
 
+    // Adicionar aos favoritos
     public function addFavoritos()
     {
         AuthController::validaAutenticacao();
@@ -59,6 +62,7 @@ class UsuarioController extends Action
         header('Location: /');
     }
 
+    // Remover produto do carrinho
     public function removerCarrinho()
     {
         AuthController::validaAutenticacao();
@@ -67,6 +71,7 @@ class UsuarioController extends Action
         header('Location: ' . $_SERVER['HTTP_REFERER'] . '');
     }
 
+    // Remover dos favoritos
     public function removeFavoritos()
     {
         AuthController::validaAutenticacao();
@@ -75,6 +80,7 @@ class UsuarioController extends Action
         header('Location: ' . $_SERVER['HTTP_REFERER'] . '');
     }
 
+    // Aumentar quantidade no carrinho
     public function maisQtdCarrinho()
     {
         $carrinho = Container::getModel('carrinho');
@@ -82,6 +88,7 @@ class UsuarioController extends Action
         header('Location: /carrinho');
     }
 
+    // Diminuir quantidade no carrinho
     public function menosQtdCarrinho()
     {
         $carrinho = Container::getModel('carrinho');
@@ -89,14 +96,14 @@ class UsuarioController extends Action
         header('Location: /carrinho');
     }
 
+    // Página de pagamento
     public function pagamento()
     {
         AuthController::validaAutenticacao();
         $this->render("pagamento", "templateUsuario");
     }
 
-
-    //salvar
+    // Salvar um novo usuário
     public function salvar_usuario()
     {
         // AuthController::validaAutenticacao();
@@ -159,20 +166,23 @@ class UsuarioController extends Action
         }
     }
 
+    // Reservar produtos
     public function reservar()
     {
-        // $carrinho = Container::getModel('carrinho');
-        // $carrinho = $carrinho->getCarrinhoPorID();
-
         $reservas = Container::getModel('reservas');
         $reservas->__set('data_entrega', isset($_POST['data_entrega']) ? $_POST['data_entrega'] : "");
         $reservas->__set('valor_produto', isset($_POST['valor_produto']) ? $_POST['valor_produto'] : "");
         $reservas->__set('id_carrinho', isset($_POST['id_carrinho']) ? $_POST['id_carrinho'] : "");
         $reservas->__set('id_produto', isset($_POST['id_produto']) ? $_POST['id_produto'] : "");
         $reservas->addReserva();
+
+        $carrinho = Container::getModel('carrinho');
+        $carrinho->removeCarrinho(-1, $_SESSION['id']);
+
         header('Location: /minhasReservas');
     }
 
+    // Página de reservas do usuário
     public function minhasReservas()
     {
         AuthController::validaAutenticacao();
@@ -184,6 +194,10 @@ class UsuarioController extends Action
         $reservas = Container::getModel('reservas');
         $reservas = $reservas->getReservas();
         $this->view->reservas = $reservas;
+
+        $carrinho = Container::getModel('carrinho');
+        $carrinho = $carrinho->getCarrinhoPorID();
+        $this->view->carrinho = $carrinho;
 
         $this->render("minhasReservas", "templateUsuario");
     }
