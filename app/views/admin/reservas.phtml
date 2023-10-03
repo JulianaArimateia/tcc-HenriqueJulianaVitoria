@@ -22,9 +22,11 @@
             $reservas = $this->view->reservas;
             $produtosReservas = $this->view->produtosReserva;
 
-            foreach ($produtosReservas as $produto) {
             foreach ($reservas as $reserva) {
-                    echo "<tr>
+                $foi[$reserva['id']] = false;
+                foreach ($produtosReservas as $produto) {
+                    if ($reserva['id_usuarios'] == $_SESSION['id'] && $foi[$reserva['id']] == false && $produto['id_reserva'] == $reserva['id']) {
+                        echo "<tr>
                 <td class='item__tabela'>{$reserva['email_usuario']}</td>
                 <td class='item__tabela'>{$produto['nome_produto']}</td>
                 <td class='item__tabela'>{$reserva['quantidade']}</td>
@@ -46,6 +48,7 @@
                             </svg></button></a>
                 </td>
             </tr>";
+                    }
                 }
             }
             ?>
