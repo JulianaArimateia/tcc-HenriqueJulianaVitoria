@@ -46,6 +46,16 @@ class ReservasModel extends Model
         return $stmt->fetchAll(\PDO::FETCH_ASSOC);
     }
 
+    public function getReservasPorUser()
+    {
+        $query = "SELECT r.id, r.id_usuarios, r.valor_produto, r.valor_produto, DATE_FORMAT(r.data_entrega, '%d/%m/%Y') AS data_formatada, u.nome as nome_usuario, u.email as email_usuario FROM reserva as r INNER JOIN usuarios as u ON u.id = r.id_usuarios WHERE r.id_usuarios = :id_usuarios";
+        $stmt = $this->db->prepare($query);
+        $stmt->bindValue(':id_usuarios', $_SESSION['id']);
+        $stmt->execute();
+
+        return $stmt->fetchAll(\PDO::FETCH_ASSOC);
+    }
+
     public function getReservas()
     {
         AuthController::esta_logado();

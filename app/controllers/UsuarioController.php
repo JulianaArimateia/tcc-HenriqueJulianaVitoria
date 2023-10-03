@@ -174,6 +174,7 @@ class UsuarioController extends Action
         $reservas->__set('valor_produto', isset($_POST['valor_produto']) ? $_POST['valor_produto'] : "");
         $reservas->__set('id_carrinho', isset($_POST['id_carrinho']) ? $_POST['id_carrinho'] : "");
         $reservas->__set('id_produto', isset($_POST['id_produto']) ? $_POST['id_produto'] : "");
+
         $reservas->addReserva();
 
         $carrinho = Container::getModel('carrinho');
@@ -187,13 +188,14 @@ class UsuarioController extends Action
     {
         AuthController::validaAutenticacao();
 
-        $produtos = Container::getModel('produtos');
-        $produtos = $produtos->getProdutos();
-        $this->view->produtos = $produtos;
 
         $reservas = Container::getModel('reservas');
-        $reservas = $reservas->getReservas();
+        $reservas = $reservas->getReservasPorUser();
         $this->view->reservas = $reservas;
+
+        $produtos = Container::getModel('ProdutosReserva');
+        $produtos = $produtos->getProdutosReservas();
+        $this->view->produtos = $produtos;
 
         $carrinho = Container::getModel('carrinho');
         $carrinho = $carrinho->getCarrinhoPorID();
