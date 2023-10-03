@@ -144,7 +144,7 @@ class AdminController extends Action
         // Buscar os dados do produto no banco de dados
 
 
-        $produtos =  $produto->getProdutos();
+        $produtos =  $produto->getProdutosporId();
 
 
         $this->view->dados = $produtos;
