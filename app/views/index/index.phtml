@@ -31,7 +31,14 @@
                 <div class='conteudo__prato'>
                     <h2 class='titulo__prato'>" . $produto['nome_produto'] . "</h2> 
                     <p class='texto__prato'>" . $produto['descricao'] . "</p>
-                    <a href='" . $metodo . "?id=" . $produto['id'] . "' class='btn__prato'>Adicionar</a>
+                    ";
+            if ($metodo == '/adicionarCarrinho')
+                echo "<a href='" . $metodo . "?id=" . $produto['id'] . "' class='btn__prato'>Adicionar</a>";
+            else {
+                echo "<a href='" . $metodo . "?id=" . $produto['id'] . "' class='btn__prato'>Remover</a>";
+            }
+
+            echo "
                 </div>
             </div>
             ";
@@ -142,7 +149,7 @@
                 <h2 class='preco__card'>
                     " . $produto['valor'] . "
                 </h2>
-                <a href='/adicionarCarrinho?id=" . $produto['id'] . "' type='submit' class='add__carrinho' id='add__carrinho'></a>
+                <a href='/adicionarCarrinho?id=" . $produto['id'] . "' type='submit' class='add__carrinho' id='add__carrinho'>  </a>
             </div>
         </div>
         ";

@@ -18,12 +18,15 @@
             <th>Ações</th>
         </thead>
         <tbody class='corpo__tabela'>
-             <?php
+            <?php
             $reservas = $this->view->reservas;
+            $produtosReservas = $this->view->produtosReserva;
 
             foreach ($reservas as $reserva) {
-                echo "<tr>
+                foreach ($produtosReservas as $produto) {
+                    echo "<tr>
                 <td class='item__tabela'>{$reserva['email_usuario']}</td>
+                <td class='item__tabela'>{$produto['nome_produto']}</td>
                 <td class='item__tabela'>{$reserva['quantidade']}</td>
                 <td class='item__tabela'>{$reserva['valor_produto']}</td>
                 <td class='item__tabela'>{$reserva['data_formatada']}</td>
@@ -43,6 +46,7 @@
                             </svg></button></a>
                 </td>
             </tr>";
+                }
             }
             ?>
         </tbody>

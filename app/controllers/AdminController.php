@@ -68,6 +68,10 @@ class AdminController extends Action
         $reservas = $reservas->getReservas();
         $this->view->reservas = $reservas;
 
+        $produtosReserva = Container::getModel('ProdutosReserva');
+        $produtosReserva = $produtosReserva->getProdutosReservas();
+        $this->view->produtosReserva = $produtosReserva;
+
         $this->render("reservas", "templateAdmin");
     }
 
