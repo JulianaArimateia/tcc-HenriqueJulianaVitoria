@@ -18,14 +18,17 @@
 
 
         foreach ($reservas as $reserva) {
+            $foi[$reserva['id']] = false;
             foreach ($produtos as $produto) {
-                if ($reserva['id_usuarios'] == $_SESSION['id']) {
+                if ($reserva['id_usuarios'] == $_SESSION['id'] && $foi[$reserva['id']] == false && $produto['id_reserva'] == $reserva['id']) {
                     echo "<tr class='item__tabela'>";
                     echo "<td>{$produto['nome_produto']}</td>";
                     echo "<td class='data'>{$reserva['data_formatada']}</td>";
                     echo "<td>R$ {$reserva['valor_produto']}</td>";
                     echo "<td></td>";
                     echo "</tr>";
+
+                    $foi[$reserva['id']] = true;
                 }
             }
         }
