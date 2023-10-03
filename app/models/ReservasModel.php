@@ -9,7 +9,6 @@ class ReservasModel extends Model
 {
     private $id;
     private $id_usuarios;
-    private $id_carrinho;
     private $valor_produto;
     private $quantidade;
     private $produto;
@@ -38,7 +37,7 @@ class ReservasModel extends Model
 
     public function getReservasPorId()
     {
-        $query = "SELECT r.id, r.id_usuarios, r.valor_produto, r.id_carrinho, r.valor_produto, r.data_entrega, u.nome as nome_usuario, u.email as email_usuario, c.quantidade as quantidade, c.id_produtos as id_produtos  FROM reserva as r INNER JOIN usuarios as u ON u.id = r.id_usuarios INNER JOIN carrinho as c ON c.id = r.id_carrinho WHERE r.id = :id";
+        $query = "SELECT r.id, r.id_usuarios, r.valor_produto, r.data_entrega, r.quantidade, u.nome as nome_usuario, u.email as email_usuario FROM reserva as r INNER JOIN usuarios as u ON u.id = r.id_usuarios WHERE r.id = :id";
         $stmt = $this->db->prepare($query);
         $stmt->bindValue(':id', $_GET['reserva']);
         $stmt->execute();
