@@ -2,6 +2,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400&display=swap');
 /* -------------------------------------------------Main------------------------------------------------- */
 @import url(main/tabela.css);
+@import url(main/responsivo.css);
 
 
 /* ------------------------------------------------Footer------------------------------------------------ */

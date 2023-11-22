@@ -1,0 +1,24 @@
+@media screen and (max-width: 990px) {
+      .corpo{
+         flex-direction: column;
+         align-items: center;
+         justify-content: center;
+}
+
+      .scroll{
+         width: 520px;
+}
+}
+
+@media screen and (max-width: 520px) {
+   *{
+   font-size:  1rem;
+}
+
+      .scroll{
+         width: 100%;
+}
+       .pagamento{
+          width: 95%;
+}
+}

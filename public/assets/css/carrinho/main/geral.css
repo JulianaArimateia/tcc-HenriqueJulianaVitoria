@@ -9,6 +9,33 @@
     height: 100vh;
 }
 
+.mensagem {
+    /* organizações */
+    position: fixed;
+    right: 105px;
+    top: 600px;
+    padding: 10px 20px;
+
+    /* aparências */
+    background-color: white;
+    border: 3px solid var(--color-main);
+    animation: slide 0.8s;
+    transition: 0.2s all;
+
+    /* dimensões */
+}
+
+@keyframes slide{
+    0%{
+    transform: translateX(300px);
+    opacity: 0;
+}
+    100%{
+    transform: translateX(0px);
+    opacity: 1;    
+}
+}
+
 /* organizações */
 
 /* aparências */

@@ -85,7 +85,7 @@
 
             $total = number_format(array_sum($valores), 2);
             ?>
-            <form method="POST" action="/reservar" enctype="multipart/form-data">
+            <form id="form" method="POST" action="/reservar" enctype="multipart/form-data">
                 <div class="form__itens">
                     <h2 class="valor">Total: R$ <?= number_format($total, 2, ',', '.') ?></h2>
                     <input type="date" name="data_entrega" class="data__input">
@@ -97,11 +97,15 @@
                 if ($total == 0) {
                     echo "<a type='submit' href='/' class='voltar__home'>Adicione ao carrinho</a>";
                 } else {
-                    echo "<button type='submit' class='btn__pag'>Pagamento</button>";
+                    echo "<button type='submit' class='btn__pag' id='btn__pag'>Pagamento</button>";
                 }
                 ?>
             </form>
         </div>
     </div>
+
+<div class="alert"></div>
 </body>
 </html>
+
+<script src="assets/js/carrinho/pagamento.js"></script>

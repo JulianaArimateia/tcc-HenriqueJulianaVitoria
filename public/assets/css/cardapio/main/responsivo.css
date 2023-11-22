@@ -1,4 +1,27 @@
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 1040px) {
+    .cardapio{
+    grid-template-columns: 1fr 1fr 1fr;
+}
+}
+
+@media screen and (max-width: 780px) {
+    .cardapio{
+    grid-template-columns: 1fr 1fr;
+}
+}
+
+
+@media screen and (max-width: 700px) {
+    .prato__dia{
+        display: flex;
+        flex-direction: column;
+    }
+
+    .card__prato{
+    width: 90%;
+    margin-top: 3vh;
+}
+
     .filtros {
         /* organizações */
         padding: 2vh 0;
@@ -7,19 +30,12 @@
         box-shadow: 0 3px 8px 1px lightgray;
 
         /* dimensões */
-        width: 100%;
+        width: 95%;
     }
 
-    .cardapio {
-        /* organizações */
-        grid-template-columns: 1fr;
-
-        /* aparências */
-
-        /* dimensões */
-        width: 100%;
-        height: auto;
-    }
+    .filtro__classe{
+    width: 82%;
+}
 
     .filtro__input {
         margin: 0;
@@ -38,4 +54,10 @@
         width: 33%;
     }
 
+}
+
+@media screen and (max-width: 520px) {
+    .cardapio{
+    grid-template-columns: 1fr;
+}
 }

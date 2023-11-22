@@ -12,6 +12,7 @@ class Route extends Bootstrap
         //IndexController
         $routes['home'] =  array('route' => '/', 'controller' => 'indexController', 'action' => 'index');
         $routes['login'] = array('route' => '/login', 'controller' => 'indexController', 'action' => 'login');
+        $routes['sobre'] = array('route' => '/sobre', 'controller' => 'indexController', 'action' => 'sobre');
 
         //UsuarioController
         $routes['carrinho'] = array('route' => '/carrinho', 'controller' => 'usuarioController', 'action' => 'carrinho');
@@ -25,6 +26,7 @@ class Route extends Bootstrap
         $routes['addFavoritos'] = array('route' => '/addFavoritos', 'controller' => 'usuarioController', 'action' => 'addFavoritos');
         $routes['removeFavoritos'] = array('route' => '/removeFavoritos', 'controller' => 'usuarioController', 'action' => 'removeFavoritos');
         $routes['pagamento'] = array('route' => '/pagamento', 'controller' => 'usuarioController', 'action' => 'pagamento');
+
 
         //AdminController
         $routes['lista'] =  array('route' => '/adminLista', 'controller' => 'adminController', 'action' => 'lista');

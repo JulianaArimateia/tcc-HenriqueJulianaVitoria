@@ -180,7 +180,7 @@ class UsuarioController extends Action
         $carrinho = Container::getModel('carrinho');
         $carrinho->removeCarrinho(-1, $_SESSION['id']);
 
-        header('Location: /minhasReservas');
+        header('Location: /carrinho');
     }
 
     // Página de reservas do usuário

@@ -23,7 +23,7 @@ class IndexController extends Action
 
         $carrinho = Container::getModel('carrinho');
 
-        if(AuthController::esta_logado()){
+        if (AuthController::esta_logado()) {
             $carrinho = $carrinho->getCarrinhoPorID();
         } else {
             $carrinho = $carrinho->getCarrinho();
@@ -31,12 +31,12 @@ class IndexController extends Action
 
         $favoritos = Container::getModel('Favoritos');
 
-        if(AuthController::esta_logado()){
+        if (AuthController::esta_logado()) {
             $favoritos = $favoritos->getFavoritosPorID();
         } else {
             $favoritos = $favoritos->getFavoritos();
         }
-        
+
         $this->view->carrinho = $carrinho;
         $this->view->favoritos = $favoritos;
 
@@ -53,5 +53,28 @@ class IndexController extends Action
             $this->view->login = isset($_GET['login']) ? $_GET['login'] : '';
             $this->render("login");
         }
+    }
+    public function sobre()
+    {
+        $carrinho = Container::getModel('carrinho');
+
+        if (AuthController::esta_logado()) {
+            $carrinho = $carrinho->getCarrinhoPorID();
+        } else {
+            $carrinho = $carrinho->getCarrinho();
+        }
+
+        $favoritos = Container::getModel('Favoritos');
+
+        if (AuthController::esta_logado()) {
+            $favoritos = $favoritos->getFavoritosPorID();
+        } else {
+            $favoritos = $favoritos->getFavoritos();
+        }
+
+        $this->view->carrinho = $carrinho;
+        $this->view->favoritos = $favoritos;
+
+        $this->render("sobre", "templateUsuario");
     }
 }

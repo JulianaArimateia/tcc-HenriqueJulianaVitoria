@@ -70,6 +70,7 @@ form {
 
     /* dimensões */
     height: 150px;
+width: 100%;
 }
 
 .form__itens {
@@ -140,7 +141,7 @@ form {
 
     /* dimensões */
     height: 50px;
-    width: 490px;
+    width: 99.5%;
 }
 
 .btn__pag:hover {
@@ -166,7 +167,7 @@ form {
 
     /* dimensões */
     height: 50px;
-    width: 490px;
+    width: 99.5%;
 }
 
 /* organizações */
